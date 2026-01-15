@@ -1,0 +1,155 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  scrollbar-width: thin;
+}
+
+input,
+select,
+textarea {
+  background-color: transparent;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  outline: none;
+}
+body {
+  min-height: 100dvh;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==================== ==================== */
+
+@layer theme, base, antd, components, utilities;
+
+@import 'tailwindcss';
+
+@theme {
+  /* --font-sora: 'Sora', sans-serif;
+  --font-inter: 'Inter', sans-serif; */
+
+  /* Custom font weights */
+  --font-weight-100: 100;
+  --font-weight-200: 200;
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-900: 900;
+
+  /* Primary color palette */
+  --color-primary-50: #fff1f2;
+  --color-primary-100: #ffdfe0;
+  --color-primary-200: #ffc5c7;
+  --color-primary-300: #ff9da1;
+  --color-primary-400: #ff646a;
+  --color-primary-500: #ff323a;
+  --color-primary-600: #ed151d;
+  --color-primary-700: #c80d14;
+  --color-primary-800: #a50f15;
+  --color-primary-900: #881419;
+  --color-primary-950: #4b0407;
+
+  --color-border-card: #0505050f;
+}
+
+@layer base {
+  :root {
+    --sidebar-w: 230px;
+    --header-h: 64px;
+
+    /* Safe area insets for mobile devices (notches, home indicators) */
+    --safe-area-inset-top: env(safe-area-inset-top, 0px);
+    --safe-area-inset-right: env(safe-area-inset-right, 0px);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  }
+}
+
+@layer components {
+  .ant-input-lg {
+    @apply text-sm;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+/* ==================== ==================== */
+
+.hide-scrollbar,
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==================== MAC-SCROLLBAR ==================== */
+.ms-track.ms-y {
+  border: none;
+  width: 6px;
+}
+.ms-track.ms-y .ms-thumb {
+  right: 1px;
+  cursor: ns-resize;
+}
+
+/* @media screen and (max-width: 767.98px) {
+  .ms-global .ms-track.ms-y {
+    display: none;
+  }
+} */
+.ms-global .ms-track.ms-x {
+  display: none;
+}
+.ms-global > .ms-track-box .ms-track.ms-y .ms-thumb:hover {
+  width: 6px;
+}
+
+.ms-global > .ms-track-box .ms-track.ms-y .ms-thumb:hover {
+  width: 6px;
+}
+
+.ms-track.ms-y.ms-active .ms-thumb,
+.ms-track.ms-y:hover .ms-thumb {
+  width: 6px;
+}
+
+.ms-track,
+.ms-track.ms-active,
+.ms-track.ms-active:hover,
+.ms-track:hover {
+  border: none !important;
+  background: none !important;
+}
+
+.ms-track.ms-x {
+  height: 6px;
+}
+
+.ms-track.ms-x .ms-thumb {
+  bottom: 1px;
+}
+
+.ms-track.ms-x:hover .ms-thumb {
+  height: 6px;
+}
