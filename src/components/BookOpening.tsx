@@ -2,6 +2,8 @@ import { XIcon } from 'lucide-react';
 import { AnimatePresence, m, useInView } from 'motion/react';
 import { useRef, useState } from 'react';
 
+import { cn } from '@/libs/utils';
+
 const image1 = '/images/thiep-nha-gai-1-01.jpg';
 const image2 = '/images/thiep-nha-gai-1-02.jpg';
 const image3 = '/images/thiep-nha-gai-1-03.jpg';
@@ -75,7 +77,9 @@ export function BookOpening() {
   return (
     <div ref={containerRef} className="">
       <div className="relative mx-auto flex h-dvh w-dvw items-center justify-center overflow-hidden px-4">
-        {/* Close Button */}
+        {/* 
+        // 
+        Close Button */}
         <AnimatePresence>
           {isOpen && (
             <m.button
@@ -84,15 +88,17 @@ export function BookOpening() {
               exit={{ opacity: 0, scale: 0.8 }}
               initial={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2 }}
-              className="bg-foreground/10 hover:bg-foreground/20 absolute top-4 right-4 z-50 rounded-full p-2 transition-colors duration-200"
+              className="absolute top-4 right-4 z-50 rounded-full bg-gray-900/10 p-2 transition-colors duration-200 hover:bg-gray-900/20"
               onClick={handleClose}
             >
-              <XIcon className="text-foreground h-6 w-6" />
+              <XIcon className="h-6 w-6 text-gray-900" />
             </m.button>
           )}
         </AnimatePresence>
 
-        {/* Book Container - Closed State */}
+        {/*
+        // 
+        Book Container - Closed State */}
         <m.div
           animate={isOpen ? 'open' : 'closed'}
           initial="closed"
@@ -100,19 +106,19 @@ export function BookOpening() {
           transition={bookSpring}
           variants={bookVariants}
           whileHover={!isOpen ? { scale: 1.02 } : {}}
-          className={`relative z-10 mx-auto flex h-dvh w-dvw items-center justify-center bg-white ${isOpen ? 'pointer-events-none hidden' : 'cursor-pointer'}`}
+          className={cn('relative z-10 mx-auto flex h-dvh w-dvw cursor-pointer items-center justify-center bg-white', isOpen && 'pointer-events-none hidden')}
           onClick={handleOpen}
         >
           {/* Closed Book (Back Cover) */}
           <div style={{ transformStyle: 'preserve-3d' }} className="relative mx-auto h-[calc(100dvh-24px)] max-h-[600px] w-130 overflow-visible rounded-lg shadow-2xl">
             {/* Image 4 - Left half of back */}
-            <div className="absolute top-0 left-0 z-0 h-[calc(100dvh-24px)] max-h-[600px] w-50 overflow-hidden rounded-l-lg shadow-xl">
+            <div className="absolute top-0 left-0 z-0 h-[calc(100dvh-24px)] max-h-[600px] w-52 overflow-hidden rounded-l-lg shadow-xl">
               <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
             </div>
             {/* Image 5 - Right half of back */}
             <m.div
               animate={{
-                rotateY: [5, 15, 5],
+                rotateY: [5, 20, 5],
               }}
               initial={{ rotateY: -5 }}
               style={{
@@ -129,17 +135,19 @@ export function BookOpening() {
               <img alt="Cover right" src={image5} className="h-[600px] w-82 object-cover object-center" />
             </m.div>
             {/* Book spine effect */}
-            <div className="from-foreground/30 via-foreground/10 to-foreground/30 absolute inset-y-0 left-1/2 w-1 -translate-x-1/2 bg-gradient-to-b" />
+            <div className="absolute inset-y-0 left-1/2 w-1 -translate-x-1/2 bg-linear-to-b from-gray-900/30 via-gray-900/10 to-gray-900/30" />
           </div>
         </m.div>
 
-        {/* Opening Animation Covers */}
+        {/*
+        // 
+        Opening Animation Covers */}
         <m.div
           animate={{ opacity: isOpen ? 0 : 1 }}
           initial={{ opacity: 1 }}
           style={{ transformStyle: 'preserve-3d', perspective: '2000px' }}
           transition={{ duration: 0.5 }}
-          className={`absolute inset-0 z-0 flex h-dvh w-dvw items-center justify-center ${isOpen ? 'pointer-events-none' : ''}`}
+          className={'pointer-events-none absolute top-1/2 left-1/2 z-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg bg-primary-400'}
         >
           {/* Left Cover (Image 4) */}
           <m.div
@@ -149,12 +157,10 @@ export function BookOpening() {
               transformStyle: 'preserve-3d',
               transformOrigin: 'left center',
               right: 'calc(50% - 0.25rem)',
-              height: 'calc(100dvh - 24px)',
-              maxHeight: 600,
             }}
             transition={coverSpring}
             variants={leftCoverVariants}
-            className="absolute w-50 overflow-hidden rounded-l-lg shadow-xl"
+            className="absolute h-[calc(100dvh-24px)] max-h-[600px] w-50 overflow-hidden rounded-l-lg shadow-xl"
           >
             <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
           </m.div>
@@ -167,25 +173,25 @@ export function BookOpening() {
               transformStyle: 'preserve-3d',
               transformOrigin: 'right center',
               left: 'calc(50% - 0.25rem)',
-              height: 'calc(100dvh - 24px)',
-              maxHeight: 600,
             }}
             transition={coverSpring}
             variants={rightCoverVariants}
-            className="absolute w-80 overflow-hidden rounded-r-lg shadow-xl"
+            className="absolute h-[calc(100dvh-24px)] max-h-[600px] w-80 overflow-hidden rounded-r-lg shadow-xl"
           >
             <img alt="Cover right" src={image5} className="h-full w-full object-cover object-center" />
           </m.div>
         </m.div>
 
-        {/* Revealed Content (Images 1, 2, 3) */}
+        {/*
+        // 
+        Revealed Content (Images 1, 2, 3) */}
         <m.div
           animate={isOpen ? 'open' : 'closed'}
           initial="closed"
           style={{ perspective: '1000px' }}
           transition={{ ...revealSpring, delay: 0.3 }}
           variants={revealedContentVariants}
-          className={`flex items-center justify-center gap-0 ${!isOpen ? 'pointer-events-none hidden' : ''}`}
+          className={cn(`flex items-center justify-center gap-0`, !isOpen && 'pointer-events-none hidden')}
         >
           {/* Image 1 - Left (skewed inward) */}
           <m.div
@@ -234,7 +240,7 @@ export function BookOpening() {
                 opacity: { duration: 0.3 },
                 y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
               }}
-              className="text-muted-foreground absolute bottom-8 left-1/2 -translate-x-1/2 text-sm"
+              className="text-muted-gray-900 absolute bottom-8 left-1/2 -translate-x-1/2 text-sm"
             >
               Click or scroll to open
             </m.div>
