@@ -1,9 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
 
+import { BookOpening } from '../components/BookOpening';
+
 export const Route = createFileRoute('/')({
-  component: RouteComponent,
+  component: HomePage,
 });
 
-function RouteComponent() {
-  return <div>Hello "/"!</div>;
+function HomePage() {
+  return <BookOpening />;
 }
