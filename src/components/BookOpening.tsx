@@ -194,7 +194,7 @@ export function BookOpening() {
             style={{ transformOrigin: 'right center' }}
             transition={{ ...imageSpring, delay: 0.5 }}
             variants={leftImageVariants}
-            className="h-[calc(100dvh-24px)] max-h-[600px] w-auto overflow-hidden rounded-none shadow-lg"
+            className="h-[calc(100dvh-24px)] max-h-[600px] w-auto overflow-hidden rounded-none rounded-l-lg shadow-lg"
           >
             <img alt="Save the Date" src={image1} className="h-full w-full object-contain" />
           </m.div>
@@ -205,7 +205,7 @@ export function BookOpening() {
             initial="closed"
             transition={{ ...imageSpring, delay: 0.4 }}
             variants={centerImageVariants}
-            className="z-10 mx-0.5 h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-none shadow-2xl"
+            className="z-10 mx-0.5 h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-lg shadow-2xl"
           >
             <img alt="Wedding Invitation" src={image2} className="h-full w-full object-contain" />
           </m.div>
@@ -217,7 +217,7 @@ export function BookOpening() {
             style={{ transformOrigin: 'left center' }}
             transition={{ ...imageSpring, delay: 0.5 }}
             variants={rightImageVariants}
-            className="h-[calc(100dvh-24px)] max-h-[600px] w-auto overflow-hidden rounded-none shadow-lg"
+            className="h-[calc(100dvh-24px)] max-h-[600px] w-auto overflow-hidden rounded-none rounded-r-lg shadow-lg"
           >
             <img alt="Ceremony Details" src={image3} className="h-full w-full object-contain" />
           </m.div>
