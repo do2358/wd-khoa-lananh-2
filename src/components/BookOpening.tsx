@@ -96,7 +96,7 @@ export function BookOpening() {
         <m.div
           animate={isOpen ? 'open' : 'closed'}
           initial="closed"
-          style={{ transformStyle: 'preserve-3d' }}
+          style={{ transformStyle: 'preserve-3d', perspective: '2000px' }}
           transition={bookSpring}
           variants={bookVariants}
           whileHover={!isOpen ? { scale: 1.02 } : {}}
@@ -104,15 +104,30 @@ export function BookOpening() {
           onClick={handleOpen}
         >
           {/* Closed Book (Back Cover) */}
-          <div className="relative mx-auto h-[calc(100dvh-24px)] max-h-[600px] w-130 overflow-hidden rounded-lg shadow-2xl">
+          <div style={{ transformStyle: 'preserve-3d' }} className="relative mx-auto h-[calc(100dvh-24px)] max-h-[600px] w-130 overflow-visible rounded-lg shadow-2xl">
             {/* Image 4 - Left half of back */}
-            <div className="absolute top-0 left-0 h-[calc(100dvh-24px)] max-h-[600px] w-50 shadow-xl">
+            <div className="absolute top-0 left-0 z-0 h-[calc(100dvh-24px)] max-h-[600px] w-50 overflow-hidden rounded-l-lg shadow-xl">
               <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
             </div>
             {/* Image 5 - Right half of back */}
-            <div className="absolute top-0 right-0 h-[calc(100dvh-24px)] max-h-[600px] w-80 shadow-xl">
-              <img alt="Cover right" src={image5} className="h-full w-full object-cover object-center" />
-            </div>
+            <m.div
+              animate={{
+                rotateY: [5, 15, 5],
+              }}
+              initial={{ rotateY: -5 }}
+              style={{
+                transformStyle: 'preserve-3d',
+                transformOrigin: 'right center',
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="absolute top-0 right-0 z-10 h-[calc(100dvh-24px)] max-h-[600px] w-82 overflow-hidden rounded-lg shadow-xl"
+            >
+              <img alt="Cover right" src={image5} className="h-[600px] w-82 object-cover object-center" />
+            </m.div>
             {/* Book spine effect */}
             <div className="from-foreground/30 via-foreground/10 to-foreground/30 absolute inset-y-0 left-1/2 w-1 -translate-x-1/2 bg-gradient-to-b" />
           </div>
@@ -122,7 +137,7 @@ export function BookOpening() {
         <m.div
           animate={{ opacity: isOpen ? 0 : 1 }}
           initial={{ opacity: 1 }}
-          style={{ transformStyle: 'preserve-3d' }}
+          style={{ transformStyle: 'preserve-3d', perspective: '2000px' }}
           transition={{ duration: 0.5 }}
           className={`absolute inset-0 z-0 flex h-dvh w-dvw items-center justify-center ${isOpen ? 'pointer-events-none' : ''}`}
         >
@@ -132,13 +147,14 @@ export function BookOpening() {
             initial="closed"
             style={{
               transformStyle: 'preserve-3d',
+              transformOrigin: 'left center',
               right: 'calc(50% - 0.25rem)',
               height: 'calc(100dvh - 24px)',
               maxHeight: 600,
             }}
             transition={coverSpring}
             variants={leftCoverVariants}
-            className="absolute w-50 origin-center overflow-hidden rounded-l-lg shadow-xl"
+            className="absolute w-50 overflow-hidden rounded-l-lg shadow-xl"
           >
             <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
           </m.div>
@@ -149,13 +165,14 @@ export function BookOpening() {
             initial="closed"
             style={{
               transformStyle: 'preserve-3d',
+              transformOrigin: 'right center',
               left: 'calc(50% - 0.25rem)',
               height: 'calc(100dvh - 24px)',
               maxHeight: 600,
             }}
             transition={coverSpring}
             variants={rightCoverVariants}
-            className="absolute w-80 origin-center overflow-hidden rounded-r-lg shadow-xl"
+            className="absolute w-80 overflow-hidden rounded-r-lg shadow-xl"
           >
             <img alt="Cover right" src={image5} className="h-full w-full object-cover object-center" />
           </m.div>
@@ -188,7 +205,7 @@ export function BookOpening() {
             initial="closed"
             transition={{ ...imageSpring, delay: 0.4 }}
             variants={centerImageVariants}
-            className="z-10 mx-1 h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-none shadow-2xl"
+            className="z-10 mx-0.5 h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-none shadow-2xl"
           >
             <img alt="Wedding Invitation" src={image2} className="h-full w-full object-contain" />
           </m.div>
