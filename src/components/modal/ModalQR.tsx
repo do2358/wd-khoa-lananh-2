@@ -43,9 +43,9 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
           </div>
 
           {/* Body */}
-          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto sm:flex-row">
+          <div className="flex min-h-0 flex-col overflow-y-auto sm:flex-1 sm:flex-row">
             {/* First QR Code */}
-            <div className="flex flex-1 items-center justify-center bg-white">
+            <div className="flex items-center justify-center bg-white sm:flex-1">
               <Image
                 height={400}
                 loading="eager"
@@ -55,7 +55,7 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
                     : 'https://res.cloudinary.com/ngoviettung154/image/upload/v1768653144/TH/tung_qr_k6dqqe.jpg'
                 }
                 width={400}
-                className="h-auto w-full max-w-[350px] object-contain"
+                className="!h-auto min-h-[300px] !w-full object-contain"
               />
             </div>
 
@@ -63,7 +63,7 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
             <div className="h-px w-full shrink-0 bg-gray-200 sm:h-auto sm:w-px" />
 
             {/* Second QR Code */}
-            <div className="flex flex-1 items-center justify-center bg-white">
+            <div className="flex items-center justify-center bg-white sm:flex-1">
               <Image
                 height={400}
                 loading="eager"
@@ -73,7 +73,7 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
                     : 'https://res.cloudinary.com/ngoviettung154/image/upload/v1768652764/TH/huyen_qr_k6qkzv.jpg'
                 }
                 width={400}
-                className="h-auto w-full max-w-[350px] object-contain"
+                className="!h-auto min-h-[300px] !w-full object-contain"
               />
             </div>
           </div>
