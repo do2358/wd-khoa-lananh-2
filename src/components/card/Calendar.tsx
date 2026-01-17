@@ -105,7 +105,7 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
               className={cn(
                 'relative flex size-10 items-center justify-center rounded-full bg-white p-2 text-sm hover:bg-red-600 hover:text-white sm:size-12 sm:text-base',
                 // First selected date (startDate) styling
-                dateFns.isSameDay(currentDate, dateRange.startDate!) ? 'bg-red-100 text-red-700 opacity-100 ring-2 ring-red-300' : '',
+                dateFns.isSameDay(currentDate, dateRange.startDate!) ? 'bg-red-50 text-red-600 opacity-100' : '',
                 // Dates between start and end
                 isBetween(currentDate, dateRange.startDate!, dateRange.endDate!, '[]') ? 'bg-red-50 text-red-600' : 'opacity-80',
                 // Today's date styling
