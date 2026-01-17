@@ -1,4 +1,5 @@
 import { useLocation } from '@tanstack/react-router';
+import { Helmet } from 'react-helmet';
 
 type TSEOProps = {
   title?: string;
@@ -17,7 +18,7 @@ const SEO = ({ title = 'Tung&Huyen', description = 'Tung&Huyen', keywords = '', 
   const siteImagePreviewUrl = `${router?.url?.origin}/preview.jpg`;
 
   return (
-    <>
+    <Helmet>
       {/* Basic Meta Tags */}
       <meta charSet="utf-8" />
       <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
@@ -50,7 +51,7 @@ const SEO = ({ title = 'Tung&Huyen', description = 'Tung&Huyen', keywords = '', 
 
       {/* Title */}
       <title>{title}</title>
-    </>
+    </Helmet>
   );
 };
 

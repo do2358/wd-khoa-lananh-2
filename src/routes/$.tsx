@@ -108,7 +108,10 @@ function HomePage() {
 
   return (
     <>
-      <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={[pName, 'Welcome to Our Wedding', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
+      <SEO
+        description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '}
+        // title={[pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')}
+      />
 
       {/* <BgAurora className="fixed top-0 left-0 -z-50 h-dvh w-dvw bg-white max-sm:hidden" classNameContainer="-z-50 opacity-40" /> */}
 
