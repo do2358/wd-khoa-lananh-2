@@ -11,6 +11,7 @@ type TSEOProps = {
 const SEO = ({ title = 'Thu Huyền Việt Tùng', description = '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊', keywords = '', statusbarColor = '#fff' }: TSEOProps) => {
   const router = useLocation();
   // Customize Meta Properties
+  const metaTitle = title || import.meta.env.VITE_siteTitle || 'Thu Huyền Việt Tùng';
   const metaDescription = description || import.meta.env.VITE_siteDescription || 'Thu Huyền Việt Tùng';
   const metaKeywords = keywords || import.meta.env.VITE_siteKeywords || '';
   const twitterHandle = import.meta.env.VITE_twitterHandle;
@@ -33,8 +34,8 @@ const SEO = ({ title = 'Thu Huyền Việt Tùng', description = '✨ 🎉 🎊 
       {/* Open Graph */}
       <meta key="ogurl" content={currentUrl} property="og:url" />
       <meta key="ogimage" content={siteImagePreviewUrl} property="og:image" />
-      <meta key="ogsitename" content="Thu Huyền Việt Tùng" property="og:site_name" />
-      <meta key="ogtitle" content={title} property="og: title" />
+      <meta key="ogsitename" content={metaTitle} property="og:site_name" />
+      <meta key="ogtitle" content={metaTitle} property="og:title" />
       <meta key="ogdesc" content={metaDescription} property="og:description" />
 
       {/* Favicons */}
@@ -50,7 +51,7 @@ const SEO = ({ title = 'Thu Huyền Việt Tùng', description = '✨ 🎉 🎊 
       <meta name="apple-mobile-web-app-status-bar-style" content={statusbarColor} />
 
       {/* Title */}
-      <title>{title}</title>
+      <title>{metaTitle}</title>
     </Helmet>
   );
 };
