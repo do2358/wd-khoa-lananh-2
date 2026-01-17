@@ -103,7 +103,7 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
                   {/* Content */}
                   <div className="flex flex-col">
                     <h3 className="mb-3 font-DancingScript text-3xl font-[600] text-red-700">{item.title}</h3>
-                    <p className="max-w-[300px] font-Questrial text-sm leading-relaxed text-gray-700">{item.desc}</p>
+                    <p className="max-w-[300px] font-Questrial text-base leading-relaxed text-gray-700">{item.desc}</p>
                   </div>
 
                   {/* Connector Line (except for last item) */}
