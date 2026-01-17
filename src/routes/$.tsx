@@ -1,9 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { last } from 'lodash';
-import { CalendarHeartIcon, GiftIcon, ImagesIcon, MapPinIcon } from 'lucide-react';
-import { useState } from 'react';
+import { GiftIcon, ImagesIcon, MapPinIcon, MessageCircleIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
+import { showCommentToast } from '@/components/CommentToast';
 import FloatingDock from '@/components/FloatingDock';
+import LivestreamComments from '@/components/LivestreamComments';
 import RcImagesPreview from '@/components/media/RcImagesPreview';
 import ModalQR from '@/components/modal/ModalQR';
 import Section01 from '@/components/Section01';
@@ -15,6 +17,9 @@ import Section06 from '@/components/Section06';
 import Section07 from '@/components/Section07';
 import Section08 from '@/components/Section08';
 import SEO from '@/components/SEO';
+import UserAvatarStack from '@/components/UserAvatarStack';
+import { useRealtimeComments } from '@/hooks/useRealtimeComments';
+import { getRandomVietnameseName } from '@/libs/mockData';
 
 //
 //
@@ -34,8 +39,52 @@ function HomePage() {
   const pType = paramsArr?.[0];
   const pName = last(paramsArr)?.replace(/-/g, ' ');
 
-  const [isOpenSaveDate, setIsOpenSaveDate] = useState(false);
   const [isOpenQR, setIsOpenQR] = useState(false);
+  const [isOpenComments, setIsOpenComments] = useState(false);
+
+  // User state - stored in localStorage
+  const [userId, setUserId] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
+  const [userAvatar, setUserAvatar] = useState<string>('');
+
+  // Idle detection and toast notifications
+  const { comments } = useRealtimeComments(30);
+
+  // Load user info from localStorage on mount
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('wedding-user-id');
+    const storedUserName = localStorage.getItem('wedding-user-name');
+    const storedUserAvatar = localStorage.getItem('wedding-user-avatar');
+
+    if (storedUserId && storedUserName) {
+      setUserId(storedUserId);
+      setUserName(storedUserName);
+      setUserAvatar(storedUserAvatar || '');
+    } else {
+      // Generate a unique user ID
+      const newUserId = `user-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      setUserId(newUserId);
+      localStorage.setItem('wedding-user-id', newUserId);
+
+      // Use pName if available, otherwise use random Vietnamese name
+      const generatedName = pName || getRandomVietnameseName();
+      setUserName(generatedName);
+      localStorage.setItem('wedding-user-name', generatedName);
+    }
+  }, [pName]);
+
+  // Show toast for new real-time comments (optional)
+  useEffect(() => {
+    if (comments.length > 0 && !isOpenComments) {
+      const latestComment = comments[comments.length - 1];
+      // Only show if it's a recent comment (within last 5 seconds)
+      const now = Date.now();
+      const commentTime = latestComment.createdAt?.getTime?.() || 0;
+      if (now - commentTime < 5000) {
+        showCommentToast(latestComment);
+      }
+    }
+  }, [comments, isOpenComments]);
 
   //
   const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/CH1Yi2JWQdu4c1LVA' : 'https://maps.app.goo.gl/7XFB6K6QAaBbRWYP9';
@@ -84,19 +133,19 @@ function HomePage() {
           },
 
           {
-            title: 'Save the Date',
-            icon: <CalendarHeartIcon className="size-full max-sm:-mt-0.5" />,
-            onClick: () => {
-              setIsOpenSaveDate(true);
-            },
-          },
-
-          {
             title: 'Album chúng mình',
             icon: <ImagesIcon className="size-full" />,
             href: '/albums',
             target: '_blank',
             rel: 'noreferrer noopenner',
+          },
+
+          {
+            title: 'Lời chúc',
+            icon: <MessageCircleIcon className="size-full" />,
+            onClick: () => {
+              setIsOpenComments(!isOpenComments);
+            },
           },
 
           {
@@ -110,6 +159,12 @@ function HomePage() {
       />
 
       <ModalQR open={isOpenQR} pName={pName} pType={pType} setOpen={setIsOpenQR} />
+
+      {/* User Avatar Stack - Top Left */}
+      <UserAvatarStack userId={userId} userAvatar={userAvatar} userName={userName} />
+
+      {/* Livestream Comments - Bottom Right */}
+      <LivestreamComments userId={userId} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
 
       {/* <ModalQR open={isOpenQR} setOpen={setIsOpenQR} /> */}
 

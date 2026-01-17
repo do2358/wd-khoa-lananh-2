@@ -261,3 +261,83 @@ html::-webkit-scrollbar {
 .ms-track.ms-x:hover .ms-thumb {
   height: 6px;
 }
+
+.Toastify__toast {
+  --toastify-toast-bd-radius: 10px !important;
+  --toastify-toast-min-height: 52px;
+  min-height: var(--toastify-toast-min-height);
+  font-size: 14px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+  padding-right: 26px;
+  line-height: 1.2;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  max-height: 120px;
+  overflow: hidden;
+  border-radius: var(--toastify-toast-bd-radius) !important;
+}
+
+/* .Toastify__close-button {
+  position: absolute;
+  top: calc(50% - 0px);
+  transform: translateY(-50%);
+} */
+.Toastify__close-button > svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+}
+.Toastify__close-button > svg.lucide-refresh-ccw {
+  fill: none;
+}
+
+.Toastify__toast.close-btn-tr .Toastify__close-button {
+  top: 8px;
+  transform: translate(2px, 0);
+}
+
+@media screen and (max-width: 480px) {
+  .Toastify__toast-container--top-center {
+    padding: 10px;
+  }
+  .Toastify__toast--stacked[data-pos='top'] {
+    margin-top: 16px;
+    width: calc(100dvw - 32px);
+    left: 16px;
+  }
+}
+
+.Toastify__toast--info {
+  color: var(--toastify-color-info);
+  /* border: 1px solid var(--toastify-color-info); */
+}
+.Toastify__toast--success {
+  --toastify-color-success: #16a34a;
+  color: var(--toastify-color-success);
+  /* border: 1px solid var(--toastify-color-success); */
+}
+.Toastify__toast--warning {
+  color: var(--toastify-color-warning);
+  /* border: 1px solid var(--toastify-color-warning); */
+}
+.Toastify__toast--error {
+  color: var(--toastify-color-error);
+  /* border: 1px solid var(--toastify-color-error); */
+}
+
+/* colored */
+.Toastify__toast-theme--colored.Toastify__toast--info {
+  color: #fff;
+}
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  color: #fff;
+  background: #16a34a;
+}
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+  color: #fff;
+}
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  color: #fff;
+}

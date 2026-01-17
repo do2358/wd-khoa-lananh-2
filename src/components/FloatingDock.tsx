@@ -175,6 +175,7 @@ const formatTime = (time: number | undefined): string => {
   }
   return '00:00';
 };
+
 function ItemMusic(props: { mouseX: MotionValue; sizeTransform?: [number, number, number]; sizeIconTransform?: [number, number, number]; id?: string }) {
   const { mouseX, sizeTransform = [60, 100, 60], sizeIconTransform = [30, 60, 30] } = props;
   const audioRef = useRef<HTMLAudioElement>(null);

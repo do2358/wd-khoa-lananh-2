@@ -1,11 +1,9 @@
-import { PartyPopperIcon } from 'lucide-react';
 import { m } from 'motion/react';
 import { useMediaQuery } from 'react-responsive';
 
 import { IMG_BLUR } from '@/libs/constant';
 import { cn } from '@/libs/utils';
 
-import { RainbowButton } from './button/RainbowButton';
 import RcImage from './media/RcImage';
 import ScrollArea from './ScrollArea';
 
@@ -21,12 +19,12 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
       <div className="mb-1 text-center text-base text-red-500 uppercase max-sm:px-8">Hãy dành chút thời gian để nói cho chúng mình biết nhé!</div>
       <div className={cn('mb-4 text-center font-DancingScript text-4xl font-[600] text-red-800')}>Chúng mình rất mong bạn/anh/chị đến chung vui với chúng mình</div>
 
-      <div className="z-50 flex items-center justify-center sm:px-8">
+      {/* <div className="z-50 flex items-center justify-center sm:px-8">
         <RainbowButton className="items-center text-base tracking-[2px] text-red-900 uppercase ring-1 ring-red-300" onClick={onClickBtn01}>
           <PartyPopperIcon className="mr-2 size-6" />
           <span>Bạn sẽ đến chứ?</span>
         </RainbowButton>
-      </div>
+      </div> */}
 
       <div className="relative flex min-h-fit w-full justify-center overflow-hidden">
         <ScrollArea suppressScrollY className="flex items-center overflow-x-auto px-10 py-8">
