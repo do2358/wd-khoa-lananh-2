@@ -46,7 +46,17 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
           <div className="flex min-h-0 flex-1 flex-col overflow-y-auto sm:flex-row">
             {/* First QR Code */}
             <div className="flex flex-1 items-center justify-center bg-white">
-              <Image height={400} loading="eager" src={pType === 'h' ? '/assets/huyen_qr.jpeg' : '/assets/tung_qr.jpeg'} width={400} className="h-auto w-full max-w-[350px] object-contain" />
+              <Image
+                height={400}
+                loading="eager"
+                src={
+                  pType === 'h'
+                    ? 'https://res.cloudinary.com/ngoviettung154/image/upload/v1768652764/TH/huyen_qr_k6qkzv.jpg'
+                    : 'https://res.cloudinary.com/ngoviettung154/image/upload/v1768653144/TH/tung_qr_k6dqqe.jpg'
+                }
+                width={400}
+                className="h-auto w-full max-w-[350px] object-contain"
+              />
             </div>
 
             {/* Divider */}
@@ -54,7 +64,17 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
 
             {/* Second QR Code */}
             <div className="flex flex-1 items-center justify-center bg-white">
-              <Image height={400} loading="eager" src={pType === 'h' ? '/assets/tung_qr.jpeg' : '/assets/huyen_qr.jpeg'} width={400} className="h-auto w-full max-w-[350px] object-contain" />
+              <Image
+                height={400}
+                loading="eager"
+                src={
+                  pType === 'h'
+                    ? 'https://res.cloudinary.com/ngoviettung154/image/upload/v1768653144/TH/tung_qr_k6dqqe.jpg'
+                    : 'https://res.cloudinary.com/ngoviettung154/image/upload/v1768652764/TH/huyen_qr_k6qkzv.jpg'
+                }
+                width={400}
+                className="h-auto w-full max-w-[350px] object-contain"
+              />
             </div>
           </div>
         </Drawer.Content>
