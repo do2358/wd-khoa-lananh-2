@@ -222,7 +222,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           style={{ transformOrigin: 'right center' }}
           transition={{ ...imageSpring, delay: 0.5 }}
           variants={mediaAbove640 ? leftImageVariants : centerImageVariants}
-          className="h-[calc(100dvh-24px)] max-h-[600px] w-auto overflow-hidden rounded-none rounded-l-lg shadow-lg max-sm:hidden"
+          className="h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-none rounded-l-lg shadow-lg max-sm:hidden"
         >
           <img alt="Save the Date" src={imgs(pType)?.image1} className="h-full w-full object-contain" />
         </m.div>
@@ -246,7 +246,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           style={{ transformOrigin: 'left center' }}
           transition={{ ...imageSpring, delay: 0.5 }}
           variants={mediaAbove640 ? rightImageVariants : centerImageVariants}
-          className="h-[calc(100dvh-24px)] max-h-[600px] w-auto overflow-hidden rounded-none rounded-r-lg shadow-lg max-sm:hidden"
+          className="h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-none rounded-r-lg shadow-lg max-sm:hidden"
         >
           <img alt="Ceremony Details" src={imgs(pType)?.image3} className="h-full w-full object-contain" />
         </m.div>
