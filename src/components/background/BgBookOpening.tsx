@@ -132,9 +132,9 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
         onClick={handleOpen}
       >
         {/* Closed Book (Back Cover) */}
-        <div style={{ transformStyle: 'preserve-3d' }} className="relative mx-auto h-[calc(100dvh-24px)] max-h-[600px] w-[90vw] overflow-visible rounded-lg shadow-2xl sm:w-130">
+        <div style={{ transformStyle: 'preserve-3d' }} className="relative mx-auto h-[calc(100dvh-24px)] max-h-[680px] w-[90vw] overflow-visible rounded-lg shadow-2xl sm:w-130">
           {/* Image 4 - Left half of back */}
-          <div className="absolute top-0 left-0 z-0 h-[calc(100dvh-24px)] max-h-[600px] w-[45%] overflow-hidden rounded-l-lg shadow-xl sm:w-52">
+          <div className="absolute top-0 left-0 z-0 h-[calc(100dvh-24px)] max-h-[680px] w-52 overflow-hidden rounded-l-lg shadow-xl">
             <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
           </div>
           {/* Image 5 - Right half of back */}
@@ -152,7 +152,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="absolute top-0 right-0 z-10 h-[calc(100dvh-24px)] max-h-[600px] w-[55%] overflow-hidden rounded-lg shadow-xl sm:w-82"
+            className="absolute top-0 right-0 z-10 h-[calc(100dvh-24px)] max-h-[680px] w-82 overflow-hidden rounded-lg shadow-xl"
           >
             <img alt="Cover right" src={image5} className="h-full w-full object-cover object-center" />
           </m.div>
@@ -182,7 +182,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           }}
           transition={coverSpring}
           variants={leftCoverVariants}
-          className="absolute h-[calc(100dvh-24px)] max-h-[600px] w-[40vw] overflow-hidden rounded-l-lg shadow-xl sm:w-50"
+          className="absolute h-[calc(100dvh-24px)] max-h-[680px] w-52 overflow-hidden rounded-l-lg shadow-xl"
         >
           <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
         </m.div>
@@ -198,7 +198,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           }}
           transition={coverSpring}
           variants={rightCoverVariants}
-          className="absolute h-[calc(100dvh-24px)] max-h-[600px] w-[40vw] overflow-hidden rounded-r-lg shadow-xl sm:w-80"
+          className="absolute h-[calc(100dvh-24px)] max-h-[680px] w-82 overflow-hidden rounded-r-lg shadow-xl"
         >
           <img alt="Cover right" src={image5} className="h-full w-full object-cover object-center" />
         </m.div>
