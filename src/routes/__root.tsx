@@ -37,8 +37,8 @@ export const Route = createRootRoute({
     links: [
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
-      { rel: 'stylesheet', href: MS_CSS },
       { rel: 'stylesheet', href: RC_I_CSS },
+      { rel: 'stylesheet', href: MS_CSS },
       { rel: 'stylesheet', href: APP_CSS },
       // { rel: 'stylesheet', href: APP_ANTD_CSS },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Manrope:wght@200..800&family=Questrial&display=swap' },

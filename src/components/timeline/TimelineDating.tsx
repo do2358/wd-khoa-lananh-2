@@ -7,6 +7,7 @@ import { cn } from '@/libs/utils';
 import { MotionEffect } from '../animation/MotionEffect';
 import { FlowerBlossomSvg } from '../icons';
 import RcImage from '../media/RcImage';
+import ScrollArea from '../ScrollArea';
 
 const dataText = [
   {
@@ -75,15 +76,55 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
 
   return (
     <>
-      <div ref={containerRef} className={cn('w-full md:px-10', props?.className)}>
-        <div ref={ref} className="relative mx-auto max-w-7xl pb-20 max-sm:w-dvw">
+      {/* Mobile horizontal layout */}
+      {!mediaAbove640 && (
+        <div className={cn('w-full py-10', props?.className)}>
+          <ScrollArea suppressScrollY className="w-full">
+            <div className="flex gap-8 px-6 pb-4">
+              {dataText.map((item, index) => (
+                <div key={uid + index} className="relative flex min-w-[320px] flex-shrink-0 flex-col">
+                  {/* Time Badge */}
+                  <div className="mb-4 flex items-baseline gap-2 text-red-700">
+                    <div className="font-DancingScript text-6xl">{item.time1}</div>
+                    <div className="text-base">{item.time2}</div>
+                  </div>
+
+                  {/* Image */}
+                  <div className="relative mb-4 flex h-[300px] w-[280px] flex-col items-center justify-center rounded-xl border-2 border-red-900/50 p-2">
+                    <RcImage alt={item.title} height={'100%'} src={item.image} width={'100%'} className="cursor-pointer rounded-lg object-cover" />
+                    <div className="absolute -top-2 -left-2 animate-[bounceY_12s_linear_infinite]">
+                      <FlowerBlossomSvg className="h-auto w-20 rotate-[-82deg]" />
+                    </div>
+                    <div className="absolute -right-8 -bottom-8 animate-[bounceY_12s_linear_infinite]">
+                      <FlowerBlossomSvg className="h-auto w-24 rotate-[-82deg]" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-col">
+                    <h3 className="mb-3 font-DancingScript text-3xl font-[600] text-red-700">{item.title}</h3>
+                    <p className="max-w-[300px] font-Questrial text-sm leading-relaxed text-gray-700">{item.desc}</p>
+                  </div>
+
+                  {/* Connector Line (except for last item) */}
+                  {index < dataText.length - 1 && <div className="absolute top-8 -right-8 h-0.5 w-8 bg-gradient-to-r from-red-400 to-red-200" />}
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </div>
+      )}
+
+      {/* Desktop vertical layout (original) - Always rendered for refs */}
+      <div ref={containerRef} className={cn('w-full md:px-10', !mediaAbove640 && 'hidden', props?.className)}>
+        <div ref={ref} className="relative mx-auto max-w-7xl pb-20">
           {dataText.map((item, index) => (
-            <div key={uid + index} className={cn('group flex justify-center pt-20 max-sm:flex-col sm:items-center sm:pt-40', index % 2 !== 0 && 'sm:flex-row-reverse')}>
+            <div key={uid + index} className={cn('group flex justify-center pt-20 sm:items-center sm:pt-40', index % 2 !== 0 && 'sm:flex-row-reverse')}>
               <MotionEffect
                 inView
                 inViewOnce={false}
                 slide={{ direction: index % 2 === 0 ? 'left' : 'right' }}
-                className={cn('flex flex-col max-sm:mb-10 max-sm:w-[90dvw] max-sm:overflow-hidden max-sm:px-5 sm:max-w-md sm:flex-1', index % 2 === 0 ? 'sm:pr-5' : 'sm:pl-5')}
+                className={cn('flex flex-col sm:max-w-md sm:flex-1', index % 2 === 0 ? 'sm:pr-5' : 'sm:pl-5')}
               >
                 <h3 style={formatActiveTitleStyle(scrollYProgressValue, index)} className={cn('mb-4 font-DancingScript text-4xl font-[600] transition-all sm:text-5xl ')}>
                   {item.title}
@@ -91,22 +132,14 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
                 <p className="font-Questrial text-base">{item.desc}</p>
               </MotionEffect>
 
-              <div className="z-10 flex shrink-0 items-baseline border-red-600 text-red-700 max-sm:-order-1 max-sm:mb-6 max-sm:px-5 sm:mx-10 sm:size-40 sm:flex-col sm:items-center sm:justify-center sm:rounded-full sm:border sm:bg-white">
+              <div className="z-10 flex shrink-0 items-baseline border-red-600 text-red-700 sm:mx-10 sm:size-40 sm:flex-col sm:items-center sm:justify-center sm:rounded-full sm:border sm:bg-white">
                 <div className={cn('font-DancingScript text-7xl')}>{item.time1}</div>
                 <div className="text-lg sm:text-base">{item.time2}</div>
               </div>
 
-              <MotionEffect
-                inView
-                inViewOnce={false}
-                slide={{ direction: index % 2 === 0 ? 'right' : 'left' }}
-                className="flex max-sm:ml-5 max-sm:w-[90dvw] max-sm:overflow-hidden sm:max-w-md sm:flex-1"
-              >
+              <MotionEffect inView inViewOnce={false} slide={{ direction: index % 2 === 0 ? 'right' : 'left' }} className="flex sm:max-w-md sm:flex-1">
                 <div className="relative mx-auto flex h-[360px] w-[300px] shrink-0 flex-col items-center justify-center rounded-xl border-2 border-red-900/50 p-2 sm:mx-16 sm:w-[250px] sm:rounded-full">
                   <RcImage alt="2611" height={'100%'} src={item.image} width={'100%'} className=" cursor-pointer rounded-lg object-cover sm:rounded-full" />
-                  {/* <Image alt="2611" height={0} src="/images/icon-flowers-3.png" width={100} className="absolute top-0 left-[-10px] animate-[bounceY_10s_linear_infinite]" /> */}
-                  {/* <Image alt="2611" height={0} src="/images/icon-flowers-4.png" width={110} className="absolute right-[-40px] bottom-[-30px] animate-[bounceY_10s_linear_infinite]" /> */}
-
                   <div className="absolute top-0 left-[-10px] animate-[bounceY_12s_linear_infinite]">
                     <FlowerBlossomSvg className="h-auto w-25 rotate-[-82deg]" />
                   </div>
@@ -121,7 +154,7 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
             style={{
               height: height + 'px',
             }}
-            className="absolute top-0 left-2 w-[2px] overflow-hidden bg-red-100 bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] sm:left-1/2 sm:-translate-x-1/2"
+            className="absolute top-0 left-1/2 w-[2px] -translate-x-1/2 overflow-hidden bg-red-100 bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
           >
             <m.div
               style={{

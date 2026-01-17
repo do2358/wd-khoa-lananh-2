@@ -35,10 +35,10 @@ const CardEvents = ({ pType, pName }: TCardEventsProps) => {
     },
   };
   return (
-    <m.div key={uid + mediaAbove640} animate={'animate'} initial={'initial'} whileHover={'hover'} className="flex min-h-[300px] space-x-4 max-sm:flex-col">
+    <m.div key={uid + mediaAbove640} animate={'animate'} initial={'initial'} whileHover={'hover'} className="flex min-h-[300px] space-x-4 max-sm:w-dvw max-sm:overflow-x-auto max-sm:px-4">
       <m.div
         variants={mediaAbove640 ? first : {}}
-        className="group flex w-[300px] cursor-pointer flex-col items-center justify-center rounded-2xl border-amber-500/50 bg-white p-4 sm:border lg:w-[340px]"
+        className="group flex w-[300px] shrink-0 cursor-pointer flex-col items-center justify-center rounded-2xl border border-amber-500/50 bg-white p-4 lg:w-[340px]"
       >
         <img
           alt="avatar"
@@ -53,8 +53,8 @@ const CardEvents = ({ pType, pName }: TCardEventsProps) => {
         <p className="mt-2 text-red-800">Bắt đầu đón khách</p>
       </m.div>
 
-      <m.div className="group relative z-20 flex w-[300px] cursor-pointer flex-col items-center justify-center overflow-hidden bg-amber-500/50 py-[2px] sm:rounded-[18px] sm:p-[3px] lg:w-[366px]">
-        <div className="relative z-10 flex size-full flex-col items-center justify-center bg-white sm:rounded-[calc(16px*0.96)]">
+      <m.div className="group relative z-20 flex w-[300px] shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-[18px] bg-amber-500/50 p-[3px] py-[2px] lg:w-[366px]">
+        <div className="relative z-10 flex size-full flex-col items-center justify-center rounded-[calc(16px*0.96)] bg-white">
           <img alt="avatar" height={200} src="/images/services2-1.png" width={200} className="rounded-full transition-all group-hover:-scale-x-100" />
           <p className="mt-2 text-amber-600 underline"> {pType === 'h' ? '08:30' : '10:30'}</p>
           <p className={cn('mt-2 shrink-0 text-center font-DancingScript! text-3xl font-700 text-red-900')}>Làm lễ</p>
@@ -70,7 +70,7 @@ const CardEvents = ({ pType, pName }: TCardEventsProps) => {
 
       <m.div
         variants={mediaAbove640 ? second : {}}
-        className="group flex w-[300px] cursor-pointer flex-col items-center justify-center rounded-2xl border-amber-500/50 bg-white p-4 sm:border lg:w-[340px]"
+        className="group flex w-[300px] shrink-0 cursor-pointer flex-col items-center justify-center rounded-2xl border border-amber-500/50 bg-white p-4 lg:w-[340px]"
       >
         <img alt="avatar" height={200} src="/images/services2-3.png" width={200} className="rounded-full transition-all group-hover:-scale-x-100" />
         <p className="mt-2 text-amber-600 underline"> {pType === 'h' ? '12:00' : '12:00'}</p>
