@@ -38,6 +38,14 @@ html::-webkit-scrollbar {
 
 @import 'tailwindcss';
 
+:root {
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
+}
+
 @theme {
   /* --font-sora: 'Sora', sans-serif;
   --font-inter: 'Inter', sans-serif; */
@@ -67,6 +75,100 @@ html::-webkit-scrollbar {
   --color-primary-950: #4b0407;
 
   --color-border-card: #0505050f;
+
+  --font-Manrope: 'Manrope', sans-serif;
+  --font-Questrial: 'Questrial', sans-serif;
+  --font-DancingScript: 'Dancing Script', cursive;
+  --font-GreatVibes: 'Great Vibes', cursive;
+
+  /* Custom Colors */
+  --color-color-1: hsl(var(--color-1));
+  --color-color-2: hsl(var(--color-2));
+  --color-color-3: hsl(var(--color-3));
+  --color-color-4: hsl(var(--color-4));
+  --color-color-5: hsl(var(--color-5));
+
+  /* Animations */
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+  --animate-gradient: gradient 8s linear infinite;
+  --animate-border-beam: border-beam calc(var(--duration) * 1s) infinite linear;
+  --animate-aurora: aurora 60s linear infinite;
+
+  /* Keyframes */
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+
+  @keyframes bounceY {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes zoomTwo {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes gradient {
+    to {
+      background-position: var(--bg-size) 0;
+    }
+  }
+
+  @keyframes border-beam {
+    100% {
+      offset-distance: 100%;
+    }
+  }
+
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+
+  @keyframes stroke-animation {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    30% {
+      stroke-dashoffset: 1550;
+    }
+    60% {
+      stroke-dashoffset: 3100;
+      fill: transparent;
+      transform: scale(1);
+    }
+    100% {
+      stroke-dashoffset: 3100;
+    }
+  }
 }
 
 @layer base {
@@ -89,6 +191,12 @@ html::-webkit-scrollbar {
   .flex-center {
     @apply flex items-center justify-center;
   }
+}
+
+/*  */
+
+.rc-image-cover-center {
+  display: none;
 }
 
 /* ==================== ==================== */

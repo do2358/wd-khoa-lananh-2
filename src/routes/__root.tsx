@@ -1,8 +1,10 @@
+import RC_I_CSS from '@rc-component/image/assets/index.css?url';
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router';
 import { GlobalScrollbar } from 'mac-scrollbar';
 import MS_CSS from 'mac-scrollbar/dist/mac-scrollbar.css?url';
 
 import Providers from '@/components/Providers';
+import SEO from '@/components/SEO';
 
 // import APP_ANTD_CSS from '../styles-antd.css?url';
 import APP_CSS from '../styles.css?url';
@@ -12,6 +14,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={['Welcome to Our Wedding', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
       </head>
       <body>
         <Providers>
@@ -32,9 +35,13 @@ export const Route = createRootRoute({
       { title: 'Tùng Huyền 30 & 31.01.2026' },
     ],
     links: [
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       { rel: 'stylesheet', href: MS_CSS },
+      { rel: 'stylesheet', href: RC_I_CSS },
       { rel: 'stylesheet', href: APP_CSS },
       // { rel: 'stylesheet', href: APP_ANTD_CSS },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Manrope:wght@200..800&family=Questrial&display=swap' },
     ],
   }),
   shellComponent: RootDocument,

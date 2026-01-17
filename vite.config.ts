@@ -27,8 +27,8 @@ const config = defineConfig(({ mode }) => {
       viteReact(),
     ],
     ssr: {
-      optimizeDeps: { include: ['lodash'] },
-      noExternal: ['lodash', 'mac-scrollbar'],
+      optimizeDeps: { include: ['lodash', '@rc-component/image'] },
+      noExternal: ['lodash', 'mac-scrollbar', '@rc-component/image'],
     },
     server: {
       // Conditionally enable HTTPS
