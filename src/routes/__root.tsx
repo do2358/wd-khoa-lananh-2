@@ -12,7 +12,7 @@ import APP_CSS from '../styles.css?url';
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="w-dvw! overflow-x-hidden!">
+    <html lang="vi" className="w-dvw! overflow-x-hidden!">
       <head>
         <HeadContent />
         <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} />

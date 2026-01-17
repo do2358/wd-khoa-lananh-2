@@ -48,9 +48,10 @@ export function buildSeoMeta(opts: SEOOptions = {}) {
 
     // Open Graph
     { property: 'og:url', content: origin },
-    { property: 'og:image', content: siteImagePreviewUrl },
-    { property: 'og:site_name', content: metaTitle },
+    { property: 'og:type', content: 'website' },
     { property: 'og:title', content: metaTitle },
+    { property: 'og:site_name', content: metaTitle },
     { property: 'og:description', content: metaDescription },
+    { property: 'og:image', content: siteImagePreviewUrl },
   ];
 }
