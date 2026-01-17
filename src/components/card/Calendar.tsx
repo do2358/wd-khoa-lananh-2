@@ -101,7 +101,7 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
             <button
               key={uid + 'calendar' + monthOffset + item + index}
               className={cn(
-                'flex size-10 items-center justify-center rounded-full bg-white p-2 text-sm hover:bg-red-600 hover:text-white sm:size-12 sm:text-base',
+                'relative flex size-10 items-center justify-center rounded-full bg-white p-2 text-sm hover:bg-red-600 hover:text-white sm:size-12 sm:text-base',
                 dateFns.isSameDay(currentDate, dateRange.startDate!) ? 'bg-red-50 text-red-600 opacity-100' : '',
                 isBetween(currentDate, dateRange.startDate!, dateRange.endDate!, '[]') ? 'bg-red-50 text-red-600' : 'opacity-80',
                 dateFns.isSameDay(currentDate, new Date()) && 'bg-red-50 font-[600] text-red-600 underline opacity-100 ring-1 ring-red-400',
@@ -109,7 +109,7 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
               )}
             >
               <span className="z-[2]">{item}</span>
-              <HeartIcon fill="currentColor" className="absolute -top-[2px] left-[-4px] z-[1] hidden size-[46px] text-red-500 sm:-top-px sm:left-[-6px] sm:size-[54px]" />
+              <HeartIcon fill="currentColor" className="absolute top-1/2 left-1/2 z-0 hidden size-[46px] -translate-x-1/2 -translate-y-1/2 text-red-500 sm:size-[54px]" />
             </button>
           );
         })}
