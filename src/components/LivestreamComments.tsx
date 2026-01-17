@@ -85,7 +85,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
       exit={{ opacity: 0, scale: 0.95, y: 20 }}
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       transition={{ duration: 0.2 }}
-      className="fixed right-4 bottom-20 z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-red-200 bg-white/95 shadow-2xl backdrop-blur-sm"
+      className="fixed right-4 bottom-20 z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-red-200 bg-white/95 shadow-2xl"
     >
       {/* Header */}
       <div className="flex items-center justify-between border-b border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-4 py-3">

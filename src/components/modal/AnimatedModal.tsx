@@ -32,11 +32,9 @@ export const Modal = ({ open, children, className, classNameCloseBtn, setOpen }:
         key={uid + open}
         animate={{
           opacity: 1,
-          backdropFilter: 'blur(10px)',
         }}
         exit={{
           opacity: 0,
-          backdropFilter: 'blur(0px)',
         }}
         initial={{
           opacity: 0,
