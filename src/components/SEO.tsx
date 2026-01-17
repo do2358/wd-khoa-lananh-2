@@ -8,10 +8,10 @@ type TSEOProps = {
   statusbarColor?: string;
 };
 
-const SEO = ({ title = 'Tung&Huyen', description = 'Tung&Huyen', keywords = '', statusbarColor = '#fff' }: TSEOProps) => {
+const SEO = ({ title = 'Thu Huyền Việt Tùng', description = '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊', keywords = '', statusbarColor = '#fff' }: TSEOProps) => {
   const router = useLocation();
   // Customize Meta Properties
-  const metaDescription = description || import.meta.env.VITE_siteDescription || 'Tung&Huyen';
+  const metaDescription = description || import.meta.env.VITE_siteDescription || 'Thu Huyền Việt Tùng';
   const metaKeywords = keywords || import.meta.env.VITE_siteKeywords || '';
   const twitterHandle = import.meta.env.VITE_twitterHandle;
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
@@ -33,7 +33,7 @@ const SEO = ({ title = 'Tung&Huyen', description = 'Tung&Huyen', keywords = '', 
       {/* Open Graph */}
       <meta key="ogurl" content={currentUrl} property="og:url" />
       <meta key="ogimage" content={siteImagePreviewUrl} property="og:image" />
-      <meta key="ogsitename" content="Tung&Huyen" property="og:site_name" />
+      <meta key="ogsitename" content="Thu Huyền Việt Tùng" property="og:site_name" />
       <meta key="ogtitle" content={title} property="og: title" />
       <meta key="ogdesc" content={metaDescription} property="og:description" />
 
