@@ -5,6 +5,8 @@ import { useMediaQuery } from 'react-responsive';
 import { dateFns } from '@/libs/date';
 import { cn } from '@/libs/utils';
 
+import ScrollArea from '../ScrollArea';
+
 interface DateRange {
   startDate: Date | null;
   endDate: Date | null;
@@ -75,81 +77,68 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
     setNextCalendar(_nextCalendar);
   }, [currMonth, currYear]);
 
-  return (
-    <div className={cn('mt-4', mediaAbove900 ? 'grid grid-cols-2' : 'flex flex-col')}>
-      {mediaAbove900 && (
-        <div className="mt-3 grid grid-cols-7 gap-2 p-3">
-          {days.map((v, i) => (
-            <div key={uid + 'currCalendarDay' + i} className={cn('w-12 text-center', [0, 6].includes(i) && 'opacity-50')}>
-              {v}
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div className="mt-3 grid grid-cols-7 gap-2 p-3">
+  const renderCalendarMonth = (calendar: Array<number | null>, monthOffset: number, monthLabel: number) => (
+    <div className="relative min-w-[300px] flex-shrink-0 sm:min-w-0">
+      {/* Day Headers */}
+      <div className="grid grid-cols-7 gap-2 p-3 pb-1">
         {days.map((v, i) => (
-          <div key={uid + 'nextCalendarDay' + i} className={cn('w-12 text-center', [0, 6].includes(i) && 'opacity-50')}>
+          <div key={uid + 'day' + monthOffset + i} className={cn('w-10 text-center text-sm sm:w-12', [0, 6].includes(i) && 'opacity-50')}>
             {v}
           </div>
         ))}
       </div>
 
-      {mediaAbove900 && (
-        <div className="relative grid grid-cols-7 gap-2 p-3">
-          {currCalendar.map((item, index) => {
-            if (!item) return <span key={uid + 'currCalendar' + index + 1}></span>;
+      {/* Calendar Grid */}
+      <div className="relative grid grid-cols-7 gap-2 p-3 pt-1">
+        {calendar.map((item, index) => {
+          if (!item) return <span key={uid + 'calendar' + monthOffset + index}></span>;
 
-            const currentDate = new Date(currYear, currMonth, item);
-            return (
-              <button
-                key={uid + 'currCalendar' + item + index}
-                className={cn(
-                  'flex size-11 items-center justify-center rounded-full bg-white p-2 hover:bg-red-600 hover:text-white sm:size-12',
-                  dateFns.isSameDay(currentDate, dateRange.startDate!) ? 'bg-red-50 text-red-600 opacity-100' : '',
-                  isBetween(currentDate, dateRange.startDate!, dateRange.endDate!, '[]') ? 'bg-red-50 text-red-600' : 'opacity-80',
-                  dateFns.isSameDay(currentDate, new Date()) && 'bg-red-50 font-[600] text-red-600 underline opacity-100 ring-1 ring-red-400',
-                  dateFns.isSameDay(currentDate, dateRange.endDate!) ? 'relative !bg-transparent text-xl font-[600] !text-white [&>svg]:block' : '',
-                )}
-              >
-                <span className="z-[2]">{item}</span>
-                <HeartIcon fill="currentColor" className="absolute -top-px left-[-6px] z-[1] hidden size-[54px] text-red-500 sm:top-[-px] sm:left-[-3px]" />
-              </button>
-            );
-          })}
-          <div className="absolute top-3 left-0 -z-10 pl-5">
-            <span className="text-5xl font-[600] text-gray-100">{currMonth + 1}</span>
-          </div>
-        </div>
-      )}
-
-      <div className="relative grid grid-cols-7 gap-2 p-3">
-        {nextCalendar.map((item, index) => {
-          if (!item) return <span key={uid + 'nextCalendar' + index + 1}></span>;
           const currentDate = dateFns.add(new Date(currYear, currMonth, item), {
-            months: 1,
+            months: monthOffset,
           });
+
           return (
             <button
-              key={uid + 'nextCalendar' + item + index}
+              key={uid + 'calendar' + monthOffset + item + index}
               className={cn(
-                'flex size-11 items-center justify-center rounded-full bg-white p-2 hover:bg-red-600 hover:text-white sm:size-12',
+                'flex size-10 items-center justify-center rounded-full bg-white p-2 text-sm hover:bg-red-600 hover:text-white sm:size-12 sm:text-base',
                 dateFns.isSameDay(currentDate, dateRange.startDate!) ? 'bg-red-50 text-red-600 opacity-100' : '',
                 isBetween(currentDate, dateRange.startDate!, dateRange.endDate!, '[]') ? 'bg-red-50 text-red-600' : 'opacity-80',
                 dateFns.isSameDay(currentDate, new Date()) && 'bg-red-50 font-[600] text-red-600 underline opacity-100 ring-1 ring-red-400',
-                dateFns.isSameDay(currentDate, dateRange.endDate!) ? 'relative !bg-transparent text-xl font-[600] !text-white [&>svg]:block' : '',
+                dateFns.isSameDay(currentDate, dateRange.endDate!) ? 'relative !bg-transparent text-lg font-[600] !text-white sm:text-xl [&>svg]:block' : '',
               )}
             >
               <span className="z-[2]">{item}</span>
-              <HeartIcon fill="currentColor" className="absolute -top-px left-[-6px] z-[1] hidden size-[54px] text-red-500 sm:top-[-px] sm:left-[-3px]" />
+              <HeartIcon fill="currentColor" className="absolute -top-[2px] left-[-4px] z-[1] hidden size-[46px] text-red-500 sm:-top-px sm:left-[-6px] sm:size-[54px]" />
             </button>
           );
         })}
 
-        <div className="absolute top-3 left-0 -z-10 pl-5">
-          <span className="text-5xl font-[600] text-gray-100">{currMonth + 2}</span>
+        {/* Month Number Background */}
+        <div className="pointer-events-none absolute top-1 left-0 -z-10 pl-4 sm:pl-5">
+          <span className="text-4xl font-[600] text-gray-100 sm:text-5xl">{monthLabel}</span>
         </div>
       </div>
+    </div>
+  );
+
+  return (
+    <div className="mt-4">
+      {mediaAbove900 ? (
+        // Desktop: Two columns side by side
+        <div className="grid grid-cols-2">
+          {renderCalendarMonth(currCalendar, 0, currMonth + 1)}
+          {renderCalendarMonth(nextCalendar, 1, currMonth + 2)}
+        </div>
+      ) : (
+        // Mobile: Horizontal scroll
+        <ScrollArea suppressScrollY className="w-dvw">
+          <div className="flex gap-0 px-4">
+            {renderCalendarMonth(currCalendar, 0, currMonth + 1)}
+            {renderCalendarMonth(nextCalendar, 1, currMonth + 2)}
+          </div>
+        </ScrollArea>
+      )}
     </div>
   );
 };

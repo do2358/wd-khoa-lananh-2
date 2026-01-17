@@ -11,7 +11,7 @@ import APP_CSS from '../styles.css?url';
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="w-dvw overflow-x-hidden">
       <head>
         <HeadContent />
         <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={['Welcome to Our Wedding', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
