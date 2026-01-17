@@ -10,7 +10,7 @@ const Providers = ({ children }: TProvidersProps) => {
     <LazyMotion features={domAnimation}>
       <SWRConfig>{children}</SWRConfig>
 
-      <ToastContainer autoClose={300000} closeOnClick={false} draggable={false} icon={false} newestOnTop={false} position="top-right" stacked theme="light" />
+      <ToastContainer autoClose={3000} closeOnClick={false} draggable={false} icon={false} newestOnTop={false} position="top-right" stacked theme="light" />
     </LazyMotion>
   );
 };

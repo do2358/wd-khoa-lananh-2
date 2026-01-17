@@ -27,7 +27,7 @@ const config = defineConfig(({ mode }) => {
       viteReact(),
     ],
     ssr: {
-      optimizeDeps: { include: ['lodash', '@rc-component/image'] },
+      optimizeDeps: { include: ['framer', 'lodash', '@rc-component/image'] },
       noExternal: ['lodash', 'mac-scrollbar', '@rc-component/image'],
     },
     server: {

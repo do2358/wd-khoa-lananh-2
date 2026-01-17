@@ -17,9 +17,9 @@ export function CommentToast({ comment }: CommentToastProps) {
           <div className="flex size-full items-center justify-center text-sm font-bold text-white">{comment.userName.charAt(0).toUpperCase()}</div>
         )}
       </div>
-      <div className="min-h-11 min-w-0 flex-1">
-        <div className="mb-0 text-xs font-semibold text-red-800">{comment.userName}</div>
-        <div className="text-sm font-400 break-words text-gray-600">{comment.message}</div>
+      <div className="min-h-11 min-w-0 flex-1 pb-1">
+        <div className="mb-0 mb-0.5 text-xs font-semibold text-red-800">{comment.userName}</div>
+        <div className="line-clamp-3 text-sm leading-[1.2] font-400 break-words text-gray-600">{comment.message}</div>
       </div>
     </motion.div>
   );

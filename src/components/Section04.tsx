@@ -23,9 +23,10 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
           <RcImage
             height={'auto'}
             loading="eager"
+            rootClassName="max-sm:max-h-[340px] max-sm:!w-[280px]"
             src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129840/TH/ING07017_xoqy0s.jpg"
             width={172}
-            className="max-h-full cursor-pointer rounded-xl object-cover max-sm:w-full sm:max-h-[172px] sm:rounded-full"
+            className="max-h-full cursor-pointer rounded-xl object-cover sm:rounded-full"
           />
           <div className="absolute -z-10 max-sm:right-[-40px] max-sm:bottom-[-60px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2">
             <Image alt="2611" height={260} src="/images/cricle2.png" width={260} className="size-[300px] max-w-screen-sm animate-[zoomTwo_5s_linear_infinite] object-cover sm:size-[260px]" />
@@ -60,16 +61,17 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
       )}
 
       <div className="flex flex-col items-center justify-center max-sm:-order-1">
-        <MotionEffect inView inViewOnce={false} slide={{ direction: 'right' }} className="relative mb-3 flex size-[300px] items-center justify-center max-sm:order-3 max-sm:mt-6 sm:size-[260px]">
+        <MotionEffect inView inViewOnce={false} slide={{ direction: 'right' }} className="relative mb-3 flex items-center justify-center max-sm:order-3 max-sm:mt-6 sm:size-[260px] sm:size-[300px]">
           <RcImage
             height={'auto'}
             loading="eager"
+            rootClassName="max-sm:max-h-[340px] max-sm:!w-[280px]"
             src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07329_xodtaa.jpg"
             width={172}
-            className="max-h-full cursor-pointer rounded-xl object-cover max-sm:w-full sm:max-h-[172px] sm:rounded-full"
+            className="max-h-full cursor-pointer rounded-xl object-cover sm:rounded-full"
           />
           <div className="absolute -z-10 max-sm:bottom-[-60px] max-sm:left-[-40px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2">
-            <Image alt="2611" height={260} src="/images/cricle1.png" width={260} className="size-[300px] max-w-screen-sm animate-[zoomTwo_5s_linear_infinite] object-cover sm:size-[260px]" />
+            <Image alt="2611" height={260} src="/images/cricle1.png" width={260} className="max-w-screen-sm animate-[zoomTwo_5s_linear_infinite] object-cover sm:size-[260px] sm:size-[300px]" />
           </div>
         </MotionEffect>
         <MotionEffect inView inViewOnce={false} slide={{ direction: 'right' }} className={cn('mb-1 font-DancingScript text-xl font-[700] text-red-400 uppercase')}>

@@ -19,7 +19,6 @@ import Section08 from '@/components/Section08';
 import SEO from '@/components/SEO';
 import UserAvatarStack from '@/components/UserAvatarStack';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
-import { getRandomVietnameseName } from '@/libs/mockData';
 
 //
 //
@@ -56,19 +55,36 @@ function HomePage() {
     const storedUserName = localStorage.getItem('wedding-user-name');
     const storedUserAvatar = localStorage.getItem('wedding-user-avatar');
 
-    if (storedUserId && storedUserName) {
+    // If pName exists, use it to create a deterministic user ID
+    if (pName) {
+      // Create a consistent user ID based on pName
+      const pNameSlug = pName.toLowerCase().replace(/\s+/g, '-');
+      const deterministicUserId = `user-${pNameSlug}`;
+
+      setUserId(deterministicUserId);
+      setUserName(pName);
+      setUserAvatar(storedUserAvatar || '');
+
+      // Store in localStorage
+      localStorage.setItem('wedding-user-id', deterministicUserId);
+      localStorage.setItem('wedding-user-name', pName);
+    } else if (storedUserId && storedUserName) {
+      // Use stored values if no pName
       setUserId(storedUserId);
       setUserName(storedUserName);
       setUserAvatar(storedUserAvatar || '');
     } else {
-      // Generate a unique user ID
-      const newUserId = `user-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-      setUserId(newUserId);
-      localStorage.setItem('wedding-user-id', newUserId);
+      // Generate a random user ID and use it as the name if no pName and no stored values
+      const timestamp = Date.now();
+      const randomStr = Math.random().toString(36).substr(2, 9);
+      const newUserId = `user-${timestamp}-${randomStr}`;
+      const generatedName = `Guest-${randomStr}`; // Use short ID as name
 
-      // Use pName if available, otherwise use random Vietnamese name
-      const generatedName = pName || getRandomVietnameseName();
+      setUserId(newUserId);
       setUserName(generatedName);
+      setUserAvatar('');
+
+      localStorage.setItem('wedding-user-id', newUserId);
       localStorage.setItem('wedding-user-name', generatedName);
     }
   }, [pName]);
@@ -141,10 +157,13 @@ function HomePage() {
           },
 
           {
-            title: 'Lời chúc',
+            title: pName ? 'Lời chúc' : 'Lời chúc (cần tên khách mời)',
             icon: <MessageCircleIcon className="size-full" />,
+            disabled: !pName,
             onClick: () => {
-              setIsOpenComments(!isOpenComments);
+              if (pName) {
+                setIsOpenComments(!isOpenComments);
+              }
             },
           },
 
@@ -164,7 +183,7 @@ function HomePage() {
       <UserAvatarStack userId={userId} userAvatar={userAvatar} userName={userName} />
 
       {/* Livestream Comments - Bottom Right */}
-      <LivestreamComments userId={userId} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
+      {pName && <LivestreamComments userId={userId} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />}
 
       {/* <ModalQR open={isOpenQR} setOpen={setIsOpenQR} /> */}
 

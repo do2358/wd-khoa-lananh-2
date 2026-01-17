@@ -1,9 +1,8 @@
-import { MessageCircleIcon, SendIcon, XIcon } from 'lucide-react';
+import { HeartIcon, MessageCircleIcon, SendIcon, SparklesIcon, XIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 
 import { type Comment, useRealtimeComments } from '@/hooks/useRealtimeComments';
-import { generateMockComments } from '@/libs/mockData';
 import { cn } from '@/libs/utils';
 
 import ScrollArea from './ScrollArea';
@@ -20,22 +19,13 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
   const [message, setMessage] = useState('');
   const { comments, addComment } = useRealtimeComments(30);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [displayedComments, setDisplayedComments] = useState<Comment[]>([]);
-
-  // Initialize with mock data if no real comments
-  useEffect(() => {
-    if (comments.length === 0 && displayedComments.length === 0) {
-      const mockComments = generateMockComments(8);
-      setDisplayedComments(mockComments as Comment[]);
-    }
-  }, []);
 
   // Auto-scroll to bottom when new comments arrive
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [displayedComments]);
+  }, [comments]);
 
   // Scroll to bottom when popup opens
   useEffect(() => {
@@ -48,21 +38,6 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
       }, 100);
     }
   }, [isOpen]);
-
-  // Handle new comments with animation
-  useEffect(() => {
-    if (comments.length > 0) {
-      // Merge real comments with mock comments, prioritizing real ones
-      const realCommentIds = new Set(comments.map((c) => c.id));
-      const filteredMockComments = displayedComments.filter((c) => c.id.startsWith('mock-') && !realCommentIds.has(c.id));
-      const allComments = [...filteredMockComments, ...comments].sort((a, b) => {
-        const timeA = a.createdAt?.getTime?.() || 0;
-        const timeB = b.createdAt?.getTime?.() || 0;
-        return timeA - timeB;
-      });
-      setDisplayedComments(allComments);
-    }
-  }, [comments]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,7 +67,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
         <div className="flex items-center gap-2">
           <MessageCircleIcon className="size-5 text-red-500" />
           <h3 className="font-semibold text-gray-800">Lời chúc</h3>
-          <span className="rounded-full bg-red-500 px-2 py-0.5 text-xs text-white">{displayedComments.length}</span>
+          <span className="rounded-full bg-red-500 px-2 py-0.5 text-xs text-white">{comments.length}</span>
         </div>
         <button type="button" className="rounded-full p-1 transition-colors hover:bg-red-100" onClick={onToggle}>
           <XIcon className="size-4 text-gray-600" />
@@ -101,10 +76,44 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
 
       {/* Comments List */}
       <ScrollArea ref={scrollRef} suppressScrollX className="max-h-96 space-y-2 p-3">
-        {displayedComments.length === 0 ? (
-          <div className="py-8 text-center text-sm text-gray-400">Chưa có lời chúc nào. Hãy là người đầu tiên!</div>
+        {comments.length === 0 ? (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center justify-center px-4 py-12">
+            <motion.div
+              animate={{
+                scale: [1, 1.1, 1],
+                rotate: [0, 5, -5, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatDelay: 1,
+              }}
+              className="mb-4 rounded-full bg-gradient-to-br from-red-100 to-rose-100 p-4"
+            >
+              <HeartIcon className="size-10 fill-red-500 text-red-500" />
+            </motion.div>
+
+            <h4 className="mb-2 text-center font-semibold text-gray-800">Chưa có lời chúc nào</h4>
+
+            <p className="mb-1 text-center text-sm text-gray-600">Hãy là người đầu tiên gửi lời chúc</p>
+            <p className="text-center text-sm text-gray-600">đến đôi uyên ương nhé!</p>
+
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatDelay: 0.5,
+              }}
+              className="mt-4 flex items-center gap-1 text-xs text-red-500"
+            >
+              <SparklesIcon className="size-3" />
+              <span className="font-medium">Viết lời chúc bên dưới</span>
+              <SparklesIcon className="size-3" />
+            </motion.div>
+          </motion.div>
         ) : (
-          displayedComments.map((comment, index) => (
+          comments.map((comment, index) => (
             <motion.div key={comment.id} animate={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} transition={{ duration: 0.3, delay: index * 0.05 }} className="group">
               <div className="flex gap-2">
                 <div className="size-8 shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-red-400 to-rose-500">
