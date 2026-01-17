@@ -21,7 +21,7 @@ const SEO = ({ title = 'Tung&Huyen', description = 'Tung&Huyen', keywords = '', 
       {/* Basic Meta Tags */}
       <meta charSet="utf-8" />
       <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
-      <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={metaKeywords} />
 
