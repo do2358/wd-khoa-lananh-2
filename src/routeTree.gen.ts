@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AlbumsRouteImport } from './routes/albums'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as ApiSheetsRouteImport } from './routes/api/sheets'
 
 const AlbumsRoute = AlbumsRouteImport.update({
   id: '/albums',
@@ -22,31 +23,40 @@ const SplatRoute = SplatRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSheetsRoute = ApiSheetsRouteImport.update({
+  id: '/api/sheets',
+  path: '/api/sheets',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/albums': typeof AlbumsRoute
+  '/api/sheets': typeof ApiSheetsRoute
 }
 export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/albums': typeof AlbumsRoute
+  '/api/sheets': typeof ApiSheetsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/$': typeof SplatRoute
   '/albums': typeof AlbumsRoute
+  '/api/sheets': typeof ApiSheetsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/$' | '/albums'
+  fullPaths: '/$' | '/albums' | '/api/sheets'
   fileRoutesByTo: FileRoutesByTo
-  to: '/$' | '/albums'
-  id: '__root__' | '/$' | '/albums'
+  to: '/$' | '/albums' | '/api/sheets'
+  id: '__root__' | '/$' | '/albums' | '/api/sheets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AlbumsRoute: typeof AlbumsRoute
+  ApiSheetsRoute: typeof ApiSheetsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/sheets': {
+      id: '/api/sheets'
+      path: '/api/sheets'
+      fullPath: '/api/sheets'
+      preLoaderRoute: typeof ApiSheetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AlbumsRoute: AlbumsRoute,
+  ApiSheetsRoute: ApiSheetsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,4 +1,4 @@
-export const nextAPIUrl = `${process.env.NEXT_PUBLIC_API_URL}`;
+export const nextAPIUrl = `${import.meta.env.VITE_API_URL}`;
 
 export async function fetchReq<TResponse = any>(url: string, config?: RequestInit): Promise<TResponse | undefined> {
   // eslint-disable-next-line no-useless-catch

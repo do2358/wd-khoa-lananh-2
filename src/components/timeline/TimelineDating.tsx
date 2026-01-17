@@ -88,7 +88,7 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
                 <h3 style={formatActiveTitleStyle(scrollYProgressValue, index)} className={cn('mb-4 font-DancingScript text-4xl font-[600] transition-all sm:text-5xl ')}>
                   {item.title}
                 </h3>
-                <p className="text-base">{item.desc}</p>
+                <p className="font-Questrial text-base">{item.desc}</p>
               </MotionEffect>
 
               <div className="z-10 flex shrink-0 items-baseline border-red-600 text-red-700 max-sm:-order-1 max-sm:mb-6 max-sm:px-5 sm:mx-10 sm:size-40 sm:flex-col sm:items-center sm:justify-center sm:rounded-full sm:border sm:bg-white">

@@ -17,7 +17,7 @@ const Section05 = ({ setModalImage }: TSection05Props) => {
       <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className={cn('mb-4 text-center font-DancingScript text-5xl font-[600] text-red-800 sm:text-6xl')}>
         Về chung một nhà
       </MotionEffect>
-      <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className="text-center text-lg text-neutral-500">
+      <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className="text-center font-Questrial text-lg text-neutral-500">
         Cùng chúng mình đếm ngược nhé!
       </MotionEffect>
 
