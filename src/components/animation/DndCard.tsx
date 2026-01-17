@@ -91,7 +91,7 @@ export const DndCardBody = ({ className, children }: { className?: string; child
         willChange: 'transform',
       }}
       whileHover={{ scale: 1.02 }}
-      className={cn('relative min-h-80 w-80 overflow-hidden rounded-md bg-neutral-100 p-6 shadow-2xl transform-3d dark:bg-neutral-900', className)}
+      className={cn('relative min-h-80 w-80 overflow-hidden rounded-md bg-neutral-100 p-6 shadow-2xl transform-3d', className)}
       onDragEnd={(event, info) => {
         document.body.style.cursor = 'default';
 

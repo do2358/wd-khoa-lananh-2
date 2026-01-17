@@ -32,7 +32,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div ref={containerRef} className="w-full bg-white font-sans md:px-10 dark:bg-neutral-950">
+    <div ref={containerRef} className="w-full bg-white font-sans md:px-10">
       <div ref={ref} className="relative mx-auto max-w-7xl pb-20">
         {data.map((item, index) => (
           <m.div key={uid + index} className={cn('flex flex-row justify-center', index % 2 !== 0 && 'flex-row-reverse', item?.className)}>
@@ -47,7 +47,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + 'px',
           }}
-          className="absolute top-0 left-1/2 w-[2px] -translate-x-1/2 overflow-hidden bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] dark:via-neutral-700 "
+          className="absolute top-0 left-1/2 w-[2px] -translate-x-1/2 overflow-hidden bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
         >
           <m.div
             style={{

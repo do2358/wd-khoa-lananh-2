@@ -19,7 +19,7 @@ const ImageRotate = ({ src, style }: TImageRotateProps) => {
         rotate: 0,
         zIndex,
       }}
-      className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800"
+      className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1"
     >
       <img
         alt="bali images"

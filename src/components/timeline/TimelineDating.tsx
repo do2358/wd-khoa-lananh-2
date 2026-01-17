@@ -121,7 +121,7 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
             style={{
               height: height + 'px',
             }}
-            className="absolute top-0 left-2 w-[2px] overflow-hidden bg-red-100 bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] sm:left-1/2 sm:-translate-x-1/2 dark:via-neutral-700 "
+            className="absolute top-0 left-2 w-[2px] overflow-hidden bg-red-100 bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] sm:left-1/2 sm:-translate-x-1/2"
           >
             <m.div
               style={{
