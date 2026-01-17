@@ -35,7 +35,8 @@ function HomePage() {
   const params = Route.useParams();
   const paramsArr = params?._splat?.split('/') || [];
   //
-  const pType = paramsArr?.[0];
+  const pType0 = paramsArr?.[0] || '';
+  const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
   const pName = last(paramsArr)?.replace(/-/g, ' ');
 
   const [isOpenQR, setIsOpenQR] = useState(false);
