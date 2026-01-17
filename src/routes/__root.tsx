@@ -11,12 +11,12 @@ import APP_CSS from '../styles.css?url';
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="w-dvw overflow-x-hidden">
+    <html lang="en" className="w-dvw! overflow-x-hidden!">
       <head>
         <HeadContent />
         <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={['Welcome to Our Wedding', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
       </head>
-      <body>
+      <body className="w-dvw! overflow-x-hidden!">
         <Providers>
           {children}
           <GlobalScrollbar />
