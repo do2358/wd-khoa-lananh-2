@@ -1,7 +1,7 @@
 import { Image } from '@unpic/react';
 import { GemIcon } from 'lucide-react';
 
-import { Modal } from './AnimatedModal';
+import { ResponsiveDrawer } from './ResponsiveDrawer';
 
 type TModalQRProps = {
   open: boolean;
@@ -12,23 +12,36 @@ type TModalQRProps = {
 
 const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
   return (
-    <Modal open={open} className="max-sm:mt-auto md:max-w-[800px]" classNameCloseBtn="top-4 right-4" setOpen={setOpen}>
-      <div className="flex items-center justify-center gap-4 bg-red-50 p-4 pr-10 text-red-500">
-        <GemIcon />
-        <h4 className="text-lg font-bold md:text-2xl">Hộp mừng cưới</h4>
+    <ResponsiveDrawer
+      bodyClassName="bg-white"
+      headerClassName="bg-red-50"
+      opened={open}
+      placement="center"
+      title={
+        <div className="flex items-center gap-3 text-red-500">
+          <GemIcon className="size-6" />
+          <span className="text-lg font-bold">Hộp mừng cưới</span>
+        </div>
+      }
+      withCloseButton
+      className="h-fit w-[95vw] max-w-2xl overflow-hidden rounded-b-2xl"
+      onClose={() => setOpen(false)}
+    >
+      <div className="flex flex-col sm:flex-row">
+        {/* First QR Code */}
+        <div className="flex-1">
+          <Image height={400} loading="eager" src={pType === 'h' ? '/assets/huyen_qr.jpeg' : '/assets/tung_qr.jpeg'} width={400} className="w-full object-cover" />
+        </div>
+
+        {/* Divider */}
+        <div className="h-px w-full bg-gray-200 sm:h-auto sm:w-px" />
+
+        {/* Second QR Code */}
+        <div className="flex-1">
+          <Image height={400} loading="eager" src={pType === 'h' ? '/assets/tung_qr.jpeg' : '/assets/huyen_qr.jpeg'} width={400} className="w-full object-cover" />
+        </div>
       </div>
-      <div className="flex min-h-0 flex-[1_1_auto] justify-between overflow-y-auto pb-24 max-sm:flex-col sm:pb-10 sm:[&>*]:w-1/2">
-        {pType === 'h' ? <></> : <></>}
-        <Image
-          height={400}
-          loading="eager"
-          src={pType === 'h' ? '/assets/huyen_qr.jpeg' : '/assets/tung_qr.jpeg'}
-          width={400}
-          className="object-cover max-sm:w-full max-sm:border-b-2 max-sm:border-dashed max-sm:border-b-red-500"
-        />
-        <Image height={400} loading="eager" src={pType === 'h' ? '/assets/tung_qr.jpeg' : '/assets/huyen_qr.jpeg'} width={400} className=" object-cover max-sm:w-full" />
-      </div>
-    </Modal>
+    </ResponsiveDrawer>
   );
 };
 
