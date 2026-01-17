@@ -5,7 +5,7 @@ import MS_CSS from 'mac-scrollbar/dist/mac-scrollbar.css?url';
 
 import Providers from '@/components/Providers';
 import SEO from '@/components/SEO';
-import { buildSeoMeta } from '@/libs/buildSeoHead';
+import { buildSeoLinks, buildSeoMeta } from '@/libs/buildSeoHead';
 
 // import APP_ANTD_CSS from '../styles-antd.css?url';
 import APP_CSS from '../styles.css?url';
@@ -38,11 +38,7 @@ export const Route = createRootRoute({
       origin: 'https://tunghuyen3101.vercel.app',
     }),
     links: [
-      // Favicons
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-      { rel: 'icon', href: '/favicon.ico' },
+      ...buildSeoLinks(),
       //
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },

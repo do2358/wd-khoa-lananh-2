@@ -77,14 +77,14 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
 
         <div className="relative flex flex-col items-center justify-center px-0 text-center max-sm:-order-1 sm:px-20">
           <div className={'mb-4 font-Manrope text-base font-600 tracking-[2px] text-red-800 sm:mb-8 sm:text-xl'}>CHÚNG MÌNH CƯỚI</div>
-          <h2
+          <h1
             className={cn(
               'mb-8 text-center font-GreatVibes! text-4xl leading-[1.3] font-600 tracking-[4px] whitespace-pre-line  text-red-800 sm:text-6xl',
               'animate-gradient bg-gradient-to-r from-[#991b1b] via-[#f87171] to-[#991b1b] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent [--bg-size:300%]',
             )}
           >
             {pType === 'h' ? `Trịnh Thu Huyền \n&\n Ngô Việt Tùng` : `Ngô Việt Tùng \n&\n Trịnh Thu Huyền`}
-          </h2>
+          </h1>
           <div className={'mb-6 border-y-2 border-red-900 py-3 font-DancingScript text-2xl font-600 tracking-[2px] text-red-700 sm:text-3xl'}>
             {pType === 'h' ? `30 Tháng 01, 2026` : pType === 't-31' ? `30 Tháng 01, 2026` : `30 Tháng 01, 2026`}
           </div>
