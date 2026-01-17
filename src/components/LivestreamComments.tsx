@@ -1,4 +1,4 @@
-import { HeartIcon, MessageCircleIcon, SendIcon, SparklesIcon } from 'lucide-react';
+import { HeartIcon, MessageCircleIcon, SendIcon, SparklesIcon, XIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { Drawer } from 'vaul';
@@ -78,17 +78,15 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
           </div>
 
           {/* Header */}
-          <div className="z-0 flex shrink-0 items-center justify-between rounded-t-2xl border-b border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-4 py-3">
+          <div className="z-0 flex shrink-0 items-center justify-between rounded-t-2xl border-b border-red-200 bg-gradient-to-r from-red-50 to-rose-50 py-3 pr-3 pl-4">
             <div className="flex items-center gap-2">
-              <MessageCircleIcon className="size-5 text-red-500" />
+              <MessageCircleIcon className="size-6 text-red-500" />
               <h3 className="font-semibold text-gray-800">Lời chúc</h3>
               <span className="rounded-full bg-red-500 px-2 py-0.5 text-xs text-white">{comments.length}</span>
             </div>
             <button type="button" className="rounded-full p-1 transition-colors hover:bg-red-100" onClick={onToggle}>
               <span className="sr-only">Close</span>
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="size-4 text-gray-600">
-                <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-              </svg>
+              <XIcon className="size-6 text-gray-900" />
             </button>
           </div>
 
@@ -108,9 +106,9 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                         repeat: Infinity,
                         repeatDelay: 1,
                       }}
-                      className="mb-4 rounded-full bg-gradient-to-br from-red-100 to-rose-100 p-4"
+                      className="mb-4 rounded-full bg-gradient-to-br from-red-100 to-rose-100 p-2"
                     >
-                      <HeartIcon className="size-10 fill-red-500 text-red-500" />
+                      <HeartIcon className="size-8 fill-red-500 text-red-500" />
                     </motion.div>
 
                     <h4 className="mb-2 text-center font-semibold text-gray-800">Chưa có lời chúc nào</h4>
@@ -135,7 +133,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                 ) : (
                   comments.map((comment, index) => (
                     <motion.div key={comment.id} animate={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} transition={{ duration: 0.3, delay: index * 0.05 }} className="group">
-                      <div className="flex gap-2">
+                      <div className="flex min-h-40 gap-2">
                         <div className="size-8 shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-red-400 to-rose-500">
                           {comment.userAvatar ? (
                             <img alt={comment.userName} src={comment.userAvatar} className="size-full object-cover" />

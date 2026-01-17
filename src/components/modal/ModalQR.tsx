@@ -32,13 +32,13 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
           )}
         >
           {/* Header */}
-          <div className="flex shrink-0 items-center justify-between gap-4 border-b border-gray-200 bg-red-50 px-4 py-3">
+          <div className="flex shrink-0 items-center justify-between gap-4 border-b border-gray-200 bg-red-50 py-3 pr-3 pl-4">
             <Drawer.Title className="flex items-center gap-3 text-red-500">
               <GemIcon className="size-6" />
               <span className="text-lg font-semibold">Hộp mừng cưới</span>
             </Drawer.Title>
             <button type="button" className="flex shrink-0 items-center justify-center rounded-full p-1 transition-colors hover:bg-red-100" onClick={() => setOpen(false)}>
-              <XIcon className="size-5 text-gray-600" />
+              <XIcon className="size-6 text-gray-600" />
             </button>
           </div>
 
