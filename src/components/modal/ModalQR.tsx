@@ -28,7 +28,7 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
           className={cn(
             'fixed inset-0 z-50 m-auto flex h-fit max-h-[90dvh] w-[95vw] max-w-2xl flex-col overflow-hidden rounded-2xl bg-white outline-none',
             // Hide the drag indicator for center modal
-            'after:hidden',
+            'sm:after:hidden',
           )}
         >
           {/* Header */}
