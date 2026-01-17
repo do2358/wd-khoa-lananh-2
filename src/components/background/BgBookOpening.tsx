@@ -8,18 +8,18 @@ const imgs = (pType = 'h') => {
   if (pType === 'h')
     return {
       image1: '/thiep/thiep-nha-gai-1-01.jpg',
-      image2: '/thiep/thiep-nha-gai-1-02.jpg',
+      image2: '/thiep/thiep-nha-gai-1-02.png',
       image3: '/thiep/thiep-nha-gai-1-03.jpg',
     };
   if (pType === 't-31')
     return {
       image1: '/thiep/thiep-nha-trai-2-01.jpg',
-      image2: '/thiep/thiep-nha-trai-2-02.jpg',
+      image2: '/thiep/thiep-nha-trai-2-02.png',
       image3: '/thiep/thiep-nha-trai-2-03.jpg',
     };
   return {
     image1: '/thiep/thiep-nha-trai-1-01.jpg',
-    image2: '/thiep/thiep-nha-trai-1-02.jpg',
+    image2: '/thiep/thiep-nha-trai-1-02.png',
     image3: '/thiep/thiep-nha-trai-1-03.jpg',
   };
 };
