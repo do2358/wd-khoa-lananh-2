@@ -21,7 +21,13 @@ const Section05 = ({ setModalImage }: TSection05Props) => {
         Cùng chúng mình đếm ngược nhé!
       </MotionEffect>
 
-      <Calendar initialRange={{ startDate: new Date('2026-01-01T00:00:01'), endDate: new Date('2026-01-31T00:00:01') }} />
+      <Calendar
+        initialRange={{
+          startDate: new Date('2026-01-01T00:00:01'),
+          secondTarget: new Date('2026-01-30T00:00:01'),
+          endDate: new Date('2026-01-31T00:00:01'),
+        }}
+      />
 
       <TimerCountDown targetDate={new Date('2026-01-31T00:00:01')} />
 

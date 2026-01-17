@@ -10,6 +10,7 @@ import ScrollArea from '../ScrollArea';
 interface DateRange {
   startDate: Date | null;
   endDate: Date | null;
+  secondTarget?: Date | null;
 }
 
 type TCalendarProps = { initialRange?: DateRange };
@@ -27,6 +28,7 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
     // startDate: new Date(),
     startDate: initialRange?.startDate ?? new Date(),
     endDate: initialRange?.endDate ?? dateFns.add(new Date(), { days: 20 }),
+    secondTarget: initialRange?.secondTarget ?? null,
   });
 
   const days: string[] = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
@@ -102,14 +104,23 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
               key={uid + 'calendar' + monthOffset + item + index}
               className={cn(
                 'relative flex size-10 items-center justify-center rounded-full bg-white p-2 text-sm hover:bg-red-600 hover:text-white sm:size-12 sm:text-base',
-                dateFns.isSameDay(currentDate, dateRange.startDate!) ? 'bg-red-50 text-red-600 opacity-100' : '',
+                // First selected date (startDate) styling
+                dateFns.isSameDay(currentDate, dateRange.startDate!) ? 'bg-red-100 text-red-700 opacity-100 ring-2 ring-red-300' : '',
+                // Dates between start and end
                 isBetween(currentDate, dateRange.startDate!, dateRange.endDate!, '[]') ? 'bg-red-50 text-red-600' : 'opacity-80',
+                // Today's date styling
                 dateFns.isSameDay(currentDate, new Date()) && 'bg-red-50 font-[600] text-red-600 underline opacity-100 ring-1 ring-red-400',
-                dateFns.isSameDay(currentDate, dateRange.endDate!) ? 'relative !bg-transparent text-lg font-[600] !text-white sm:text-xl [&>svg]:block' : '',
+                // Second selected date (endDate) styling - enhanced highlight
+                dateFns.isSameDay(currentDate, dateRange.endDate!) ? 'relative !bg-transparent text-lg font-[600] !text-white opacity-100 sm:text-xl [&>.icon-1]:block' : '',
+                // Second target date styling - special highlight with heart
+                dateRange.secondTarget && dateFns.isSameDay(currentDate, dateRange.secondTarget)
+                  ? 'relative !bg-transparent text-lg font-[600] !text-white opacity-100 sm:text-xl [&>.icon-2]:block'
+                  : '',
               )}
             >
               <span className="z-[2]">{item}</span>
-              <HeartIcon fill="currentColor" className="absolute top-1/2 left-1/2 z-0 hidden size-[46px] -translate-x-1/2 -translate-y-1/2 text-red-500 sm:size-[54px]" />
+              <HeartIcon fill="currentColor" className="icon-1 absolute top-1/2 left-1/2 z-0 hidden size-[46px] -translate-x-1/2 -translate-y-1/2 text-red-500 drop-shadow-lg sm:size-[54px]" />
+              <HeartIcon fill="currentColor" className="icon-2 absolute top-1/2 left-1/2 z-0 hidden size-[46px] -translate-x-1/2 -translate-y-1/2 text-red-400 drop-shadow-lg sm:size-[54px]" />
             </button>
           );
         })}
