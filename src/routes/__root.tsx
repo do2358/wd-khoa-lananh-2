@@ -4,7 +4,6 @@ import { GlobalScrollbar } from 'mac-scrollbar';
 import MS_CSS from 'mac-scrollbar/dist/mac-scrollbar.css?url';
 
 import Providers from '@/components/Providers';
-import SEO from '@/components/SEO';
 import { buildSeoLinks, buildSeoMeta } from '@/libs/buildSeoHead';
 
 // import APP_ANTD_CSS from '../styles-antd.css?url';
@@ -15,7 +14,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="vi" className="w-dvw! overflow-x-hidden!">
       <head>
         <HeadContent />
-        <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} />
+        {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
       </head>
       <body className="w-dvw! overflow-x-hidden!">
         <Providers>
