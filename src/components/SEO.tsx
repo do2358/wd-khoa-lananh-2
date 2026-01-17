@@ -30,7 +30,7 @@ const SEO = ({ title = 'Tung&Huyen', description = 'Tung&Huyen', keywords = '', 
       <meta key="twhandle" name="twitter:creator" content={twitterHandle} />
 
       {/* Open Graph */}
-      <meta key="ogurl" content={currentUrl} property="og: url" />
+      <meta key="ogurl" content={currentUrl} property="og:url" />
       <meta key="ogimage" content={siteImagePreviewUrl} property="og:image" />
       <meta key="ogsitename" content="Tung&Huyen" property="og:site_name" />
       <meta key="ogtitle" content={title} property="og: title" />
