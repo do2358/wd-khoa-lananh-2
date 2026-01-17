@@ -1,3 +1,5 @@
+import { useLocation } from '@tanstack/react-router';
+
 type TSEOProps = {
   title?: string;
   description?: string;
@@ -6,12 +8,13 @@ type TSEOProps = {
 };
 
 const SEO = ({ title = 'Tung&Huyen', description = 'Tung&Huyen', keywords = '', statusbarColor = '#fff' }: TSEOProps) => {
+  const router = useLocation();
   // Customize Meta Properties
   const metaDescription = description || import.meta.env.VITE_siteDescription || 'Tung&Huyen';
   const metaKeywords = keywords || import.meta.env.VITE_siteKeywords || '';
   const twitterHandle = import.meta.env.VITE_twitterHandle;
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const siteImagePreviewUrl = `/preview.png`;
+  const siteImagePreviewUrl = `${router?.url?.origin}/preview.jpg`;
 
   return (
     <>
