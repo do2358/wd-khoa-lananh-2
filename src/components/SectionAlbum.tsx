@@ -102,7 +102,7 @@ const SectionAlbum = () => {
           <HomeIcon className="size-6 text-red-600 sm:size-8" />
         </button> */}
         {/* <SlashIcon className="rotate-[-17deg] text-red-500" /> */}
-        <div className={cn('relative z-10 text-left font-DancingScript text-3xl font-[600] text-red-600 sm:text-4xl')}>Album chúng mình</div>
+        <div className={cn('relative z-10 text-left font-DancingScript text-3xl font-[600] text-red-600 sm:text-4xl')}>Album ảnh</div>
       </div>
 
       <div ref={listRef} style={{ overflowAnchor: 'none' }} className="relative mx-auto w-full max-w-[1900px] px-1 sm:px-5">

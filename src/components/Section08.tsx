@@ -35,7 +35,7 @@ const Section08 = ({ setModalImage }: TSection08Props) => {
       <div className="flex max-w-screen-lg items-stretch gap-4 px-4 max-sm:flex-col">
         <div className="grid flex-1 grid-cols-2 items-stretch gap-4">
           <div className="col-span-2 flex items-center sm:min-h-16">
-            <div className={cn('col-span-2 text-left font-Questrial text-xl leading-[1.1] font-[600] text-red-800')}>Album chúng mình</div>
+            <div className={cn('col-span-2 text-left font-Questrial text-xl leading-[1.1] font-[600] text-red-800')}>Album ảnh</div>
 
             <GradientButtonLink href="/albums" icon={<ImagesIcon className="mr-2 text-[#dc2626]" />} className="ml-auto rounded-full py-1.5 pr-4 pl-3 font-[600] whitespace-nowrap">
               Xem tất cả
