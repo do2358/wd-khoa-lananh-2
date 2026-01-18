@@ -9,7 +9,6 @@ import LivestreamComments from '@/components/LivestreamComments';
 import RcImagesPreview from '@/components/media/RcImagesPreview';
 import ModalQR from '@/components/modal/ModalQR';
 import Section01 from '@/components/Section01';
-import Section02 from '@/components/Section02';
 import Section03 from '@/components/Section03';
 import Section04 from '@/components/Section04';
 import Section05 from '@/components/Section05';
@@ -129,7 +128,7 @@ function HomePage() {
 
       <Section03 pName={pName || ''} pType={pType} />
 
-      <Section02 pName={pName} pType={pType} />
+      {/* <Section02 pName={pName} pType={pType} /> */}
 
       <RcImagesPreview>
         <Section04 />

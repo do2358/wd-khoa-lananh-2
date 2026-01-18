@@ -98,7 +98,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
   };
 
   return (
-    <div className={cn('relative mx-auto flex h-dvh w-dvw items-center justify-center overflow-hidden px-4', className)}>
+    <div className={cn('relative mx-auto flex w-dvw items-center justify-center overflow-hidden px-4 max-sm:min-h-dvh sm:h-dvh', className)}>
       {/* 
         // 
         Close Button */}
@@ -213,7 +213,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
         style={{ perspective: '1000px' }}
         transition={{ ...revealSpring, delay: 0.3 }}
         variants={revealedContentVariants}
-        className={cn(`relative flex translate-x-0 items-center justify-center gap-0 sm:translate-x-10`, !isOpen && 'pointer-events-none hidden')}
+        className={cn(`relative flex translate-x-0 items-center justify-center gap-0 max-sm:flex-col sm:translate-x-10`, !isOpen && 'pointer-events-none hidden')}
       >
         {/* Image 1 - Left (skewed inward) */}
         <m.div
@@ -233,7 +233,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           initial="closed"
           transition={{ ...imageSpring, delay: 0.4 }}
           variants={centerImageVariants}
-          className="relative z-10 h-[calc(100dvh-24px)] max-h-[680px] w-dvw overflow-hidden max-sm:px-2 sm:mx-0.5 sm:max-h-[680px] sm:w-auto sm:shadow-2xl"
+          className="relative z-10 h-fit max-h-[680px] w-dvw overflow-hidden max-sm:px-2 sm:mx-0.5 sm:h-[calc(100dvh-24px)] sm:max-h-[680px] sm:w-auto sm:shadow-2xl"
         >
           <img alt="Wedding Invitation" src={imgs(pType)?.image2} className="h-full w-full object-contain object-top" />
           {renderName}
@@ -245,8 +245,8 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           initial="closed"
           style={{ transformOrigin: 'left center' }}
           transition={{ ...imageSpring, delay: 0.5 }}
-          variants={mediaAbove640 ? rightImageVariants : centerImageVariants}
-          className="h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-none rounded-r-lg shadow-lg max-sm:hidden"
+          variants={mediaAbove640 ? rightImageVariants : {}}
+          className="h-fit max-h-[680px] w-dvw overflow-hidden rounded-none rounded-r-lg shadow-lg max-sm:px-2 sm:h-[calc(100dvh-24px)] sm:w-auto"
         >
           <img alt="Ceremony Details" src={imgs(pType)?.image3} className="h-full w-full object-contain" />
         </m.div>
