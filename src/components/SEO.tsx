@@ -1,5 +1,4 @@
 import { useLocation } from '@tanstack/react-router';
-import { Helmet } from 'react-helmet';
 
 type TSEOProps = {
   title?: string;
@@ -8,28 +7,25 @@ type TSEOProps = {
   statusbarColor?: string;
 };
 
-const SEO = ({ title = 'Thu Huyền Việt Tùng', description = '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊', keywords = '', statusbarColor = '#fff' }: TSEOProps) => {
+const SEO = ({
+  title = 'Thu Huyền Việt Tùng',
+  description = '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊',
+  keywords = 'Ngô Việt Tùng, Trịnh Thu Huyền, Đám cưới Việt Tùng Thu Huyền, tunghuyen3101, wedding, tunghuyen',
+  statusbarColor = '#fff',
+}: TSEOProps) => {
   const router = useLocation();
   // Customize Meta Properties
   const metaTitle = title || import.meta.env.VITE_siteTitle || 'Thu Huyền Việt Tùng';
   const metaDescription = description || import.meta.env.VITE_siteDescription || 'Thu Huyền Việt Tùng';
   const metaKeywords = keywords || import.meta.env.VITE_siteKeywords || '';
-  const twitterHandle = import.meta.env.VITE_twitterHandle;
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
   const siteImagePreviewUrl = `${router?.url?.origin}/preview.jpg`;
 
   return (
-    <Helmet>
+    <>
       {/* Basic Meta Tags */}
-      <meta charSet="utf-8" />
-      <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={metaKeywords} />
-
-      {/* Twitter Card */}
-      <meta key="twcard" name="twitter:card" content="summary_large_image" />
-      <meta key="twhandle" name="twitter:creator" content={twitterHandle} />
 
       {/* Open Graph */}
       <meta key="ogurl" content={currentUrl} property="og:url" />
@@ -37,12 +33,6 @@ const SEO = ({ title = 'Thu Huyền Việt Tùng', description = '✨ 🎉 🎊 
       <meta key="ogsitename" content={metaTitle} property="og:site_name" />
       <meta key="ogtitle" content={metaTitle} property="og:title" />
       <meta key="ogdesc" content={metaDescription} property="og:description" />
-
-      {/* Favicons */}
-      <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
-      <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
-      <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
-      <link key="favicon" href="/favicon.ico" rel="icon" />
 
       {/* Theme Colors */}
       <meta name="theme-color" content={statusbarColor} />
@@ -52,7 +42,7 @@ const SEO = ({ title = 'Thu Huyền Việt Tùng', description = '✨ 🎉 🎊 
 
       {/* Title */}
       <title>{metaTitle}</title>
-    </Helmet>
+    </>
   );
 };
 

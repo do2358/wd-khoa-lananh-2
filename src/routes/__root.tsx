@@ -14,7 +14,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="vi" className="w-dvw! overflow-x-hidden!">
       <head>
         <HeadContent />
-        {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
       </head>
       <body className="w-dvw! overflow-x-hidden!">
         <Providers>

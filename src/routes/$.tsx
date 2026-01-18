@@ -16,6 +16,7 @@ import Section05 from '@/components/Section05';
 import Section06 from '@/components/Section06';
 import Section07 from '@/components/Section07';
 import Section08 from '@/components/Section08';
+import SEO from '@/components/SEO';
 import UserAvatarStack from '@/components/UserAvatarStack';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 
@@ -107,10 +108,7 @@ function HomePage() {
 
   return (
     <>
-      {/* <SEO
-        description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '}
-        title={[pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')}
-      /> */}
+      <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={[pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
       {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
 
       {/* <BgAurora className="fixed top-0 left-0 -z-50 h-dvh w-dvw bg-white max-sm:hidden" classNameContainer="-z-50 opacity-40" /> */}
