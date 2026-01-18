@@ -47,7 +47,7 @@ function HomePage() {
   const pType0 = paramsArr?.[0] || '';
   const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
   const pName = last(paramsArr)?.replace(/-/g, ' ') || 'TH';
-  const pName1 = !['h', 't', 't-31'].includes(pType0) ? !['TH'].includes(pName)  && pName : '';
+  const pName1 = !['h', 't', 't-31'].includes(pType0) ? !['TH'].includes(pName) && pName : '';
 
   const [isOpenQR, setIsOpenQR] = useState(false);
   const [isOpenComments, setIsOpenComments] = useState(false);
@@ -74,13 +74,13 @@ function HomePage() {
       const deterministicUserId = `user-${timestamp}-${pNameSlug}`;
       const pNameR = ['TH'].includes(pName) ? `Guest-${timestamp}` : pName;
 
-      setUserId(storedUserId || deterministicUserId);
-      setUserName(storedUserName || pNameR);
+      setUserId(deterministicUserId);
+      setUserName(pNameR);
       setUserAvatar(storedUserAvatar || '');
 
       // Store in localStorage
-      if (!storedUserId) LocalStorage.set('wedding-user-id', undefined, deterministicUserId);
-      if (!storedUserName) LocalStorage.set('wedding-user-name', undefined, pNameR);
+      LocalStorage.set('wedding-user-id', undefined, deterministicUserId);
+      LocalStorage.set('wedding-user-name', undefined, pNameR);
     } else if (storedUserId && storedUserName) {
       // Use stored values if no pName
       setUserId(storedUserId);
