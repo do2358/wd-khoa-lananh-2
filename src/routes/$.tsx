@@ -119,7 +119,7 @@ function HomePage() {
         <Section01 pType={pType} />
       </RcImagesPreview>
 
-      <Section03 pName={pName} pType={pType} />
+      <Section03 pName={pName || 'Bạn và ❤️'} pType={pType} />
 
       <Section02 pName={pName} pType={pType} />
 
@@ -184,7 +184,7 @@ function HomePage() {
       <UserAvatarStack userId={userId} userAvatar={userAvatar} userName={userName} />
 
       {/* Livestream Comments - Bottom Right */}
-      <LivestreamComments hasUserName={!!pName} userId={userId} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
+      <LivestreamComments userId={userId} hasUserName={!!pName} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
 
       {/* <ModalQR open={isOpenQR} setOpen={setIsOpenQR} /> */}
 
