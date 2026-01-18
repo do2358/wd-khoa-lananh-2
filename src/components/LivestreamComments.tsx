@@ -120,7 +120,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
           {/* Comments List */}
           <div className="relative min-h-0 flex-1 overflow-hidden">
             <ScrollArea ref={scrollRef} className="h-full">
-              <div className="min-h-40 space-y-2 p-3">
+              <div className="min-h-40 space-y-3 p-3 pb-4">
                 {comments.length === 0 ? (
                   <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 10 }} transition={{ duration: 0.5 }} className="flex flex-col items-center justify-center px-4 py-4">
                     <motion.div
