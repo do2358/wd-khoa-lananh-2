@@ -12,7 +12,6 @@ import Section01 from '@/components/Section01';
 import Section03 from '@/components/Section03';
 import Section04 from '@/components/Section04';
 import Section05 from '@/components/Section05';
-import Section06 from '@/components/Section06';
 import Section07 from '@/components/Section07';
 import Section08 from '@/components/Section08';
 import SEO from '@/components/SEO';
@@ -135,10 +134,6 @@ function HomePage() {
       </RcImagesPreview>
 
       <Section05 />
-
-      <RcImagesPreview>
-        <Section06 />
-      </RcImagesPreview>
 
       <RcImagesPreview>
         <Section07 />
