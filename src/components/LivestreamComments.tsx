@@ -143,7 +143,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                         <h4 className="mb-2 text-center text-lg font-semibold text-red-800">Xem lời chúc từ mọi người</h4>
                         <p className="text-center text-base text-gray-600">Hiện chưa có lời chúc nào.</p>
                         <p className="mt-4 mb-0.5 text-center text-base text-gray-500 md:text-[15px]">Để gửi lời chúc, vui lòng truy cập</p>
-                        <p className="text-center text-base text-gray-500 md:text-[15px]">qua link thiệp mời có tên của bạn.</p>
+                        <p className="mb-10 text-center text-base text-gray-500 md:text-[15px]">qua link thiệp mời có tên của bạn.</p>
                       </>
                     )}
                   </motion.div>
