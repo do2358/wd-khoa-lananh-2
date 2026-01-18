@@ -48,7 +48,6 @@ const CardEvents = ({ pType, pName }: TCardEventsProps) => {
           width={200}
           className="rounded-full object-cover transition-all group-hover:-scale-x-100"
         />
-        <p className="mt-2 text-amber-600 underline">{pType === 'h' ? '09:00' : '10:00'}</p>
         <p className={cn('mt-2 shrink-0 text-center font-DancingScript! text-3xl font-700 text-red-900')}>Đón khách</p>
         <p className="mt-2 text-red-800">Bắt đầu đón khách</p>
       </m.div>
@@ -56,7 +55,6 @@ const CardEvents = ({ pType, pName }: TCardEventsProps) => {
       <m.div className="group relative z-20 flex w-[260px] shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-[18px] bg-amber-500/50 p-[3px] py-[2px] sm:w-[300px] lg:w-[366px]">
         <div className="relative z-10 flex size-full flex-col items-center justify-center rounded-[calc(16px*0.96)] bg-white">
           <img alt="avatar" height={200} src="/images/services2-1.png" width={200} className="rounded-full transition-all group-hover:-scale-x-100" />
-          <p className="mt-2 text-amber-600 underline"> {pType === 'h' ? '10:30' : '10:30'}</p>
           <p className={cn('mt-2 shrink-0 text-center font-DancingScript! text-3xl font-700 text-red-900')}>Làm lễ</p>
           <p className="mt-2 text-center text-red-800 max-sm:mb-4">{pType === 'h' ? 'Chú rể rước cô dâu và làm lễ' : 'Tiến hành rước cô dâu vào sân khấu và làm lễ'}</p>
         </div>
@@ -73,7 +71,6 @@ const CardEvents = ({ pType, pName }: TCardEventsProps) => {
         className="group flex w-[260px] shrink-0 cursor-pointer flex-col items-center justify-center rounded-2xl border border-amber-500/50 bg-white p-4 sm:w-[300px] lg:w-[340px]"
       >
         <img alt="avatar" height={200} src="/images/services2-3.png" width={200} className="rounded-full transition-all group-hover:-scale-x-100" />
-        <p className="mt-2 text-amber-600 underline"> {pType === 'h' ? '12:00' : '12:00'}</p>
         <p className={cn('mt-2 shrink-0 text-center font-DancingScript! text-3xl font-700 text-red-900')}>Chụp ảnh</p>
         <p className="mt-2 text-red-800">Chụp ảnh kỷ niệm</p>
       </m.div>
