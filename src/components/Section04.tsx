@@ -39,13 +39,13 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
           inView
           inViewOnce
           slide={{ direction: 'left' }}
-          className="relative mx-16 hidden h-full max-h-[60%] max-w-xs min-w-[300px] shrink-0 flex-col items-center justify-center rounded-full border-2 border-red-900 p-2 max-sm:-order-1 sm:flex"
+          className="relative mx-16 hidden h-full max-h-[60%] max-w-xs shrink-0 flex-col items-center justify-center rounded-full border-2 border-red-900 p-2 max-sm:-order-1 sm:flex"
         >
           <RcImage
             alt="2611"
             height={'auto'}
             src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07084_n2i20s.jpg"
-            width={'100%'}
+            width={'240px'}
             className="w-full cursor-pointer rounded-full object-cover sm:min-h-[456px]!"
           />
           {/* <Image alt="2611" height={0} src="/images/icon-flowers-3.png" width={100} className="absolute top-0 left-[-10px] animate-[bounceY_10s_linear_infinite]" /> */}
