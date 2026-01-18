@@ -48,7 +48,7 @@ export function buildSeoMeta(opts: SEOOptions = {}) {
     ...(twitterHandle ? [{ name: 'twitter:creator', content: twitterHandle }] : []),
 
     // Open Graph
-    { property: 'og:url', content: origin },
+    // { property: 'og:url', content: origin },
     { property: 'og:type', content: 'website' },
     { property: 'og:title', content: metaTitle },
     { property: 'og:site_name', content: metaTitle },

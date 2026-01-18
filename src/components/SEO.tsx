@@ -28,7 +28,7 @@ const SEO = ({
       <meta name="keywords" content={metaKeywords} />
 
       {/* Open Graph */}
-      <meta key="ogurl" content={currentUrl} property="og:url" />
+      {/* <meta key="ogurl" content={currentUrl} property="og:url" /> */}
       <meta key="ogimage" content={siteImagePreviewUrl} property="og:image" />
       <meta key="ogsitename" content={metaTitle} property="og:site_name" />
       <meta key="ogtitle" content={metaTitle} property="og:title" />
