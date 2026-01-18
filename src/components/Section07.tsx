@@ -16,8 +16,8 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
   const mediaAbove640 = useMediaQuery({ minWidth: 640 });
   return (
     <section className="relative flex min-h-fit max-w-[100dvw] flex-col items-center justify-center overflow-x-hidden py-40">
-      <div className="mb-1 text-center text-base text-red-500 uppercase max-sm:px-8">Hãy dành chút thời gian để nói cho chúng mình biết nhé!</div>
-      <div className={cn('mb-4 text-center font-DancingScript text-4xl font-[600] text-red-800')}>Chúng mình rất mong bạn/anh/chị đến chung vui với chúng mình</div>
+      <div className="mb-1 text-center text-base text-red-500 uppercase max-sm:px-8">♥ ♥ ♥</div>
+      <div className={cn('mb-4 text-center font-DancingScript text-4xl font-[600] text-red-800')}>Sự hiện diện của Quý khách là niềm vinh hạnh của gia đình chúng tôi!</div>
 
       {/* <div className="z-50 flex items-center justify-center sm:px-8">
         <RainbowButton className="items-center text-base tracking-[2px] text-red-900 uppercase ring-1 ring-red-300" onClick={onClickBtn01}>
