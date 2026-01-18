@@ -16,6 +16,7 @@ import Section07 from '@/components/Section07';
 import Section08 from '@/components/Section08';
 import UserAvatarStack from '@/components/UserAvatarStack';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
+import LocalStorage from '@/libs/utils-storage';
 
 //
 //
@@ -59,9 +60,9 @@ function HomePage() {
 
   // Load user info from localStorage on mount
   useEffect(() => {
-    const storedUserId = localStorage.getItem('wedding-user-id');
-    const storedUserName = localStorage.getItem('wedding-user-name');
-    const storedUserAvatar = localStorage.getItem('wedding-user-avatar');
+    const storedUserId = LocalStorage.get<string>('wedding-user-id');
+    const storedUserName = LocalStorage.get<string>('wedding-user-name');
+    const storedUserAvatar = LocalStorage.get<string>('wedding-user-avatar');
 
     // If pName exists, use it to create a deterministic user ID
     if (pName) {
@@ -71,13 +72,13 @@ function HomePage() {
       const deterministicUserId = `user-${timestamp}-${pNameSlug}`;
       const pNameR = ['TH'].includes(pName) ? `Guest-${timestamp}` : pName;
 
-      setUserId(deterministicUserId);
-      setUserName(pNameR);
+      setUserId(storedUserId || deterministicUserId);
+      setUserName(storedUserName || pNameR);
       setUserAvatar(storedUserAvatar || '');
 
       // Store in localStorage
-      localStorage.setItem('wedding-user-id', deterministicUserId);
-      localStorage.setItem('wedding-user-name', pNameR);
+      if (!storedUserId) LocalStorage.set('wedding-user-id', undefined, deterministicUserId);
+      if (!storedUserName) LocalStorage.set('wedding-user-name', undefined, pNameR);
     } else if (storedUserId && storedUserName) {
       // Use stored values if no pName
       setUserId(storedUserId);
@@ -94,8 +95,8 @@ function HomePage() {
       setUserName(generatedName);
       setUserAvatar('');
 
-      localStorage.setItem('wedding-user-id', newUserId);
-      localStorage.setItem('wedding-user-name', generatedName);
+      LocalStorage.set('wedding-user-id', undefined, newUserId);
+      LocalStorage.set('wedding-user-name', undefined, generatedName);
     }
   }, [pName]);
 
