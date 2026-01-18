@@ -14,12 +14,13 @@ interface LivestreamCommentsProps {
   userAvatar?: string;
   isOpen: boolean;
   onToggle: () => void;
+  hasUserName?: boolean;
 }
 
 // Quick fill messages - select 6 random messages
 const QUICK_MESSAGES = ['Chúc mừng hạnh phúc! 🎉', 'Trăm năm hạnh phúc! ❤️', 'Chúc đôi uyên ương hạnh phúc! 💑', 'Yêu thương mãi mãi! 💕', 'Chúc sớm có tin vui! 👶', 'Hạnh phúc bên nhau! 🥰'];
 
-export default function LivestreamComments({ userId, userName, userAvatar, isOpen, onToggle }: LivestreamCommentsProps) {
+export default function LivestreamComments({ userId, userName, userAvatar, isOpen, onToggle, hasUserName = true }: LivestreamCommentsProps) {
   const [message, setMessage] = useState('');
   const { comments, addComment } = useRealtimeComments(30);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -76,7 +77,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
           className={cn(
             'fixed z-50 flex max-h-[90dvh] w-full max-w-md flex-col rounded-t-2xl bg-white/95 shadow-2xl backdrop-blur-sm outline-none',
             'inset-x-0 bottom-0',
-            'sm:inset-x-auto sm:inset-y-auto sm:right-4 sm:bottom-10 sm:max-h-[600px] sm:w-80 sm:rounded-2xl sm:border sm:border-red-200',
+            'sm:inset-x-auto sm:inset-y-auto sm:right-4 sm:bottom-10 sm:max-h-[600px] sm:w-80 sm:rounded-t-2xl sm:border sm:border-red-200',
           )}
         >
           {/* Drag Handle - Mobile Only */}
@@ -118,24 +119,33 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                       <HeartIcon className="size-8 fill-red-500 text-red-500" />
                     </motion.div>
 
-                    <h4 className="mb-2 text-center font-semibold text-gray-800">Chưa có lời chúc nào</h4>
-
-                    <p className="mb-1 text-center text-sm text-gray-600">Hãy là người đầu tiên gửi lời chúc</p>
-                    <p className="text-center text-sm text-gray-600">đến đôi uyên ương nhé!</p>
-
-                    <motion.div
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        repeatDelay: 0.5,
-                      }}
-                      className="mt-4 flex items-center gap-1 text-xs text-red-500"
-                    >
-                      <SparklesIcon className="size-3" />
-                      <span className="font-medium">Viết lời chúc bên dưới</span>
-                      <SparklesIcon className="size-3" />
-                    </motion.div>
+                    {hasUserName ? (
+                      <>
+                        <h4 className="mb-4 text-center font-semibold text-red-800">Chưa có lời chúc nào</h4>
+                        <p className="mb-0.5 text-center text-sm text-gray-600">Hãy là người đầu tiên gửi lời chúc</p>
+                        <p className="text-center text-sm text-gray-600">đến đôi uyên ương nhé!</p>
+                        <motion.div
+                          animate={{ y: [0, -5, 0] }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            repeatDelay: 0.5,
+                          }}
+                          className="mt-4 flex items-center gap-1 text-[13px] text-red-500"
+                        >
+                          <SparklesIcon className="size-3" />
+                          <span className="font-medium">Viết lời chúc bên dưới</span>
+                          <SparklesIcon className="size-3" />
+                        </motion.div>
+                      </>
+                    ) : (
+                      <>
+                        <h4 className="mb-2 text-center font-semibold text-red-800">Xem lời chúc từ mọi người</h4>
+                        <p className="text-center text-sm text-gray-600">Hiện chưa có lời chúc nào.</p>
+                        <p className="mt-4 mb-1 text-center text-[13px] text-gray-500">Để gửi lời chúc, vui lòng truy cập</p>
+                        <p className="text-center text-[13px] text-gray-500">qua link thiệp mời có tên của bạn.</p>
+                      </>
+                    )}
                   </motion.div>
                 ) : (
                   comments.map((comment, index) => (
@@ -161,61 +171,63 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
           </div>
 
           {/* Input Form */}
-          <form className="shrink-0 border-t border-red-200 bg-white p-3 pt-2" onSubmit={handleSubmit}>
-            {/* Quick Fill Buttons - 2 Rows in Single Scroll Container */}
-            <div className="scrollbar-hide mb-2 overflow-x-auto">
-              <div className="flex flex-col gap-1.5">
-                {/* First Row */}
-                <div className="flex gap-1.5">
-                  {QUICK_MESSAGES.slice(0, 3).map((quickMsg, index) => (
-                    <button
-                      key={'QUICK_MESSAGES' + index}
-                      type="button"
-                      className="shrink-0 rounded-full border border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-3 py-1.5 text-xs font-medium text-red-700 transition-all hover:border-red-300 hover:from-red-100 hover:to-rose-100 hover:shadow-sm"
-                      onClick={() => handleQuickFill(quickMsg)}
-                    >
-                      {quickMsg}
-                    </button>
-                  ))}
-                </div>
-                {/* Second Row */}
-                <div className="flex gap-1.5">
-                  {QUICK_MESSAGES.slice(3, 6).map((quickMsg, index) => (
-                    <button
-                      key={index + 3}
-                      type="button"
-                      className="shrink-0 rounded-full border border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-3 py-1.5 text-xs font-medium text-red-700 transition-all hover:border-red-300 hover:from-red-100 hover:to-rose-100 hover:shadow-sm"
-                      onClick={() => handleQuickFill(quickMsg)}
-                    >
-                      {quickMsg}
-                    </button>
-                  ))}
+          {hasUserName && (
+            <form className="shrink-0 border-t border-red-200 bg-white p-3 pt-2" onSubmit={handleSubmit}>
+              {/* Quick Fill Buttons - 2 Rows in Single Scroll Container */}
+              <div className="scrollbar-hide mb-2 overflow-x-auto">
+                <div className="flex flex-col gap-1.5">
+                  {/* First Row */}
+                  <div className="flex gap-1.5">
+                    {QUICK_MESSAGES.slice(0, 3).map((quickMsg, index) => (
+                      <button
+                        key={'QUICK_MESSAGES' + index}
+                        type="button"
+                        className="shrink-0 rounded-full border border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-3 py-1.5 text-xs font-medium text-red-700 transition-all hover:border-red-300 hover:from-red-100 hover:to-rose-100 hover:shadow-sm"
+                        onClick={() => handleQuickFill(quickMsg)}
+                      >
+                        {quickMsg}
+                      </button>
+                    ))}
+                  </div>
+                  {/* Second Row */}
+                  <div className="flex gap-1.5">
+                    {QUICK_MESSAGES.slice(3, 6).map((quickMsg, index) => (
+                      <button
+                        key={index + 3}
+                        type="button"
+                        className="shrink-0 rounded-full border border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-3 py-1.5 text-xs font-medium text-red-700 transition-all hover:border-red-300 hover:from-red-100 hover:to-rose-100 hover:shadow-sm"
+                        onClick={() => handleQuickFill(quickMsg)}
+                      >
+                        {quickMsg}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Input Field */}
-            <div className="flex gap-2">
-              <input
-                maxLength={200}
-                placeholder="Gửi lời chúc..."
-                type="text"
-                value={message}
-                className="min-w-0 flex-1 rounded-full border border-red-200 bg-red-50/50 px-4 py-2 text-sm transition-colors outline-none focus:border-red-400 focus:bg-white"
-                onChange={(e) => setMessage(e.target.value)}
-              />
-              <button
-                disabled={!message.trim()}
-                type="submit"
-                className={cn(
-                  'flex !size-10 shrink-0 items-center justify-center rounded-full p-2 transition-all',
-                  message.trim() ? 'bg-gradient-to-r from-red-500 to-rose-500 text-white hover:shadow-lg' : 'bg-gray-200 text-gray-400',
-                )}
-              >
-                <SendIcon className="size-4" />
-              </button>
-            </div>
-          </form>
+              {/* Input Field */}
+              <div className="flex gap-2">
+                <input
+                  maxLength={200}
+                  placeholder="Gửi lời chúc..."
+                  type="text"
+                  value={message}
+                  className="min-w-0 flex-1 rounded-full border border-red-200 bg-red-50/50 px-4 py-2 text-sm transition-colors outline-none focus:border-red-400 focus:bg-white"
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <button
+                  disabled={!message.trim()}
+                  type="submit"
+                  className={cn(
+                    'flex !size-10 shrink-0 items-center justify-center rounded-full p-2 transition-all',
+                    message.trim() ? 'bg-gradient-to-r from-red-500 to-rose-500 text-white hover:shadow-lg' : 'bg-gray-200 text-gray-400',
+                  )}
+                >
+                  <SendIcon className="size-4" />
+                </button>
+              </div>
+            </form>
+          )}
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

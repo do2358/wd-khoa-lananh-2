@@ -22,7 +22,6 @@ interface IItem {
   className?: string;
   classNameTitle?: string;
   extra?: React.ReactNode;
-  disabled?: boolean;
 }
 
 const FloatingDock = ({ items, desktopClassName }: { items: IItem[]; desktopClassName?: string; mobileClassName?: string }) => {
@@ -122,10 +121,7 @@ function IconContainer(
       <m.div
         ref={ref}
         style={{ width, height }}
-        className={cn(
-          'relative flex aspect-square items-center justify-center rounded-full bg-gray-100 text-neutral-500',
-          itemProps.disabled ? 'cursor-not-allowed' : 'hover:text-red-700 hover:shadow',
-        )}
+        className={cn('relative flex aspect-square items-center justify-center rounded-full bg-gray-100 text-neutral-500 hover:text-red-700 hover:shadow')}
         onMouseEnter={() => mediaAbove640 && setHovered(true)}
         onMouseLeave={() => mediaAbove640 && setHovered(false)}
       >
@@ -151,7 +147,7 @@ function IconContainer(
 }
 
 function ItemWrapper({ children, ...itemProps }: IItem & { children: React.ReactNode; id?: string }) {
-  if (itemProps?.href && !itemProps?.disabled) {
+  if (itemProps?.href) {
     return (
       <Link id={itemProps?.id} rel={itemProps?.rel} target={itemProps?.target} to={itemProps.href} className={itemProps?.className}>
         {children}
@@ -160,7 +156,7 @@ function ItemWrapper({ children, ...itemProps }: IItem & { children: React.React
   }
   if (itemProps?.onClick) {
     return (
-      <button id={itemProps?.id} disabled={itemProps?.disabled} className={itemProps?.className} onClick={itemProps?.disabled ? undefined : itemProps?.onClick}>
+      <button id={itemProps?.id} className={itemProps?.className} onClick={itemProps?.onClick}>
         {children}
       </button>
     );

@@ -161,13 +161,10 @@ function HomePage() {
           },
 
           {
-            title: pName ? 'Lời chúc' : 'Lời chúc (cần tên khách mời)',
+            title: 'Lời chúc',
             icon: <MessageCircleIcon className="size-full" />,
-            disabled: !pName,
             onClick: () => {
-              if (pName) {
-                setIsOpenComments(!isOpenComments);
-              }
+              setIsOpenComments(!isOpenComments);
             },
           },
 
@@ -187,7 +184,7 @@ function HomePage() {
       <UserAvatarStack userId={userId} userAvatar={userAvatar} userName={userName} />
 
       {/* Livestream Comments - Bottom Right */}
-      {pName && <LivestreamComments userId={userId} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />}
+      <LivestreamComments hasUserName={!!pName} userId={userId} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
 
       {/* <ModalQR open={isOpenQR} setOpen={setIsOpenQR} /> */}
 
