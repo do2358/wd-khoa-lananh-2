@@ -57,7 +57,7 @@ const CardEvents = ({ pType, pName }: TCardEventsProps) => {
           <img alt="avatar" height={200} src="/images/services2-1.png" width={200} className="rounded-full transition-all group-hover:-scale-x-100" />
           <p className="mt-2 text-amber-600 underline"> {pType === 'h' ? '14:00' : '14:00'}</p>
           <p className={cn('mt-2 shrink-0 text-center font-DancingScript! text-3xl font-700 text-red-900')}>Làm lễ</p>
-          <p className="mt-2 mb-2 text-center text-red-800 max-sm:mb-4">{pType === 'h' ? 'Chú rể rước cô dâu và làm lễ' : 'Tiến hành rước cô dâu vào sân khấu và làm lễ'}</p>
+          <p className="mt-2 mb-6 text-center text-red-800 max-sm:mb-4">{pType === 'h' ? 'Chú rể rước cô dâu và làm lễ' : 'Tiến hành rước cô dâu vào sân khấu và làm lễ'}</p>
         </div>
 
         <div style={{ borderRadius: `calc(16px * 0.96)` }} className="absolute inset-0">
