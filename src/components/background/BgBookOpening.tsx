@@ -233,7 +233,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           initial="closed"
           transition={{ ...imageSpring, delay: 0.4 }}
           variants={centerImageVariants}
-          className="relative z-10 h-fit max-h-[600px] w-dvw overflow-hidden max-sm:px-2 sm:mx-0.5 sm:h-[calc(100dvh-24px)] sm:max-h-[600px] sm:w-auto sm:shadow-2xl"
+          className="relative z-10 h-fit sm:max-h-[600px] w-dvw overflow-hidden max-sm:px-2 sm:mx-0.5 sm:h-[calc(100dvh-24px)] sm:max-h-[600px] sm:w-auto sm:shadow-2xl"
         >
           <img alt="Wedding Invitation" src={imgs(pType)?.image2} className="h-full w-full object-contain object-top" />
           {renderName}
