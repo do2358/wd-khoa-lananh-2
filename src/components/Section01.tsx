@@ -48,7 +48,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
   // ];
 
   return (
-    <section className="relative flex min-h-dvh max-w-dvw flex-col items-center justify-center overflow-clip overflow-x-hidden [perspective:3000px] max-sm:py-20 sm:max-h-[1500px]">
+    <section className="relative flex min-h-dvh max-w-dvw flex-col items-center justify-center overflow-clip overflow-x-hidden [perspective:3000px] max-sm:pt-40 max-sm:pb-20 sm:max-h-[1500px]">
       <div className="z-10 flex items-center max-sm:flex-col sm:justify-between">
         {mediaAbove640 && (
           <MotionEffect
