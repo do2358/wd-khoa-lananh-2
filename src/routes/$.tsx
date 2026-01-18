@@ -33,7 +33,7 @@ export const Route = createFileRoute('/$')({
     const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
     const pName = last(paramsArr)?.replace(/-/g, ' ');
     return {
-      meta: [{ title: [pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
+      meta: [{ title: [pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
     };
   },
 });
@@ -118,7 +118,7 @@ function HomePage() {
 
   return (
     <>
-      <SEO title={[pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
+      <SEO title={[pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
       {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
 
       {/* <BgAurora className="fixed top-0 left-0 -z-50 h-dvh w-dvw bg-white max-sm:hidden" classNameContainer="-z-50 opacity-40" /> */}
@@ -127,7 +127,7 @@ function HomePage() {
         <Section01 pType={pType} />
       </RcImagesPreview>
 
-      <Section03 pName={pName || 'Bạn và ❤️'} pType={pType} />
+      <Section03 pName={pName || ''} pType={pType} />
 
       <Section02 pName={pName} pType={pType} />
 
