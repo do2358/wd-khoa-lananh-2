@@ -45,7 +45,7 @@ function HomePage() {
   //
   const pType0 = paramsArr?.[0] || '';
   const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
-  const pName = last(paramsArr)?.replace(/-/g, ' ') || 'TH';
+  const pName = !['h', 't', 't-31'].includes(pType0) ? last(paramsArr)?.replace(/-/g, ' ') : '';
 
   const [isOpenQR, setIsOpenQR] = useState(false);
   const [isOpenComments, setIsOpenComments] = useState(false);

@@ -99,28 +99,71 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
           </RainbowButtonLink>
         </div>
 
-        <MotionEffect
-          inView
-          inViewOnce={false}
-          slide={{ direction: 'left' }}
-          className="relative h-[480px] max-w-xs flex-col items-center justify-center rounded-xl border-2 border-red-900 p-2 max-sm:mt-10 sm:flex sm:h-[476px] sm:rounded-full"
-        >
-          <RcImage
-            alt="2611"
-            fallback={IMG_BLUR}
-            height={'100%'}
-            loading="eager"
-            src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07062_onvh4q.jpg"
-            width={240}
-            className="!h-auto !min-h-full !w-full cursor-pointer rounded-md object-cover object-[25%_center] sm:rounded-full"
-          />
-          <div className="absolute top-0 left-[-20px]  animate-[bounceY_12s_linear_infinite]">
-            <FlowerBlossomSvg className="h-auto w-25 rotate-[-82deg]" />
-          </div>
-          <div className="absolute right-[-40px] bottom-[-40px] animate-[bounceY_12s_linear_infinite] sm:right-[-50px] sm:bottom-[-10px]">
-            <FlowerBlossomSvg className="h-auto w-30 rotate-[-82deg]" />
-          </div>
-        </MotionEffect>
+        {mediaAbove640 && (
+          <MotionEffect
+            inView
+            inViewOnce={false}
+            slide={{ direction: 'left' }}
+            className="relative h-[480px] max-w-xs flex-col items-center justify-center rounded-xl border-2 border-red-900 p-2 max-sm:mt-10 sm:flex sm:h-[476px] sm:rounded-full"
+          >
+            <RcImage
+              alt="2611"
+              fallback={IMG_BLUR}
+              height={'100%'}
+              loading="eager"
+              src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07062_onvh4q.jpg"
+              width={240}
+              className="!h-auto !min-h-full !w-full cursor-pointer rounded-md object-cover object-[25%_center] sm:rounded-full"
+            />
+            <div className="absolute top-0 left-[-20px]  animate-[bounceY_12s_linear_infinite]">
+              <FlowerBlossomSvg className="h-auto w-25 rotate-[-82deg]" />
+            </div>
+            <div className="absolute right-[-40px] bottom-[-40px] animate-[bounceY_12s_linear_infinite] sm:right-[-50px] sm:bottom-[-10px]">
+              <FlowerBlossomSvg className="h-auto w-30 rotate-[-82deg]" />
+            </div>
+          </MotionEffect>
+        )}
+
+        {!mediaAbove640 && (
+          <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }}>
+            <div className="flex w-dvw gap-4 overflow-x-auto overflow-y-hidden px-4">
+              <div className="relative h-[480px] max-w-xs flex-col items-center justify-center rounded-xl border-2 border-red-900 p-2 max-sm:mt-10 sm:flex sm:h-[476px] sm:rounded-full">
+                <RcImage
+                  alt="2611"
+                  fallback={IMG_BLUR}
+                  height={'100%'}
+                  loading="eager"
+                  src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07568_kb8kpb.jpg"
+                  width={240}
+                  className="!h-auto !min-h-full !w-full cursor-pointer rounded-md object-cover sm:rounded-full"
+                />
+                <div className="absolute top-0 left-[-20px]  animate-[bounceY_12s_linear_infinite]">
+                  <FlowerBlossomSvg className="h-auto w-25 rotate-[-82deg]" />
+                </div>
+                <div className="absolute right-[-40px] bottom-[-40px] animate-[bounceY_12s_linear_infinite] sm:right-[-50px] sm:bottom-[-10px]">
+                  <FlowerBlossomSvg className="h-auto w-30 rotate-[-82deg]" />
+                </div>
+              </div>
+              <div className="relative h-[480px] max-w-xs flex-col items-center justify-center rounded-xl border-2 border-red-900 p-2 max-sm:mt-10 sm:flex sm:h-[476px] sm:rounded-full">
+                <RcImage
+                  alt="2611"
+                  fallback={IMG_BLUR}
+                  height={'100%'}
+                  loading="eager"
+                  src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07062_onvh4q.jpg"
+                  width={240}
+                  className="!h-auto !min-h-full !w-full cursor-pointer rounded-md object-cover object-[25%_center] sm:rounded-full"
+                />
+                <div className="absolute top-0 left-[-20px]  animate-[bounceY_12s_linear_infinite]">
+                  <FlowerBlossomSvg className="h-auto w-25 rotate-[-82deg]" />
+                </div>
+                <div className="absolute right-[-40px] bottom-[-40px] animate-[bounceY_12s_linear_infinite] sm:right-[-50px] sm:bottom-[-10px]">
+                  <FlowerBlossomSvg className="h-auto w-30 rotate-[-82deg]" />
+                </div>
+              </div>
+            </div>
+          </MotionEffect>
+        )}
       </div>
 
       <Image alt="2611" height={420} src="/images/icon-flowers-1.png" width={240} className="absolute bottom-10 left-0 animate-[bounceY_10s_linear_infinite] opacity-50 max-sm:w-[200px]" />
