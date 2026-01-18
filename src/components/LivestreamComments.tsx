@@ -101,7 +101,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
           {/* Comments List */}
           <div className="relative min-h-0 flex-1 overflow-hidden">
             <ScrollArea ref={scrollRef} className="h-full">
-              <div className="space-y-2 p-3">
+              <div className="min-h-40 space-y-2 p-3">
                 {comments.length === 0 ? (
                   <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 10 }} transition={{ duration: 0.5 }} className="flex flex-col items-center justify-center px-4 py-4">
                     <motion.div
@@ -150,7 +150,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                 ) : (
                   comments.map((comment, index) => (
                     <motion.div key={comment.id} animate={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} transition={{ duration: 0.3, delay: index * 0.05 }} className="group">
-                      <div className="flex min-h-40 gap-2">
+                      <div className="flex gap-2">
                         <div className="size-8 shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-red-400 to-rose-500">
                           {comment.userAvatar ? (
                             <img alt={comment.userName} src={comment.userAvatar} className="size-full object-cover" />
