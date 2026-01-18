@@ -121,9 +121,9 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
 
                     {hasUserName ? (
                       <>
-                        <h4 className="mb-4 text-center font-semibold text-red-800">Chưa có lời chúc nào</h4>
-                        <p className="mb-0.5 text-center text-sm text-gray-600">Hãy là người đầu tiên gửi lời chúc</p>
-                        <p className="text-center text-sm text-gray-600">đến đôi uyên ương nhé!</p>
+                        <h4 className="mb-3 text-center text-lg font-semibold text-red-800">Chưa có lời chúc nào</h4>
+                        <p className="mb-0.5 text-center text-base text-gray-600">Hãy là người đầu tiên gửi lời chúc</p>
+                        <p className="text-center text-[15px] text-gray-600">đến đôi uyên ương nhé!</p>
                         <motion.div
                           animate={{ y: [0, -5, 0] }}
                           transition={{
@@ -131,7 +131,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                             repeat: Infinity,
                             repeatDelay: 0.5,
                           }}
-                          className="mt-4 flex items-center gap-1 text-[13px] text-red-500"
+                          className="mt-6 flex items-center gap-1 text-[15px] text-red-500"
                         >
                           <SparklesIcon className="size-3" />
                           <span className="font-medium">Viết lời chúc bên dưới</span>
@@ -140,10 +140,10 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                       </>
                     ) : (
                       <>
-                        <h4 className="mb-2 text-center font-semibold text-red-800">Xem lời chúc từ mọi người</h4>
-                        <p className="text-center text-sm text-gray-600">Hiện chưa có lời chúc nào.</p>
-                        <p className="mt-4 mb-1 text-center text-[13px] text-gray-500">Để gửi lời chúc, vui lòng truy cập</p>
-                        <p className="text-center text-[13px] text-gray-500">qua link thiệp mời có tên của bạn.</p>
+                        <h4 className="mb-2 text-center text-lg font-semibold text-red-800">Xem lời chúc từ mọi người</h4>
+                        <p className="text-center text-base text-gray-600">Hiện chưa có lời chúc nào.</p>
+                        <p className="mt-4 mb-1 text-center text-[15px] text-gray-500">Để gửi lời chúc, vui lòng truy cập</p>
+                        <p className="text-center text-[15px] text-gray-500">qua link thiệp mời có tên của bạn.</p>
                       </>
                     )}
                   </motion.div>
