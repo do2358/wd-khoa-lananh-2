@@ -126,7 +126,7 @@ function HomePage() {
         <Section01 pType={pType} />
       </RcImagesPreview>
 
-      <Section03 pName={pName || ''} pType={pType} />
+      <Section03 pName={!['TH'].includes(pName) ? pName : ''} pType={pType} />
 
       {/* <Section02 pName={pName} pType={pType} /> */}
 
