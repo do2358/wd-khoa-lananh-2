@@ -26,6 +26,16 @@ import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 
 export const Route = createFileRoute('/$')({
   component: HomePage,
+  head: ({ params }) => {
+    const paramsArr = params?._splat?.split('/') || [];
+    //
+    const pType0 = paramsArr?.[0] || '';
+    const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
+    const pName = last(paramsArr)?.replace(/-/g, ' ');
+    return {
+      meta: [{ title: [pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
+    };
+  },
 });
 
 //
@@ -108,7 +118,7 @@ function HomePage() {
 
   return (
     <>
-      <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={[pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
+      <SEO title={[pName, 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
       {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
 
       {/* <BgAurora className="fixed top-0 left-0 -z-50 h-dvh w-dvw bg-white max-sm:hidden" classNameContainer="-z-50 opacity-40" /> */}
