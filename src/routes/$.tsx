@@ -29,7 +29,7 @@ export const Route = createFileRoute('/$')({
     //
     const pType0 = paramsArr?.[0] || '';
     const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
-    const pName = last(paramsArr)?.replace(/-/g, ' ');
+    const pName = !['h', 't', 't-31'].includes(pType0) ? last(paramsArr)?.replace(/-/g, ' ') : '';
     return {
       meta: [{ title: [pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
     };
