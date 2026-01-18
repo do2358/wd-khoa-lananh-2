@@ -45,7 +45,7 @@ function HomePage() {
   //
   const pType0 = paramsArr?.[0] || '';
   const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
-  const pName = last(paramsArr)?.replace(/-/g, ' ');
+  const pName = last(paramsArr)?.replace(/-/g, ' ') || 'TH';
 
   const [isOpenQR, setIsOpenQR] = useState(false);
   const [isOpenComments, setIsOpenComments] = useState(false);
@@ -66,9 +66,10 @@ function HomePage() {
 
     // If pName exists, use it to create a deterministic user ID
     if (pName) {
+      const timestamp = Date.now();
       // Create a consistent user ID based on pName
       const pNameSlug = pName.toLowerCase().replace(/\s+/g, '-');
-      const deterministicUserId = `user-${pNameSlug}`;
+      const deterministicUserId = `user-${timestamp}-${pNameSlug}`;
 
       setUserId(deterministicUserId);
       setUserName(pName);
