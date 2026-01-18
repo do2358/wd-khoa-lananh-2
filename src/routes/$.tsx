@@ -21,18 +21,24 @@ import LocalStorage from '@/libs/utils-storage';
 
 //
 //
-//
 
 export const Route = createFileRoute('/$')({
   component: HomePage,
   head: ({ params }) => {
     const paramsArr = params?._splat?.split('/') || [];
     //
+    const pTypeList = ['h', 't', 't-31'];
     const pType0 = paramsArr?.[0] || '';
-    const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
-    const pName = !['h', 't', 't-31'].includes(pType0) ? last(paramsArr)?.replace(/-/g, ' ') : '';
+    const pType = pTypeList.includes(pType0) ? pType0 : 'h';
+    // If there are multiple segments (e.g. /t/pName) use the last segment as pName,
+    // otherwise for single-segment (/pName) use that segment if it's NOT a pType.
+    const pNameRaw = paramsArr.length > 1 ? last(paramsArr) : (!pTypeList.includes(pType0) ? pType0 : '');
+    const pName = pNameRaw ? pNameRaw.replace(/-/g, ' ') : '';
     return {
-      meta: [{ title: [pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
+      meta: [
+        { title: [pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') },
+        { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' },
+      ],
     };
   },
 });
@@ -44,10 +50,15 @@ function HomePage() {
   const params = Route.useParams();
   const paramsArr = params?._splat?.split('/') || [];
   //
+  const pTypeList = ['h', 't', 't-31'];
   const pType0 = paramsArr?.[0] || '';
-  const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
-  const pName = last(paramsArr)?.replace(/-/g, ' ') || 'TH';
-  const pName1 = !['h', 't', 't-31'].includes(pType0) ? !['TH'].includes(pName) && pName : '';
+  const pType = pTypeList.includes(pType0) ? pType0 : 'h';
+
+  // If there are multiple segments (e.g. /t/pName) use the last segment as pName,
+  // otherwise for single-segment (/pName) use that segment if it's NOT a pType.
+  const rawPName = paramsArr.length > 1 ? last(paramsArr) : (!pTypeList.includes(pType0) ? pType0 : '');
+  const pName = rawPName ? rawPName.replace(/-/g, ' ') : 'TH';
+  const pName1 = rawPName ? (pName === 'TH' ? '' : pName) : '';
 
   const [isOpenQR, setIsOpenQR] = useState(false);
   const [isOpenComments, setIsOpenComments] = useState(false);
@@ -121,17 +132,12 @@ function HomePage() {
   return (
     <>
       <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
-      {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
-
-      {/* <BgAurora className="fixed top-0 left-0 -z-50 h-dvh w-dvw bg-white max-sm:hidden" classNameContainer="-z-50 opacity-40" /> */}
 
       <RcImagesPreview>
         <Section01 pType={pType} />
       </RcImagesPreview>
 
       <Section03 pName={pName1} pType={pType} />
-
-      {/* <Section02 pName={pName} pType={pType} /> */}
 
       <RcImagesPreview>
         <Section04 />
@@ -152,7 +158,7 @@ function HomePage() {
         items={[
           {
             title: `Xem vị trí ${pType === 'h' ? 'Nhà Gái' : 'Nhà Trai'}`,
-            icon: <MapPinIcon className="size-full" />,
+            icon: <MapPinIcon className="size-full" />, 
             href: mapParty,
             target: '_blank',
             rel: 'noreferrer noopenner',
@@ -160,7 +166,7 @@ function HomePage() {
 
           {
             title: 'Album chúng mình',
-            icon: <ImagesIcon className="size-full" />,
+            icon: <ImagesIcon className="size-full" />, 
             href: '/albums',
             target: '_blank',
             rel: 'noreferrer noopenner',
@@ -168,7 +174,7 @@ function HomePage() {
 
           {
             title: 'Lời chúc',
-            icon: <MessageCircleIcon className="size-full" />,
+            icon: <MessageCircleIcon className="size-full" />, 
             onClick: () => {
               setIsOpenComments(!isOpenComments);
             },
@@ -176,7 +182,7 @@ function HomePage() {
 
           {
             title: 'Mừng Cưới',
-            icon: <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />,
+            icon: <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />, 
             onClick: () => {
               setIsOpenQR(true);
             },
@@ -191,10 +197,6 @@ function HomePage() {
 
       {/* Livestream Comments - Bottom Right */}
       <LivestreamComments userId={userId} hasUserName={!!pName} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
-
-      {/* <ModalQR open={isOpenQR} setOpen={setIsOpenQR} /> */}
-
-      {/* <ModalAccept open={isOpenSaveDate} pName={pName} pType={pType} setOpen={setIsOpenSaveDate} /> */}
     </>
   );
 }
