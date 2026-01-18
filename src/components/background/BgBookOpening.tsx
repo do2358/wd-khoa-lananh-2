@@ -246,7 +246,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           style={{ transformOrigin: 'left center' }}
           transition={{ ...imageSpring, delay: 0.5 }}
           variants={mediaAbove640 ? rightImageVariants : {}}
-          className="h-fit max-h-[680px] w-dvw overflow-hidden rounded-none rounded-r-lg shadow-lg max-sm:px-2 sm:h-[calc(100dvh-24px)] sm:w-auto"
+          className="h-fit max-h-[680px] w-dvw overflow-hidden rounded-none shadow-lg max-sm:px-2 sm:h-[calc(100dvh-24px)] sm:w-auto sm:rounded-r-lg"
         >
           <img alt="Ceremony Details" src={imgs(pType)?.image3} className="h-full w-full object-contain" />
         </m.div>
