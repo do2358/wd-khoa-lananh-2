@@ -69,7 +69,7 @@ function HomePage() {
       // Create a consistent user ID based on pName
       const pNameSlug = pName.toLowerCase().replace(/\s+/g, '-');
       const deterministicUserId = `user-${timestamp}-${pNameSlug}`;
-      const pNameR = pName || `Guest-${timestamp}`;
+      const pNameR = ['TH'].includes(pName) ? `Guest-${timestamp}` : pName;
 
       setUserId(deterministicUserId);
       setUserName(pNameR);
