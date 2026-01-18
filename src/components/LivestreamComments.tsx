@@ -6,7 +6,6 @@ import { Drawer } from 'vaul';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 import { cn } from '@/libs/utils';
 
-import { showCommentToast } from './CommentToast';
 import ScrollArea from './ScrollArea';
 
 interface LivestreamCommentsProps {
@@ -59,15 +58,15 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
       await addComment(userId, userName, trimmedMessage, userAvatar);
 
       // Show toast notification
-      showCommentToast({
-        id: `toast-${Date.now()}`,
-        userId,
-        userName,
-        message: trimmedMessage,
-        userAvatar,
-        timestamp: new Date(),
-        createdAt: new Date(),
-      });
+      // showCommentToast({
+      //   id: `toast-${Date.now()}`,
+      //   userId,
+      //   userName,
+      //   message: trimmedMessage,
+      //   userAvatar,
+      //   timestamp: new Date(),
+      //   createdAt: new Date(),
+      // });
 
       // Clear message and close modal
       setMessage('');
