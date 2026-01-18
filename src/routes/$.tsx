@@ -14,7 +14,6 @@ import Section04 from '@/components/Section04';
 import Section05 from '@/components/Section05';
 import Section07 from '@/components/Section07';
 import Section08 from '@/components/Section08';
-import SEO from '@/components/SEO';
 import UserAvatarStack from '@/components/UserAvatarStack';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 
@@ -45,7 +44,7 @@ function HomePage() {
   //
   const pType0 = paramsArr?.[0] || '';
   const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
-  const pName = !['h', 't', 't-31'].includes(pType0) ? last(paramsArr)?.replace(/-/g, ' ') : '';
+  const pName = last(paramsArr)?.replace(/-/g, ' ') || 'TH';
 
   const [isOpenQR, setIsOpenQR] = useState(false);
   const [isOpenComments, setIsOpenComments] = useState(false);
@@ -117,7 +116,7 @@ function HomePage() {
 
   return (
     <>
-      <SEO title={[pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
+      {/* <SEO title={[pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} /> */}
       {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
 
       {/* <BgAurora className="fixed top-0 left-0 -z-50 h-dvh w-dvw bg-white max-sm:hidden" classNameContainer="-z-50 opacity-40" /> */}
