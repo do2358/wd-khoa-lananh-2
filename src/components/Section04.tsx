@@ -11,7 +11,7 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
   const mediaAbove640 = useMediaQuery({ minWidth: 640 });
 
   return (
-    <section className="relative flex min-h-dvh items-center justify-center max-sm:flex-col max-sm:pt-0 max-sm:pb-40 sm:max-h-[1500px]">
+    <section className="relative flex min-h-dvh items-center justify-center max-sm:flex-col max-sm:pt-40 max-sm:pb-40 sm:max-h-[1500px]">
       <div className="flex flex-col items-center justify-center max-sm:mt-20">
         <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className={cn('mb-1 font-DancingScript text-xl font-[700] text-red-400 uppercase')}>
           Cô dâu
