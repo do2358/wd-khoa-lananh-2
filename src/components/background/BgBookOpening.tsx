@@ -132,9 +132,9 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
         onClick={handleOpen}
       >
         {/* Closed Book (Back Cover) */}
-        <div style={{ transformStyle: 'preserve-3d' }} className="relative mx-auto h-[calc(100dvh-24px)] max-h-[680px] w-[90vw] overflow-visible rounded-lg shadow-2xl sm:w-130">
+        <div style={{ transformStyle: 'preserve-3d' }} className="relative mx-auto h-[calc(100dvh-24px)] max-h-[600px] w-[90vw] overflow-visible rounded-lg shadow-2xl sm:w-130">
           {/* Image 4 - Left half of back */}
-          <div className="absolute top-0 left-0 z-0 h-[calc(100dvh-24px)] max-h-[680px] w-52 overflow-hidden rounded-l-lg shadow-xl">
+          <div className="absolute top-0 left-0 z-0 h-[calc(100dvh-24px)] max-h-[600px] w-52 overflow-hidden rounded-l-lg shadow-xl">
             <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
           </div>
           {/* Image 5 - Right half of back */}
@@ -152,7 +152,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="absolute top-0 right-0 z-10 h-[calc(100dvh-24px)] max-h-[680px] w-82 overflow-hidden rounded-lg shadow-xl"
+            className="absolute top-0 right-0 z-10 h-[calc(100dvh-24px)] max-h-[600px] w-82 overflow-hidden rounded-lg shadow-xl"
           >
             <img alt="Cover right" src={image5} className="h-full w-full object-cover object-center" />
           </m.div>
@@ -182,7 +182,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           }}
           transition={coverSpring}
           variants={leftCoverVariants}
-          className="absolute h-[calc(100dvh-24px)] max-h-[680px] w-52 overflow-hidden rounded-l-lg shadow-xl"
+          className="absolute h-[calc(100dvh-24px)] max-h-[600px] w-52 overflow-hidden rounded-l-lg shadow-xl"
         >
           <img alt="Cover left" src={image4} className="h-full w-full object-cover object-center" />
         </m.div>
@@ -198,7 +198,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           }}
           transition={coverSpring}
           variants={rightCoverVariants}
-          className="absolute h-[calc(100dvh-24px)] max-h-[680px] w-82 overflow-hidden rounded-r-lg shadow-xl"
+          className="absolute h-[calc(100dvh-24px)] max-h-[600px] w-82 overflow-hidden rounded-r-lg shadow-xl"
         >
           <img alt="Cover right" src={image5} className="h-full w-full object-cover object-center" />
         </m.div>
@@ -222,7 +222,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           style={{ transformOrigin: 'right center' }}
           transition={{ ...imageSpring, delay: 0.5 }}
           variants={mediaAbove640 ? leftImageVariants : centerImageVariants}
-          className="h-[calc(100dvh-24px)] max-h-[680px] w-auto overflow-hidden rounded-none rounded-l-lg shadow-lg max-sm:hidden"
+          className="h-[calc(100dvh-24px)] max-h-[600px] w-auto overflow-hidden rounded-none rounded-l-lg shadow-lg max-sm:hidden"
         >
           <img alt="Save the Date" src={imgs(pType)?.image1} className="h-full w-full object-contain" />
         </m.div>
@@ -233,7 +233,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           initial="closed"
           transition={{ ...imageSpring, delay: 0.4 }}
           variants={centerImageVariants}
-          className="relative z-10 h-fit max-h-[680px] w-dvw overflow-hidden max-sm:px-2 sm:mx-0.5 sm:h-[calc(100dvh-24px)] sm:max-h-[680px] sm:w-auto sm:shadow-2xl"
+          className="relative z-10 h-fit max-h-[600px] w-dvw overflow-hidden max-sm:px-2 sm:mx-0.5 sm:h-[calc(100dvh-24px)] sm:max-h-[600px] sm:w-auto sm:shadow-2xl"
         >
           <img alt="Wedding Invitation" src={imgs(pType)?.image2} className="h-full w-full object-contain object-top" />
           {renderName}
@@ -246,7 +246,7 @@ export function BgBookOpening({ pType, pName, className, isOpen, setIsOpen, rend
           style={{ transformOrigin: 'left center' }}
           transition={{ ...imageSpring, delay: 0.5 }}
           variants={mediaAbove640 ? rightImageVariants : centerImageVariants}
-          className="h-fit w-dvw overflow-hidden rounded-none shadow-lg max-sm:px-2 sm:h-[calc(100dvh-24px)] sm:max-h-[680px] sm:w-auto sm:rounded-r-lg"
+          className="h-fit w-dvw overflow-hidden rounded-none shadow-lg max-sm:px-2 sm:h-[calc(100dvh-24px)] sm:max-h-[600px] sm:w-auto sm:rounded-r-lg"
         >
           <img alt="Ceremony Details" src={imgs(pType)?.image3} className="h-full w-full object-contain" />
         </m.div>

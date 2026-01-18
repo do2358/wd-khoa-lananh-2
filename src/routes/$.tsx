@@ -14,6 +14,7 @@ import Section04 from '@/components/Section04';
 import Section05 from '@/components/Section05';
 import Section07 from '@/components/Section07';
 import Section08 from '@/components/Section08';
+import SEO from '@/components/SEO';
 import UserAvatarStack from '@/components/UserAvatarStack';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 import LocalStorage from '@/libs/utils-storage';
@@ -46,6 +47,7 @@ function HomePage() {
   const pType0 = paramsArr?.[0] || '';
   const pType = ['h', 't', 't-31'].includes(pType0) ? pType0 : 'h';
   const pName = last(paramsArr)?.replace(/-/g, ' ') || 'TH';
+  const pName1 = !['h', 't', 't-31'].includes(pType0) ? !['TH'].includes(pName)  && pName : '';
 
   const [isOpenQR, setIsOpenQR] = useState(false);
   const [isOpenComments, setIsOpenComments] = useState(false);
@@ -118,7 +120,7 @@ function HomePage() {
 
   return (
     <>
-      {/* <SEO title={[pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} /> */}
+      <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
       {/* <SEO description={'✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 '} title={'Thu Huyền Việt Tùng'} /> */}
 
       {/* <BgAurora className="fixed top-0 left-0 -z-50 h-dvh w-dvw bg-white max-sm:hidden" classNameContainer="-z-50 opacity-40" /> */}
@@ -127,7 +129,7 @@ function HomePage() {
         <Section01 pType={pType} />
       </RcImagesPreview>
 
-      <Section03 pName={!['TH'].includes(pName) ? pName : ''} pType={pType} />
+      <Section03 pName={pName1} pType={pType} />
 
       {/* <Section02 pName={pName} pType={pType} /> */}
 

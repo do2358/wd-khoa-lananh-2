@@ -54,7 +54,7 @@ const config = defineConfig(({ mode }) => {
 
     // Optimize dependency pre-bundling
     optimizeDeps: {
-      include: ['react', 'react-dom', 'framer', 'lodash', '@rc-component/image', '@tanstack/react-router'],
+      include: ['react', 'react-dom', 'framer', 'firebase', 'lodash', '@rc-component/image', '@tanstack/react-router'],
       exclude: ['@tanstack/react-start'],
     },
 

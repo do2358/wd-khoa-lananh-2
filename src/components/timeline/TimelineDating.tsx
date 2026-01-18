@@ -122,7 +122,7 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
             <div key={uid + index} className={cn('group flex justify-center pt-20 sm:items-center sm:pt-40', index % 2 !== 0 && 'sm:flex-row-reverse')}>
               <MotionEffect
                 inView
-                inViewOnce={false}
+                inViewOnce
                 slide={{ direction: index % 2 === 0 ? 'left' : 'right' }}
                 className={cn('flex flex-col sm:max-w-md sm:flex-1', index % 2 === 0 ? 'sm:pr-5' : 'sm:pl-5')}
               >
@@ -137,7 +137,7 @@ const TimelineDating = (props: { className?: string; setModalImage?: (src?: stri
                 <div className="text-lg sm:text-base">{item.time2}</div>
               </div>
 
-              <MotionEffect inView inViewOnce={false} slide={{ direction: index % 2 === 0 ? 'right' : 'left' }} className="flex sm:max-w-md sm:flex-1">
+              <MotionEffect inView inViewOnce slide={{ direction: index % 2 === 0 ? 'right' : 'left' }} className="flex sm:max-w-md sm:flex-1">
                 <div className="relative mx-auto flex h-[360px] w-[300px] shrink-0 flex-col items-center justify-center rounded-xl border-2 border-red-900/50 p-2 sm:mx-16 sm:w-[250px] sm:rounded-full">
                   <RcImage alt="2611" height={'100%'} src={item.image} width={'100%'} className=" cursor-pointer rounded-lg object-cover sm:rounded-full" />
                   <div className="absolute top-0 left-[-10px] animate-[bounceY_12s_linear_infinite]">

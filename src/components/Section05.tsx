@@ -11,13 +11,13 @@ type TSection05Props = { setModalImage?: (src?: string) => void };
 const Section05 = ({ setModalImage }: TSection05Props) => {
   return (
     <section className="relative -mt-10 flex min-h-dvh max-w-[100dvw] flex-col items-center justify-center overflow-x-hidden px-4 pb-20 sm:max-h-[1400px] sm:px-6">
-      <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className="text-center text-xl text-red-500 uppercase">
+      <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className="text-center text-xl text-red-500 uppercase">
         Cho đến ngày
       </MotionEffect>
-      <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className={cn('mb-4 text-center font-DancingScript text-5xl font-[600] text-red-800 sm:text-6xl')}>
+      <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className={cn('mb-4 text-center font-DancingScript text-5xl font-[600] text-red-800 sm:text-6xl')}>
         Về chung một nhà
       </MotionEffect>
-      <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className="text-center font-Questrial text-lg text-neutral-500">
+      <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className="text-center font-Questrial text-lg text-neutral-500">
         <></>
       </MotionEffect>
 

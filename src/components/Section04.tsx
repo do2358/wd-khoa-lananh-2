@@ -13,13 +13,13 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
   return (
     <section className="relative flex min-h-dvh items-center justify-center max-sm:flex-col max-sm:pt-20 max-sm:pb-40 sm:max-h-[1500px]">
       <div className="flex flex-col items-center justify-center max-sm:mt-20">
-        <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className={cn('mb-1 font-DancingScript text-xl font-[700] text-red-400 uppercase')}>
+        <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className={cn('mb-1 font-DancingScript text-xl font-[700] text-red-400 uppercase')}>
           Cô dâu
         </MotionEffect>
-        <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className={cn('mb-6 font-DancingScript text-5xl text-red-800 sm:mb-3')}>
+        <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className={cn('mb-6 font-DancingScript text-5xl text-red-800 sm:mb-3')}>
           Trịnh Thu Huyền
         </MotionEffect>
-        <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className="relative flex size-[300px] items-center justify-center max-sm:mt-4 sm:size-[260px]">
+        <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className="relative flex size-[300px] items-center justify-center max-sm:mt-4 sm:size-[260px]">
           <RcImage
             height={'auto'}
             loading="eager"
@@ -37,7 +37,7 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
       {mediaAbove640 && (
         <MotionEffect
           inView
-          inViewOnce={false}
+          inViewOnce
           slide={{ direction: 'left' }}
           className="relative mx-16 hidden h-full max-h-[60%] max-w-xs min-w-[400px] shrink-0 flex-col items-center justify-center rounded-full border-2 border-red-900 p-2 max-sm:-order-1 sm:flex"
         >
@@ -61,7 +61,7 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
       )}
 
       <div className="flex flex-col items-center justify-center max-sm:-order-1">
-        <MotionEffect inView inViewOnce={false} slide={{ direction: 'right' }} className="relative mb-3 flex size-[300px] items-center justify-center max-sm:order-3 max-sm:mt-6 sm:size-[260px]">
+        <MotionEffect inView inViewOnce slide={{ direction: 'right' }} className="relative mb-3 flex size-[300px] items-center justify-center max-sm:order-3 max-sm:mt-6 sm:size-[260px]">
           <RcImage
             height={'auto'}
             loading="eager"
@@ -74,10 +74,10 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
             <Image alt="2611" height={260} src="/images/cricle1.png" width={260} className="size-[300px] max-w-screen-sm animate-[zoomTwo_5s_linear_infinite] object-cover sm:size-[260px]" />
           </div>
         </MotionEffect>
-        <MotionEffect inView inViewOnce={false} slide={{ direction: 'right' }} className={cn('mb-1 font-DancingScript text-xl font-[700] text-red-400 uppercase')}>
+        <MotionEffect inView inViewOnce slide={{ direction: 'right' }} className={cn('mb-1 font-DancingScript text-xl font-[700] text-red-400 uppercase')}>
           Chú rể
         </MotionEffect>
-        <MotionEffect inView inViewOnce={false} slide={{ direction: 'right' }} className={cn('font-DancingScript text-5xl text-red-800 max-sm:mb-4')}>
+        <MotionEffect inView inViewOnce slide={{ direction: 'right' }} className={cn('font-DancingScript text-5xl text-red-800 max-sm:mb-4')}>
           Ngô Việt Tùng
         </MotionEffect>
       </div>

@@ -15,7 +15,7 @@ const TimerCountDown = ({ targetDate }: TTimerCountDownProps) => {
   return (
     <MotionEffect
       inView
-      inViewOnce={false}
+      inViewOnce
       slide={{ direction: 'left' }}
       className="mt-4 flex w-full max-w-[700px] items-center justify-between divide-x divide-neutral-200 rounded-full border border-red-700 px-4 py-5 sm:mt-8 sm:px-4"
     >

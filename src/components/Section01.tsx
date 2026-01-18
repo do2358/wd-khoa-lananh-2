@@ -53,7 +53,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
         {mediaAbove640 && (
           <MotionEffect
             inView
-            inViewOnce={false}
+            inViewOnce
             slide={{ direction: 'left' }}
             className="relative hidden h-[476px] max-w-xs flex-col items-center justify-center rounded-full border-2 border-red-900 p-2 sm:flex"
           >
@@ -102,7 +102,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
         {mediaAbove640 && (
           <MotionEffect
             inView
-            inViewOnce={false}
+            inViewOnce
             slide={{ direction: 'left' }}
             className="relative h-[480px] max-w-xs flex-col items-center justify-center rounded-xl border-2 border-red-900 p-2 max-sm:mt-10 sm:flex sm:h-[476px] sm:rounded-full"
           >
@@ -125,7 +125,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
         )}
 
         {!mediaAbove640 && (
-          <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }}>
+          <MotionEffect inView inViewOnce slide={{ direction: 'left' }}>
             <div className="flex w-dvw gap-4 overflow-x-auto overflow-y-hidden px-4">
               <div className="relative h-[480px] max-w-xs flex-col items-center justify-center rounded-xl border-2 border-red-900 p-2 max-sm:mt-10 sm:flex sm:h-[476px] sm:rounded-full">
                 <RcImage

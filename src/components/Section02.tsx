@@ -14,7 +14,7 @@ const Section02 = ({ pType, pName }: TSection02Props) => {
       <div className="mb-4 flex items-center gap-1 font-Questrial text-base leading-[1.2] sm:mb-2 sm:text-lg">
         <span>{pType === 'h' ? 'Nhà văn hoá thôn Hà Lỗ, Thư Lâm, Hà Nội' : 'Ngõ cây xăng khu 6, Thuỵ Lôi, Thư Lâm, Hà Nội'}</span>
       </div>
-      <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className="sm:px-10 sm:py-5">
+      <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className="sm:px-10 sm:py-5">
         <CardEvents pName={pName} pType={pType} />
       </MotionEffect>
     </section>
