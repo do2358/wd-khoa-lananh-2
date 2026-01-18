@@ -16,10 +16,17 @@ interface LivestreamCommentsProps {
   onToggle: () => void;
 }
 
+// Quick fill messages - select 6 random messages
+const QUICK_MESSAGES = ['Chúc mừng hạnh phúc! 🎉', 'Trăm năm hạnh phúc! ❤️', 'Chúc đôi uyên ương hạnh phúc! 💑', 'Yêu thương mãi mãi! 💕', 'Chúc sớm có tin vui! 👶', 'Hạnh phúc bên nhau! 🥰'];
+
 export default function LivestreamComments({ userId, userName, userAvatar, isOpen, onToggle }: LivestreamCommentsProps) {
   const [message, setMessage] = useState('');
   const { comments, addComment } = useRealtimeComments(30);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleQuickFill = (quickMessage: string) => {
+    setMessage(quickMessage);
+  };
 
   // Auto-scroll to bottom when new comments arrive
   useEffect(() => {
@@ -95,7 +102,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
             <ScrollArea ref={scrollRef} className="h-full">
               <div className="space-y-2 p-3">
                 {comments.length === 0 ? (
-                  <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 10 }} transition={{ duration: 0.5 }} className="flex flex-col items-center justify-center px-4 py-12">
+                  <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 10 }} transition={{ duration: 0.5 }} className="flex flex-col items-center justify-center px-4 py-4">
                     <motion.div
                       animate={{
                         scale: [1, 1.1, 1],
@@ -154,7 +161,40 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
           </div>
 
           {/* Input Form */}
-          <form className="shrink-0 border-t border-red-200 bg-white p-3" onSubmit={handleSubmit}>
+          <form className="shrink-0 border-t border-red-200 bg-white p-3 pt-2" onSubmit={handleSubmit}>
+            {/* Quick Fill Buttons - 2 Rows in Single Scroll Container */}
+            <div className="scrollbar-hide mb-2 overflow-x-auto">
+              <div className="flex flex-col gap-1.5">
+                {/* First Row */}
+                <div className="flex gap-1.5">
+                  {QUICK_MESSAGES.slice(0, 3).map((quickMsg, index) => (
+                    <button
+                      key={'QUICK_MESSAGES' + index}
+                      type="button"
+                      className="shrink-0 rounded-full border border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-3 py-1.5 text-xs font-medium text-red-700 transition-all hover:border-red-300 hover:from-red-100 hover:to-rose-100 hover:shadow-sm"
+                      onClick={() => handleQuickFill(quickMsg)}
+                    >
+                      {quickMsg}
+                    </button>
+                  ))}
+                </div>
+                {/* Second Row */}
+                <div className="flex gap-1.5">
+                  {QUICK_MESSAGES.slice(3, 6).map((quickMsg, index) => (
+                    <button
+                      key={index + 3}
+                      type="button"
+                      className="shrink-0 rounded-full border border-red-200 bg-gradient-to-r from-red-50 to-rose-50 px-3 py-1.5 text-xs font-medium text-red-700 transition-all hover:border-red-300 hover:from-red-100 hover:to-rose-100 hover:shadow-sm"
+                      onClick={() => handleQuickFill(quickMsg)}
+                    >
+                      {quickMsg}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Input Field */}
             <div className="flex gap-2">
               <input
                 maxLength={200}
