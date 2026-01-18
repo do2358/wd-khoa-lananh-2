@@ -69,14 +69,15 @@ function HomePage() {
       // Create a consistent user ID based on pName
       const pNameSlug = pName.toLowerCase().replace(/\s+/g, '-');
       const deterministicUserId = `user-${timestamp}-${pNameSlug}`;
+      const pNameR = pName || `Guest-${timestamp}`;
 
       setUserId(deterministicUserId);
-      setUserName(pName);
+      setUserName(pNameR);
       setUserAvatar(storedUserAvatar || '');
 
       // Store in localStorage
       localStorage.setItem('wedding-user-id', deterministicUserId);
-      localStorage.setItem('wedding-user-name', pName);
+      localStorage.setItem('wedding-user-name', pNameR);
     } else if (storedUserId && storedUserName) {
       // Use stored values if no pName
       setUserId(storedUserId);
