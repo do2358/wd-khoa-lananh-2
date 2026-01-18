@@ -6,6 +6,7 @@ import { Drawer } from 'vaul';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 import { cn } from '@/libs/utils';
 
+import { showCommentToast } from './CommentToast';
 import ScrollArea from './ScrollArea';
 
 interface LivestreamCommentsProps {
@@ -54,8 +55,27 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
     if (!userId || !userName || !message.trim()) return;
 
     try {
-      await addComment(userId, userName, message.trim(), userAvatar);
+      const trimmedMessage = message.trim();
+      await addComment(userId, userName, trimmedMessage, userAvatar);
+
+      // Show toast notification
+      showCommentToast({
+        id: `toast-${Date.now()}`,
+        userId,
+        userName,
+        message: trimmedMessage,
+        userAvatar,
+        timestamp: new Date(),
+        createdAt: new Date(),
+      });
+
+      // Clear message and close modal
       setMessage('');
+
+      // Close modal after a short delay to show the animation
+      setTimeout(() => {
+        onToggle();
+      }, 300);
     } catch (error) {
       console.error('Failed to send comment:', error);
     }
