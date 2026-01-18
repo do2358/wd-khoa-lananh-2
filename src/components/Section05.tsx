@@ -18,7 +18,7 @@ const Section05 = ({ setModalImage }: TSection05Props) => {
         Về chung một nhà
       </MotionEffect>
       <MotionEffect inView inViewOnce={false} slide={{ direction: 'left' }} className="text-center font-Questrial text-lg text-neutral-500">
-        Cùng chúng mình đếm ngược nhé!
+        <></>
       </MotionEffect>
 
       <Calendar
