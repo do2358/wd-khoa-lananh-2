@@ -52,7 +52,7 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
                 src={
                   pType === 'h'
                     ? 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768652764/TH/huyen_qr_k6qkzv.jpg'
-                    : 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768696516/TH/tung_qr_k6dqqe.jpg'
+                    : 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768696974/TH/tung_qr_k6dqqe.jpg'
                 }
                 width={400}
                 className="!h-auto min-h-[300px] !w-full object-contain"
@@ -69,7 +69,7 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
                 loading="eager"
                 src={
                   pType === 'h'
-                    ? 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768696516/TH/tung_qr_k6dqqe.jpg'
+                    ? 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768696974/TH/tung_qr_k6dqqe.jpg'
                     : 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768652764/TH/huyen_qr_k6qkzv.jpg'
                 }
                 width={400}
