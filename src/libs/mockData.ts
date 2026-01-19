@@ -34,7 +34,7 @@ export const VIETNAMESE_MESSAGES = [
   'Chúc đôi uyên ương hạnh phúc, giàu có và thịnh vượng!',
   'Chúc mừng hai bạn! Hẹn sớm được ăn cỗ đầy tháng nhé!',
   'Trăm năm hạnh phúc! Chúc hai bạn yêu nhau đến muôn đời!',
-  'Chúc mừng tân lang tân nương! Chúc luôn nắm tay nhau trong mọi hành trình!',
+  'Chúc luôn nắm tay nhau trong mọi hành trình!',
   'Hạnh phúc mãi bên nhau! Chúc hai bạn có một đám cưới thật ý nghĩa!',
   'Chúc hai bạn trẻ xây dựng tổ ấm hạnh phúc và ấm êm!',
   'Chúc đôi bạn trẻ luôn vui vẻ, hạnh phúc và thành công trong cuộc sống!',

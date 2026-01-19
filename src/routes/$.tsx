@@ -17,6 +17,7 @@ import Section08 from '@/components/Section08';
 import SEO from '@/components/SEO';
 import UserAvatarStack from '@/components/UserAvatarStack';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
+import { generateMockComments } from '@/libs/mockData';
 import LocalStorage from '@/libs/utils-storage';
 
 //
@@ -32,13 +33,10 @@ export const Route = createFileRoute('/$')({
     const pType = pTypeList.includes(pType0) ? pType0 : 'h';
     // If there are multiple segments (e.g. /t/pName) use the last segment as pName,
     // otherwise for single-segment (/pName) use that segment if it's NOT a pType.
-    const pNameRaw = paramsArr.length > 1 ? last(paramsArr) : (!pTypeList.includes(pType0) ? pType0 : '');
+    const pNameRaw = paramsArr.length > 1 ? last(paramsArr) : !pTypeList.includes(pType0) ? pType0 : '';
     const pName = pNameRaw ? pNameRaw.replace(/-/g, ' ') : '';
     return {
-      meta: [
-        { title: [pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') },
-        { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' },
-      ],
+      meta: [{ title: [pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
     };
   },
 });
@@ -56,7 +54,7 @@ function HomePage() {
 
   // If there are multiple segments (e.g. /t/pName) use the last segment as pName,
   // otherwise for single-segment (/pName) use that segment if it's NOT a pType.
-  const rawPName = paramsArr.length > 1 ? last(paramsArr) : (!pTypeList.includes(pType0) ? pType0 : '');
+  const rawPName = paramsArr.length > 1 ? last(paramsArr) : !pTypeList.includes(pType0) ? pType0 : '';
   const pName = rawPName ? rawPName.replace(/-/g, ' ') : 'TH';
   const pName1 = rawPName ? (pName === 'TH' ? '' : pName) : '';
 
@@ -126,6 +124,32 @@ function HomePage() {
     }
   }, [comments, isOpenComments]);
 
+  // Show mock toast messages on component mount
+  useEffect(() => {
+    const mockComments = generateMockComments(3);
+
+    // Show mock toasts with staggered delays
+    mockComments.forEach((mockComment, index) => {
+      setTimeout(
+        () => {
+          showCommentToast(
+            {
+              id: mockComment.id,
+              userId: mockComment.userId,
+              userName: mockComment.userName,
+              message: mockComment.message,
+              timestamp: mockComment.timestamp,
+              createdAt: mockComment.createdAt,
+              userAvatar: undefined,
+            },
+            { autoClose: 3000 },
+          );
+        },
+        (index + 1) * 2000,
+      ); // Show every 2 seconds
+    });
+  }, []);
+
   //
   const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/CH1Yi2JWQdu4c1LVA' : 'https://maps.app.goo.gl/7XFB6K6QAaBbRWYP9';
 
@@ -158,7 +182,7 @@ function HomePage() {
         items={[
           {
             title: `Xem vị trí ${pType === 'h' ? 'Nhà Gái' : 'Nhà Trai'}`,
-            icon: <MapPinIcon className="size-full" />, 
+            icon: <MapPinIcon className="size-full" />,
             href: mapParty,
             target: '_blank',
             rel: 'noreferrer noopenner',
@@ -166,7 +190,7 @@ function HomePage() {
 
           {
             title: 'Album chúng mình',
-            icon: <ImagesIcon className="size-full" />, 
+            icon: <ImagesIcon className="size-full" />,
             href: '/albums',
             target: '_blank',
             rel: 'noreferrer noopenner',
@@ -174,7 +198,7 @@ function HomePage() {
 
           {
             title: 'Lời chúc',
-            icon: <MessageCircleIcon className="size-full" />, 
+            icon: <MessageCircleIcon className="size-full" />,
             onClick: () => {
               setIsOpenComments(!isOpenComments);
             },
@@ -182,7 +206,7 @@ function HomePage() {
 
           {
             title: 'Mừng Cưới',
-            icon: <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />, 
+            icon: <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />,
             onClick: () => {
               setIsOpenQR(true);
             },

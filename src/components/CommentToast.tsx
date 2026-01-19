@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { toast } from 'react-toastify';
+import { type ToastOptions, toast } from 'react-toastify';
 
 import { type Comment } from '@/hooks/useRealtimeComments';
 
@@ -25,7 +25,7 @@ export function CommentToast({ comment }: CommentToastProps) {
   );
 }
 
-export function showCommentToast(comment: Comment) {
+export function showCommentToast(comment: Comment, options?: ToastOptions) {
   toast.error(<CommentToast comment={comment} />, {
     closeOnClick: true,
     pauseOnHover: true,
@@ -33,5 +33,6 @@ export function showCommentToast(comment: Comment) {
     icon: false,
     className: 'bg-white border border-red-200 shadow-lg rounded-xl p-3',
     progressClassName: 'bg-gradient-to-r from-red-500 to-rose-500',
+    ...options,
   });
 }
