@@ -142,10 +142,10 @@ function HomePage() {
               createdAt: mockComment.createdAt,
               userAvatar: undefined,
             },
-            { autoClose: 5000 },
+            { autoClose: 3300 },
           );
         },
-        (index + 1) * 2000,
+        (index + 1) * 1000,
       ); // Show every 2 seconds
     });
   }, []);
