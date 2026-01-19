@@ -15,7 +15,7 @@ const imgs = (pType = 'h') => {
     return {
       image1: '/thiep/thiep-nha-trai-2-01.jpg',
       image2: '/thiep/thiep-nha-trai-2-02.png',
-      image3: '/thiep/thiep-nha-trai-2-03.jpg',
+      image3: '/thiep/thiep-nha-trai-1-03.jpg',
     };
   return {
     image1: '/thiep/thiep-nha-trai-1-01.jpg',
