@@ -130,23 +130,20 @@ function HomePage() {
 
     // Show mock toasts with staggered delays
     mockComments.forEach((mockComment, index) => {
-      setTimeout(
-        () => {
-          showCommentToast(
-            {
-              id: mockComment.id,
-              userId: mockComment.userId,
-              userName: mockComment.userName,
-              message: mockComment.message,
-              timestamp: mockComment.timestamp,
-              createdAt: mockComment.createdAt,
-              userAvatar: undefined,
-            },
-            { autoClose: 3300 },
-          );
-        },
-        (index + 1) * 1000,
-      ); // Show every 2 seconds
+      setTimeout(() => {
+        showCommentToast(
+          {
+            id: mockComment.id,
+            userId: mockComment.userId,
+            userName: mockComment.userName,
+            message: mockComment.message,
+            timestamp: mockComment.timestamp,
+            createdAt: mockComment.createdAt,
+            userAvatar: undefined,
+          },
+          { autoClose: 3300 },
+        );
+      }, index * 1000); // Show every 2 seconds
     });
   }, []);
 
