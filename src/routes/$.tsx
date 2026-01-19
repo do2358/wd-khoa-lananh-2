@@ -145,7 +145,7 @@ function HomePage() {
             { autoClose: 3300 },
           );
         },
-        (index + 1) * 1300,
+        (index + 1) * 1000,
       ); // Show every 2 seconds
     });
   }, []);
