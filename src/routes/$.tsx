@@ -142,7 +142,7 @@ function HomePage() {
               createdAt: mockComment.createdAt,
               userAvatar: undefined,
             },
-            { autoClose: 3000 },
+            { autoClose: 5000 },
           );
         },
         (index + 1) * 2000,

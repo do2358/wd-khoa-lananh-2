@@ -28,7 +28,6 @@ export function CommentToast({ comment }: CommentToastProps) {
 export function showCommentToast(comment: Comment, options?: ToastOptions) {
   toast.error(<CommentToast comment={comment} />, {
     closeOnClick: true,
-    pauseOnHover: true,
     draggable: true,
     icon: false,
     className: 'bg-white border border-red-200 shadow-lg rounded-xl p-3',

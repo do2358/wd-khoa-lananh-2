@@ -8,7 +8,7 @@ const Providers = ({ children }: TProvidersProps) => {
   return (
     <LazyMotion features={domAnimation}>
       {children}
-      <ToastContainer autoClose={5000} closeOnClick={false} draggable={false} icon={false} newestOnTop position="top-right" stacked theme="light" />
+      <ToastContainer autoClose={5000} closeOnClick draggable icon={false} newestOnTop pauseOnFocusLoss={false} position="top-right" stacked theme="light" />
     </LazyMotion>
   );
 };
