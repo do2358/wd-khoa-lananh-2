@@ -41,11 +41,7 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
           ].map((image, index) => {
             const zIndex = 10;
             return (
-              <div
-                key={'ImageRotate' + index}
-                style={{ rotate: `${Math.random() * 20 - 10}deg` }}
-                className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 transition-all hover:rotate-0!"
-              >
+              <div key={'ImageRotate' + index} style={{ rotate: `${Math.random() * 20 - 10}deg` }} className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1">
                 <RcImage
                   alt="3101"
                   fallback={IMG_BLUR}
