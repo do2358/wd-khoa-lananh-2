@@ -10,9 +10,9 @@ export const getRouter = () => {
     routeTree,
     context: {},
     defaultPreload: 'intent',
-    scrollRestoration: true,
     defaultStructuralSharing: true,
     defaultPreloadStaleTime: 0,
+    scrollRestoration: false,
     defaultPendingComponent: () => <PageLoading />,
     defaultNotFoundComponent: () => <PageLoading />,
   });

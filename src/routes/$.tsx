@@ -66,6 +66,9 @@ function HomePage() {
   const [userName, setUserName] = useState<string>('');
   const [userAvatar, setUserAvatar] = useState<string>('');
 
+  //
+  const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/CH1Yi2JWQdu4c1LVA' : 'https://maps.app.goo.gl/7XFB6K6QAaBbRWYP9';
+
   // Idle detection and toast notifications
   const { comments } = useRealtimeComments(30);
 
@@ -111,45 +114,41 @@ function HomePage() {
     }
   }, [pName]);
 
-  // Show toast for new real-time comments (optional)
+  // Show real comments first, then mock comments on component mount
   useEffect(() => {
-    if (comments.length > 0 && !isOpenComments) {
-      const latestComment = comments[comments.length - 1];
-      // Only show if it's a recent comment (within last 5 seconds)
-      const now = Date.now();
-      const commentTime = latestComment.createdAt?.getTime?.() || 0;
-      if (now - commentTime < 5000) {
-        showCommentToast(latestComment);
-      }
+    // First, show real comments if they exist
+    if (comments.length > 0) {
+      comments.forEach((comment, index) => {
+        setTimeout(() => {
+          showCommentToast(comment, { autoClose: 3300 });
+        }, index * 1000);
+      });
     }
-  }, [comments, isOpenComments]);
 
-  // Show mock toast messages on component mount
-  useEffect(() => {
+    // Then show mock comments after real ones
     const mockComments = generateMockComments(3);
+    const realCommentsDelay = comments.length * 1000; // Delay based on number of real comments
 
-    // Show mock toasts with staggered delays
     mockComments.forEach((mockComment, index) => {
-      setTimeout(() => {
-        showCommentToast(
-          {
-            id: mockComment.id,
-            userId: mockComment.userId,
-            userName: mockComment.userName,
-            message: mockComment.message,
-            timestamp: mockComment.timestamp,
-            createdAt: mockComment.createdAt,
-            userAvatar: undefined,
-          },
-          { autoClose: 3300 },
-        );
-      }, index * 1000); // Show every 2 seconds
+      setTimeout(
+        () => {
+          showCommentToast(
+            {
+              id: mockComment.id,
+              userId: mockComment.userId,
+              userName: mockComment.userName,
+              message: mockComment.message,
+              timestamp: mockComment.timestamp,
+              createdAt: mockComment.createdAt,
+              userAvatar: undefined,
+            },
+            { autoClose: 3300 },
+          );
+        },
+        realCommentsDelay + index * 1000,
+      );
     });
   }, []);
-
-  //
-  const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/CH1Yi2JWQdu4c1LVA' : 'https://maps.app.goo.gl/7XFB6K6QAaBbRWYP9';
-
   return (
     <>
       <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
