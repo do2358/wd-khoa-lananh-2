@@ -1,4 +1,5 @@
 import { m } from 'motion/react';
+import { memo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { IMG_BLUR } from '@/libs/constant';
@@ -77,4 +78,4 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
   );
 };
 
-export default Section07;
+export default memo(Section07);

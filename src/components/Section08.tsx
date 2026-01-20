@@ -1,5 +1,6 @@
 import { Image } from '@unpic/react';
 import { ImagesIcon } from 'lucide-react';
+import { memo } from 'react';
 
 import { IMG_BLUR } from '@/libs/constant';
 import { cn } from '@/libs/utils';
@@ -116,4 +117,4 @@ const Section08 = ({ setModalImage }: TSection08Props) => {
   );
 };
 
-export default Section08;
+export default memo(Section08);

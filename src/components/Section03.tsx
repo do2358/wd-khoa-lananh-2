@@ -1,6 +1,6 @@
 import { Image } from '@unpic/react';
 import { useMotionValueEvent, useScroll } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { cn } from '@/libs/utils';
@@ -73,4 +73,4 @@ const Section03 = ({ pType, pName }: TSection03Props) => {
   );
 };
 
-export default Section03;
+export default memo(Section03);

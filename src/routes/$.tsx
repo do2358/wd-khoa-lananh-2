@@ -149,73 +149,74 @@ function HomePage() {
   }, []);
 
   return (
-    <Suspense fallback={<PageLoading />}>
+    <>
       <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
+      <Suspense fallback={<PageLoading />}>
+        <RcImagesPreview>
+          <Section01 pType={pType} />
+        </RcImagesPreview>
 
-      <RcImagesPreview>
-        <Section01 pType={pType} />
-      </RcImagesPreview>
+        <Section03 pName={pName1} pType={pType} />
 
-      <Section03 pName={pName1} pType={pType} />
+        <RcImagesPreview>
+          <Section04 />
+        </RcImagesPreview>
 
-      <RcImagesPreview>
-        <Section04 />
-      </RcImagesPreview>
+        <Section05 />
 
-      <Section05 />
+        <RcImagesPreview>
+          <Section07 />
+        </RcImagesPreview>
 
-      <RcImagesPreview>
-        <Section07 />
-      </RcImagesPreview>
+        <RcImagesPreview>
+          <Section08 />
+        </RcImagesPreview>
 
-      <RcImagesPreview>
-        <Section08 />
-      </RcImagesPreview>
-
-      <FloatingDock
-        desktopClassName="fixed bottom-4 left-1/2 -translate-x-1/2 z-40"
-        items={[
-          {
-            title: `Xem vị trí ${pType === 'h' ? 'Nhà Gái' : 'Nhà Trai'}`,
-            icon: <MapPinIcon className="size-full" />,
-            href: mapParty,
-            target: '_blank',
-            rel: 'noreferrer noopenner',
-          },
-
-          {
-            title: 'Album chúng mình',
-            icon: <ImagesIcon className="size-full" />,
-            href: '/albums',
-            target: '_blank',
-            rel: 'noreferrer noopenner',
-          },
-
-          {
-            title: 'Lời chúc',
-            icon: <MessageCircleIcon className="size-full" />,
-            onClick: () => {
-              setIsOpenComments(!isOpenComments);
+        <FloatingDock
+          desktopClassName="fixed bottom-4 left-1/2 -translate-x-1/2 z-40"
+          items={[
+            {
+              title: `Xem vị trí ${pType === 'h' ? 'Nhà Gái' : 'Nhà Trai'}`,
+              icon: <MapPinIcon className="size-full" />,
+              href: mapParty,
+              target: '_blank',
+              rel: 'noreferrer noopenner',
             },
-          },
 
-          {
-            title: 'Mừng Cưới',
-            icon: <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />,
-            onClick: () => {
-              setIsOpenQR(true);
+            {
+              title: 'Album chúng mình',
+              icon: <ImagesIcon className="size-full" />,
+              href: '/albums',
+              target: '_blank',
+              rel: 'noreferrer noopenner',
             },
-          },
-        ]}
-      />
 
-      <ModalQR open={isOpenQR} pName={pName} pType={pType} setOpen={setIsOpenQR} />
+            {
+              title: 'Lời chúc',
+              icon: <MessageCircleIcon className="size-full" />,
+              onClick: () => {
+                setIsOpenComments(!isOpenComments);
+              },
+            },
 
-      {/* User Avatar Stack - Top Left */}
-      <UserAvatarStack userId={userId} userAvatar={userAvatar} userName={userName} />
+            {
+              title: 'Mừng Cưới',
+              icon: <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />,
+              onClick: () => {
+                setIsOpenQR(true);
+              },
+            },
+          ]}
+        />
 
-      {/* Livestream Comments - Bottom Right */}
-      <LivestreamComments userId={userId} hasUserName={!!pName} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
-    </Suspense>
+        <ModalQR open={isOpenQR} pName={pName} pType={pType} setOpen={setIsOpenQR} />
+
+        {/* User Avatar Stack - Top Left */}
+        <UserAvatarStack userId={userId} userAvatar={userAvatar} userName={userName} />
+
+        {/* Livestream Comments - Bottom Right */}
+        <LivestreamComments userId={userId} hasUserName={!!pName} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
+      </Suspense>
+    </>
   );
 }

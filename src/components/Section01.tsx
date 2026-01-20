@@ -1,4 +1,5 @@
 import { Image } from '@unpic/react';
+import { memo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { IMG_BLUR } from '@/libs/constant';
@@ -179,4 +180,4 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
   );
 };
 
-export default Section01;
+export default memo(Section01);
