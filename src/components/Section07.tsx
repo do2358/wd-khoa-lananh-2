@@ -1,10 +1,10 @@
+import { m } from 'motion/react';
 import { memo } from 'react';
 
 import { IMG_BLUR } from '@/libs/constant';
 import { cn } from '@/libs/utils';
 
 import RcImage from './media/RcImage';
-import ScrollArea from './ScrollArea';
 
 type TSection07Props = {
   onClickBtn01?: () => void;
@@ -25,7 +25,7 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
       </div> */}
 
       <div className="relative flex min-h-fit w-full justify-center overflow-hidden">
-        <ScrollArea suppressScrollY className="flex items-center overflow-x-auto px-10 py-8">
+        <div className="hide-scrollbar flex items-center overflow-x-auto px-10 py-8">
           {[
             // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487167/cuonglinh2611/albums/bygc1uvdcp8sssvosah0.jpg",
             // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487153/cuonglinh2611/albums/jm3pn3xcrm2n2qyrtwly.jpg",
@@ -41,7 +41,21 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
           ].map((image, index) => {
             const zIndex = 10;
             return (
-              <div key={'ImageRotate' + index} style={{ rotate: `${Math.random() * 20 - 10}deg` }} className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1">
+              <m.div
+                key={'ImageRotate' + index}
+                style={{ rotate: Math.random() * 20 - 10 }}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 0,
+                  zIndex,
+                }}
+                whileTap={{
+                  scale: 1.1,
+                  rotate: 0,
+                  zIndex,
+                }}
+                className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1"
+              >
                 <RcImage
                   alt="3101"
                   fallback={IMG_BLUR}
@@ -52,10 +66,10 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
                   width={300}
                   className="shrink-0 cursor-pointer rounded-lg object-cover"
                 />
-              </div>
+              </m.div>
             );
           })}
-        </ScrollArea>
+        </div>
       </div>
     </section>
   );
