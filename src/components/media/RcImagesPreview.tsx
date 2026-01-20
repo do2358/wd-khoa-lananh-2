@@ -1,6 +1,6 @@
 import RcImage from '@rc-component/image';
 import { ArrowLeftIcon, ArrowLeftRightIcon, ArrowRightIcon, RotateCcwSquareIcon, RotateCwSquareIcon, XIcon, ZoomInIcon, ZoomOutIcon } from 'lucide-react';
-import React from 'react';
+import React, { memo } from 'react';
 
 import { cn } from '@/libs/utils';
 import { type GetProps } from '@/libs/utils-type';
@@ -45,4 +45,4 @@ const RcImagesPreview = ({ children, ...props }: TRcImagesPreviewProps) => {
   );
 };
 
-export default RcImagesPreview;
+export default memo(RcImagesPreview);

@@ -1,6 +1,5 @@
 import { m } from 'motion/react';
 import { memo } from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 import { IMG_BLUR } from '@/libs/constant';
 import { cn } from '@/libs/utils';
@@ -14,7 +13,6 @@ type TSection07Props = {
 };
 
 const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
-  const mediaAbove640 = useMediaQuery({ minWidth: 640 });
   return (
     <section className="relative flex min-h-fit max-w-[100dvw] flex-col items-center justify-center overflow-x-hidden py-40">
       <div className="mb-1 text-center text-base text-red-500 uppercase max-sm:px-8">♥ ♥ ♥</div>
