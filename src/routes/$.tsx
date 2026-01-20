@@ -1,24 +1,26 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { debounce, last } from 'lodash';
 import { GiftIcon, ImagesIcon, MapPinIcon, MessageCircleIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 
+import PageLoading from '@/components/background/PageLoading';
 import { showCommentToast } from '@/components/CommentToast';
-import FloatingDock from '@/components/FloatingDock';
-import LivestreamComments from '@/components/LivestreamComments';
-import RcImagesPreview from '@/components/media/RcImagesPreview';
-import ModalQR from '@/components/modal/ModalQR';
-import Section01 from '@/components/Section01';
-import Section03 from '@/components/Section03';
-import Section04 from '@/components/Section04';
-import Section05 from '@/components/Section05';
-import Section07 from '@/components/Section07';
-import Section08 from '@/components/Section08';
-import SEO from '@/components/SEO';
-import UserAvatarStack from '@/components/UserAvatarStack';
 import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 import { generateMockComments } from '@/libs/mockData';
 import LocalStorage from '@/libs/utils-storage';
+
+const FloatingDock = lazy(() => import('@/components/FloatingDock'));
+const LivestreamComments = lazy(() => import('@/components/LivestreamComments'));
+const RcImagesPreview = lazy(() => import('@/components/media/RcImagesPreview'));
+const ModalQR = lazy(() => import('@/components/modal/ModalQR'));
+const Section01 = lazy(() => import('@/components/Section01'));
+const Section03 = lazy(() => import('@/components/Section03'));
+const Section04 = lazy(() => import('@/components/Section04'));
+const Section05 = lazy(() => import('@/components/Section05'));
+const Section07 = lazy(() => import('@/components/Section07'));
+const Section08 = lazy(() => import('@/components/Section08'));
+const SEO = lazy(() => import('@/components/SEO'));
+const UserAvatarStack = lazy(() => import('@/components/UserAvatarStack'));
 
 //
 //
@@ -147,7 +149,7 @@ function HomePage() {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<PageLoading />}>
       <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
 
       <RcImagesPreview>
@@ -214,6 +216,6 @@ function HomePage() {
 
       {/* Livestream Comments - Bottom Right */}
       <LivestreamComments userId={userId} hasUserName={!!pName} isOpen={isOpenComments} userAvatar={userAvatar} userName={userName} onToggle={() => setIsOpenComments(!isOpenComments)} />
-    </>
+    </Suspense>
   );
 }
