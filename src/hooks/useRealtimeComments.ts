@@ -16,6 +16,8 @@ export interface Comment {
 export function useRealtimeComments(maxComments = 50) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [newestComment, setNewestComment] = useState<Comment | null>(null);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
     const db = getFirestore(getFirebaseApp());
@@ -38,8 +40,28 @@ export function useRealtimeComments(maxComments = 50) {
             createdAt: data.timestamp?.toDate() || new Date(),
           });
         });
-        setComments(newComments.reverse()); // Show oldest first
+
+        const sortedComments = newComments.reverse(); // Show oldest first
+
+        // Detect newest comment (only after first load)
+        if (!isFirstLoad && sortedComments.length > 0) {
+          const latestComment = sortedComments[sortedComments.length - 1];
+          // Check if this is truly a new comment by comparing with previous state
+          setComments((prevComments) => {
+            const isNewComment = !prevComments.some((c) => c.id === latestComment.id);
+            if (isNewComment) {
+              setNewestComment(latestComment);
+            }
+            return sortedComments;
+          });
+        } else {
+          setComments(sortedComments);
+        }
+
         setLoading(false);
+        if (isFirstLoad) {
+          setIsFirstLoad(false);
+        }
       },
       (error) => {
         console.error('Error fetching comments:', error);
@@ -48,7 +70,7 @@ export function useRealtimeComments(maxComments = 50) {
     );
 
     return () => unsubscribe();
-  }, [maxComments]);
+  }, [maxComments, isFirstLoad]);
 
   const addComment = async (userId: string, userName: string, message: string, userAvatar?: string) => {
     const db = getFirestore(getFirebaseApp());
@@ -68,5 +90,5 @@ export function useRealtimeComments(maxComments = 50) {
     }
   };
 
-  return { comments, loading, addComment };
+  return { comments, loading, addComment, newestComment };
 }

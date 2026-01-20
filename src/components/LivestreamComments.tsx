@@ -74,7 +74,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
       // Close modal after a short delay to show the animation
       setTimeout(() => {
         onToggle();
-      }, 300);
+      }, 500);
     } catch (error) {
       console.error('Failed to send comment:', error);
     }

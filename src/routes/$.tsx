@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { last } from 'lodash';
+import { debounce, last } from 'lodash';
 import { GiftIcon, ImagesIcon, MapPinIcon, MessageCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -70,7 +70,7 @@ function HomePage() {
   const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/CH1Yi2JWQdu4c1LVA' : 'https://maps.app.goo.gl/7XFB6K6QAaBbRWYP9';
 
   // Idle detection and toast notifications
-  const { comments } = useRealtimeComments(30);
+  const { comments, newestComment } = useRealtimeComments(30);
 
   // Load user info from localStorage on mount
   useEffect(() => {
@@ -114,24 +114,22 @@ function HomePage() {
     }
   }, [pName]);
 
-  // Show real comments first, then mock comments on component mount
+  // Show toast for newest real-time comment
   useEffect(() => {
-    // First, show real comments if they exist
-    if (comments.length > 0) {
-      comments.forEach((comment, index) => {
-        setTimeout(() => {
-          showCommentToast(comment, { autoClose: 3300 });
-        }, index * 1000);
-      });
+    if (newestComment && !isOpenComments) {
+      showCommentToast(newestComment, { autoClose: 3300 });
     }
+  }, [newestComment, isOpenComments]);
 
+  // Show mock comments on initial mount
+  useEffect(() => {
     // Then show mock comments after real ones
     const mockComments = generateMockComments(3);
     const realCommentsDelay = comments.length * 1000; // Delay based on number of real comments
 
-    mockComments.forEach((mockComment, index) => {
-      setTimeout(
-        () => {
+    debounce(() => {
+      mockComments.forEach((mockComment, index) => {
+        debounce(() => {
           showCommentToast(
             {
               id: mockComment.id,
@@ -144,11 +142,11 @@ function HomePage() {
             },
             { autoClose: 3300 },
           );
-        },
-        realCommentsDelay + index * 1000,
-      );
-    });
+        }, index * 1000)();
+      });
+    }, realCommentsDelay)();
   }, []);
+
   return (
     <>
       <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
