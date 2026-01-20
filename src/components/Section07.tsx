@@ -1,4 +1,3 @@
-import { m } from 'motion/react';
 import { memo } from 'react';
 
 import { IMG_BLUR } from '@/libs/constant';
@@ -42,21 +41,7 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
           ].map((image, index) => {
             const zIndex = 10;
             return (
-              <m.div
-                key={'ImageRotate' + index}
-                style={{ rotate: Math.random() * 20 - 10 }}
-                whileHover={{
-                  scale: 1.1,
-                  rotate: 0,
-                  zIndex,
-                }}
-                whileTap={{
-                  scale: 1.1,
-                  rotate: 0,
-                  zIndex,
-                }}
-                className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1"
-              >
+              <div key={'ImageRotate' + index} style={{ rotate: `${Math.random() * 20 - 10}deg` }} className="mt-4 -mr-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1">
                 <RcImage
                   alt="3101"
                   fallback={IMG_BLUR}
@@ -67,7 +52,7 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
                   width={300}
                   className="shrink-0 cursor-pointer rounded-lg object-cover"
                 />
-              </m.div>
+              </div>
             );
           })}
         </ScrollArea>
