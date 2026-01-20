@@ -125,7 +125,6 @@ function HomePage() {
   useEffect(() => {
     // Then show mock comments after real ones
     const mockComments = generateMockComments(3);
-    const realCommentsDelay = comments.length * 1000; // Delay based on number of real comments
 
     debounce(() => {
       mockComments.forEach((mockComment, index) => {
@@ -144,7 +143,7 @@ function HomePage() {
           );
         }, index * 1000)();
       });
-    }, realCommentsDelay)();
+    }, 100)();
   }, []);
 
   return (
