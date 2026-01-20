@@ -52,12 +52,6 @@ const config = defineConfig(({ mode }) => {
         }),
     ].filter(Boolean),
 
-    // Optimize dependency pre-bundling
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'framer', 'lodash', '@rc-component/image', '@tanstack/react-router'],
-      exclude: ['@tanstack/react-start'],
-    },
-
     ssr: {
       optimizeDeps: {
         include: ['framer', 'lodash', '@rc-component/image'],
@@ -69,16 +63,6 @@ const config = defineConfig(({ mode }) => {
     build: {
       // Increase chunk size warning limit
       chunkSizeWarningLimit: 1000,
-
-      // Optimize chunking strategy
-      rollupOptions: {
-        output: {
-          chunkFileNames: 'assets/js/[name]-[hash].js',
-          entryFileNames: 'assets/js/[name]-[hash].js',
-          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-        },
-      },
-
       // Enable minification
       minify: 'esbuild',
 
@@ -114,15 +98,8 @@ const config = defineConfig(({ mode }) => {
         // Add overlay for better DX
         overlay: true,
       },
-
-      // Pre-transform known dependencies
-      warmup: {
-        clientFiles: ['./src/routes/**/*.tsx', './src/components/**/*.tsx'],
-      },
-
       // Enable cors if needed
       cors: true,
-
       // Compression for dev server
       compress: true,
     },
@@ -143,10 +120,6 @@ const config = defineConfig(({ mode }) => {
             drop: ['console', 'debugger'],
           }),
     },
-
-    // Cache optimizations
-    cacheDir: '.vite',
-
     // Performance hints
     logLevel: isDev ? 'info' : 'warn',
   } as UserConfig;
