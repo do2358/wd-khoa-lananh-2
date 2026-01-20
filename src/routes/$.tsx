@@ -4,19 +4,19 @@ import { GiftIcon, ImagesIcon, MapPinIcon, MessageCircleIcon } from 'lucide-reac
 import { Suspense, lazy, useState } from 'react';
 
 import PageLoading from '@/components/background/PageLoading';
+import Section01 from '@/components/Section01';
+import SEO from '@/components/SEO';
 
 const FloatingDock = lazy(() => import('@/components/FloatingDock'));
 const LivestreamComments = lazy(() => import('@/components/LivestreamComments'));
 const RcImagesPreview = lazy(() => import('@/components/media/RcImagesPreview'));
 const ModalQR = lazy(() => import('@/components/modal/ModalQR'));
-const Section01 = lazy(() => import('@/components/Section01'));
 const Section03 = lazy(() => import('@/components/Section03'));
 const Section04 = lazy(() => import('@/components/Section04'));
 const Section05 = lazy(() => import('@/components/Section05'));
 const Section07 = lazy(() => import('@/components/Section07'));
 const Section08 = lazy(() => import('@/components/Section08'));
 const InitApp = lazy(() => import('@/components/InitApp'));
-const SEO = lazy(() => import('@/components/SEO'));
 const UserAvatarStack = lazy(() => import('@/components/UserAvatarStack'));
 
 //
@@ -73,6 +73,7 @@ function HomePage() {
   return (
     <>
       <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
+
       <Suspense fallback={<PageLoading />}>
         <InitApp setUserId={setUserId} isOpenComments={isOpenComments} pName={pName} setIsOpenComments={setIsOpenComments} setUserAvatar={setUserAvatar} setUserName={setUserName} />
 
