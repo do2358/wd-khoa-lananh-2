@@ -67,10 +67,10 @@ const InitApp = ({ pName, isOpenComments, setIsOpenComments, setUserAvatar, setU
 
   // Show toast for newest real-time comment
   useEffect(() => {
-    if (newestComment && !isOpenComments) {
+    if (newestComment) {
       showCommentToast(newestComment, { autoClose: 3300 });
     }
-  }, [newestComment, isOpenComments]);
+  }, [newestComment]);
 
   // Show mock comments on initial mount
   useEffect(() => {
