@@ -29,8 +29,6 @@ export function showCommentToast(comment: Comment, options?: ToastOptions) {
     closeOnClick: true,
     draggable: true,
     icon: false,
-    className: 'bg-white border border-red-200 shadow-lg rounded-xl p-3',
-    progressClassName: 'bg-gradient-to-r from-red-500 to-rose-500',
     ...options,
   });
 }
