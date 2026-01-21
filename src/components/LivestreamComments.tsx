@@ -29,28 +29,21 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
     setMessage(quickMessage);
   };
 
-  // Function to scroll to bottom
-  const scrollToBottom = () => {
-    if (scrollRef.current) {
-      // Try to find the actual scrollable element within MacScrollbar
-      const scrollableEl = scrollRef.current.querySelector('.ms-container') || scrollRef.current;
-      if (scrollableEl) {
-        scrollableEl.scrollTop = scrollableEl.scrollHeight;
-      }
-    }
-  };
-
   // Auto-scroll to bottom when new comments arrive
   useEffect(() => {
-    scrollToBottom();
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
   }, [comments]);
 
   // Scroll to bottom when popup opens
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && scrollRef.current) {
       // Use setTimeout to ensure the DOM is fully rendered
       setTimeout(() => {
-        scrollToBottom();
+        if (scrollRef.current) {
+          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
       }, 100);
     }
   }, [isOpen]);
