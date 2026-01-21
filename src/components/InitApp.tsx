@@ -79,20 +79,18 @@ const InitApp = ({ pName, isOpenComments, setIsOpenComments, setUserAvatar, setU
 
     debounce(() => {
       mockComments.forEach((mockComment, index) => {
-        debounce(() => {
-          showCommentToast(
-            {
-              id: mockComment.id,
-              userId: mockComment.userId,
-              userName: mockComment.userName,
-              message: mockComment.message,
-              timestamp: mockComment.timestamp,
-              createdAt: mockComment.createdAt,
-              userAvatar: undefined,
-            },
-            { autoClose: 3300 },
-          );
-        }, index * 1000)();
+        showCommentToast(
+          {
+            id: mockComment.id,
+            userId: mockComment.userId,
+            userName: mockComment.userName,
+            message: mockComment.message,
+            timestamp: mockComment.timestamp,
+            createdAt: mockComment.createdAt,
+            userAvatar: undefined,
+          },
+          { autoClose: 3300, delay: index * 1000 },
+        );
       });
     }, 100)();
   }, []);
