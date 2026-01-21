@@ -29,24 +29,19 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
     setMessage(quickMessage);
   };
 
-  // Auto-scroll to bottom when new comments arrive
+  // Scroll to bottom when new comments arrive or when popup opens
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [comments]);
-
-  // Scroll to bottom when popup opens
-  useEffect(() => {
-    if (isOpen && scrollRef.current) {
+    if (scrollRef.current && (isOpen || comments.length > 0)) {
       // Use setTimeout to ensure the DOM is fully rendered
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         if (scrollRef.current) {
           scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
         }
       }, 100);
+
+      return () => clearTimeout(timeoutId);
     }
-  }, [isOpen]);
+  }, [comments, isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
