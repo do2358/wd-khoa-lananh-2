@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 
 import { type OnlineUser, useUserPresence } from '@/hooks/useUserPresence';
 import { cn } from '@/libs/utils';
@@ -17,7 +17,7 @@ export default function UserAvatarStack({ userId, userName, userAvatar, maxDispl
   const remainingCount = Math.max(0, userCount - maxDisplay);
 
   return (
-    <motion.div
+    <m.div
       animate={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
@@ -31,7 +31,7 @@ export default function UserAvatarStack({ userId, userName, userAvatar, maxDispl
           </div>
         ) : (
           displayUsers.map((user: OnlineUser, index: number) => (
-            <motion.div
+            <m.div
               key={user.userId}
               animate={{ scale: 1, opacity: 1 }}
               initial={{ scale: 0, opacity: 0 }}
@@ -46,20 +46,20 @@ export default function UserAvatarStack({ userId, userName, userAvatar, maxDispl
               )}
               {/* Online indicator */}
               <div className="absolute right-0 bottom-0 size-2.5 rounded-full border-2 border-white bg-green-500" />
-            </motion.div>
+            </m.div>
           ))
         )}
 
         {/* Remaining count */}
         {remainingCount > 0 && (
-          <motion.div
+          <m.div
             animate={{ scale: 1, opacity: 1 }}
             initial={{ scale: 0, opacity: 0 }}
             transition={{ delay: maxDisplay * 0.1 }}
             className="flex size-8 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-red-500 to-rose-500 text-xs font-bold text-white ring-1 ring-red-200"
           >
             +{remainingCount}
-          </motion.div>
+          </m.div>
         )}
       </div>
 
@@ -68,8 +68,8 @@ export default function UserAvatarStack({ userId, userName, userAvatar, maxDispl
       {/* Pulse animation for online indicator */}
       <div className="relative mr-1">
         <div className="size-2 rounded-full bg-green-500" />
-        <motion.div animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 rounded-full bg-green-500" />
+        <m.div animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 rounded-full bg-green-500" />
       </div>
-    </motion.div>
+    </m.div>
   );
 }

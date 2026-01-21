@@ -1,4 +1,4 @@
-import { motion, useAnimationFrame, useMotionTemplate, useMotionValue, useTransform } from 'motion/react';
+import { m, useAnimationFrame, useMotionTemplate, useMotionValue, useTransform } from 'motion/react';
 import React, { useRef } from 'react';
 
 export const MovingBorder = ({ children, duration = 2000, rx, ry, ...otherProps }: { children: React.ReactNode; duration?: number; rx?: string; ry?: string; [key: string]: any }) => {
@@ -23,7 +23,7 @@ export const MovingBorder = ({ children, duration = 2000, rx, ry, ...otherProps 
       <svg height="100%" preserveAspectRatio="none" width="100%" xmlns="http://www.w3.org/2000/svg" className="absolute size-full" {...otherProps}>
         <rect fill="none" height="100%" ref={pathRef} rx={rx} ry={ry} width="100%" />
       </svg>
-      <motion.div
+      <m.div
         style={{
           position: 'absolute',
           top: 0,
@@ -33,7 +33,7 @@ export const MovingBorder = ({ children, duration = 2000, rx, ry, ...otherProps 
         }}
       >
         {children}
-      </motion.div>
+      </m.div>
     </>
   );
 };

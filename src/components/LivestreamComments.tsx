@@ -1,5 +1,5 @@
 import { HeartIcon, MessageCircleIcon, SendIcon, SparklesIcon, XIcon } from 'lucide-react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { Drawer } from 'vaul';
 
@@ -29,21 +29,28 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
     setMessage(quickMessage);
   };
 
+  // Function to scroll to bottom
+  const scrollToBottom = () => {
+    if (scrollRef.current) {
+      // Try to find the actual scrollable element within MacScrollbar
+      const scrollableEl = scrollRef.current.querySelector('.ms-container') || scrollRef.current;
+      if (scrollableEl) {
+        scrollableEl.scrollTop = scrollableEl.scrollHeight;
+      }
+    }
+  };
+
   // Auto-scroll to bottom when new comments arrive
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
+    scrollToBottom();
   }, [comments]);
 
   // Scroll to bottom when popup opens
   useEffect(() => {
-    if (isOpen && scrollRef.current) {
+    if (isOpen) {
       // Use setTimeout to ensure the DOM is fully rendered
       setTimeout(() => {
-        if (scrollRef.current) {
-          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-        }
+        scrollToBottom();
       }, 100);
     }
   }, [isOpen]);
@@ -94,9 +101,9 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
         <Drawer.Content
           style={{ zIndex: 50 }}
           className={cn(
-            'fixed z-50 flex max-h-[90dvh] w-full max-w-md flex-col rounded-t-2xl bg-white/95 shadow-2xl backdrop-blur-sm outline-none',
+            'fixed z-50 flex max-h-[90dvh] max-h-[600px] w-full max-w-md flex-col rounded-t-2xl bg-white/95 shadow-2xl backdrop-blur-sm outline-none',
             'inset-x-0 bottom-0',
-            'sm:inset-x-auto sm:inset-y-auto sm:right-4 sm:bottom-10 sm:max-h-[600px] sm:w-80 sm:rounded-t-2xl sm:border sm:border-red-200',
+            'sm:inset-x-auto sm:inset-y-auto sm:right-4 sm:bottom-10 sm:w-80 sm:rounded-t-2xl sm:border sm:border-red-200',
           )}
         >
           {/* Drag Handle - Mobile Only */}
@@ -119,11 +126,11 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
 
           {/* Comments List */}
           <div className="relative min-h-0 flex-1 overflow-hidden">
-            <ScrollArea ref={scrollRef} className="h-full">
-              <div className="min-h-40 space-y-3 p-3 pb-4">
+            <ScrollArea ref={scrollRef} style={{ maxHeight: 408 }} className="h-full">
+              <div style={{ minHeight: '10rem' }} className="min-h-40 space-y-3 p-3 pb-4">
                 {comments.length === 0 ? (
-                  <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 10 }} transition={{ duration: 0.5 }} className="flex flex-col items-center justify-center px-4 py-4">
-                    <motion.div
+                  <m.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 10 }} transition={{ duration: 0.5 }} className="flex flex-col items-center justify-center px-4 py-4">
+                    <m.div
                       animate={{
                         scale: [1, 1.1, 1],
                         rotate: [0, 5, -5, 0],
@@ -136,14 +143,14 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                       className="mb-4 rounded-full bg-gradient-to-br from-red-100 to-rose-100 p-2"
                     >
                       <HeartIcon className="size-8 fill-red-500 text-red-500" />
-                    </motion.div>
+                    </m.div>
 
                     {hasUserName ? (
                       <>
                         <h4 className="mb-3 text-center text-lg font-semibold text-red-800">Chưa có lời chúc nào</h4>
                         <p className="mb-1 text-center text-base text-gray-600">Hãy là người đầu tiên gửi lời chúc</p>
                         <p className="text-center text-base text-gray-600">đến đôi uyên ương nhé!</p>
-                        <motion.div
+                        <m.div
                           animate={{ y: [0, -5, 0] }}
                           transition={{
                             duration: 1.5,
@@ -155,7 +162,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                           <SparklesIcon className="size-3" />
                           <span className="font-medium">Viết lời chúc bên dưới</span>
                           <SparklesIcon className="size-3" />
-                        </motion.div>
+                        </m.div>
                       </>
                     ) : (
                       <>
@@ -165,10 +172,10 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                         <p className="mb-10 text-center text-base text-gray-500 md:text-[15px]">qua link thiệp mời có tên của bạn.</p>
                       </>
                     )}
-                  </motion.div>
+                  </m.div>
                 ) : (
                   comments.map((comment, index) => (
-                    <motion.div key={comment.id} animate={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} transition={{ duration: 0.3, delay: index * 0.05 }} className="group">
+                    <m.div key={comment.id} animate={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} transition={{ duration: 0.3, delay: index * 0.05 }} className="group">
                       <div className="flex gap-2">
                         <div className="size-8 shrink-0 overflow-hidden rounded-full bg-gradient-to-br from-red-400 to-rose-500">
                           {comment.userAvatar ? (
@@ -182,7 +189,7 @@ export default function LivestreamComments({ userId, userName, userAvatar, isOpe
                           <div className="rounded-2xl bg-gradient-to-br from-red-50 to-rose-50 px-3 py-2 text-sm break-words text-gray-800">{comment.message}</div>
                         </div>
                       </div>
-                    </motion.div>
+                    </m.div>
                   ))
                 )}
               </div>

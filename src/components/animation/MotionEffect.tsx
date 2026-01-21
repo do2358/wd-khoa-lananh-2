@@ -1,4 +1,4 @@
-import { AnimatePresence, type HTMLMotionProps, type Transition, type UseInViewOptions, type Variant, motion, useInView } from 'motion/react';
+import { AnimatePresence, type HTMLMotionProps, type Transition, type UseInViewOptions, type Variant, m, useInView } from 'motion/react';
 import * as React from 'react';
 
 type MotionEffectProps = HTMLMotionProps<'div'> & {
@@ -77,7 +77,7 @@ function MotionEffect({
 
   return (
     <AnimatePresence>
-      <motion.div
+      <m.div
         animate={isInView ? 'visible' : 'hidden'}
         exit="hidden"
         initial="hidden"
@@ -95,7 +95,7 @@ function MotionEffect({
         {...props}
       >
         {children}
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   );
 }
