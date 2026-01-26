@@ -140,7 +140,7 @@ function HomePage() {
                   }}
                   className="!min-h-10 !min-w-10 shrink-0"
                 >
-                  <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />
+                  <GiftIcon className="size-full !min-h-full !min-w-full text-red-700" />
                 </m.div>
               ),
               onClick: () => {
