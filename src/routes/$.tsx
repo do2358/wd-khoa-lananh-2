@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { last } from 'lodash';
 import { GiftIcon, ImagesIcon, MapPinIcon, MessageCircleIcon } from 'lucide-react';
+import { m } from 'motion/react';
 import { Suspense, lazy, useState } from 'react';
 
 import PageLoading from '@/components/background/PageLoading';
@@ -126,7 +127,22 @@ function HomePage() {
 
             {
               title: 'Mừng Cưới',
-              icon: <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />,
+              icon: (
+                <m.div
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, -5, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 1,
+                  }}
+                  className="!size-10 shrink-0"
+                >
+                  <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />
+                </m.div>
+              ),
               onClick: () => {
                 setIsOpenQR(true);
               },
