@@ -138,7 +138,7 @@ function HomePage() {
                     repeat: Infinity,
                     repeatDelay: 1,
                   }}
-                  className="!size-10 shrink-0"
+                  className="!min-h-10 !min-w-10 shrink-0"
                 >
                   <GiftIcon className="size-full !min-h-[40px] !min-w-[40px] text-red-700" />
                 </m.div>
