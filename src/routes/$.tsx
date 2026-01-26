@@ -134,13 +134,13 @@ function HomePage() {
                     rotate: [0, 5, -5, 0],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 1.3,
                     repeat: Infinity,
                     repeatDelay: 1,
                   }}
-                  className="!min-h-10 !min-w-10 shrink-0"
+                  className="size-full min-h-10 min-w-10 shrink-0"
                 >
-                  <GiftIcon className="size-full !min-h-full !min-w-full text-red-700" />
+                  <GiftIcon className="size-full text-red-700" />
                 </m.div>
               ),
               onClick: () => {
