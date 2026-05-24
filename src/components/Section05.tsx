@@ -26,7 +26,7 @@ const Section05 = ({ setModalImage, pType }: TSection05Props) => {
       {/* Chip ngày 31/5 */}
       <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className="mb-1 flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-sm text-red-500">
         <HeartIcon className="size-3.5 fill-red-400 text-red-400" />
-        <span>Vu quy: <strong>31 tháng 5</strong></span>
+        <span>Tổ chức tiệc cưới: <strong>31 tháng 5</strong></span>
         <HeartIcon className="size-3.5 fill-red-400 text-red-400" />
       </MotionEffect>
 
