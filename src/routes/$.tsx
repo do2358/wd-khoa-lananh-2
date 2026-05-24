@@ -9,6 +9,7 @@ import Section01 from '@/components/Section01';
 import SEO from '@/components/SEO';
 
 const FloatingDock = lazy(() => import('@/components/FloatingDock'));
+const FloatingGiftBox = lazy(() => import('@/components/FloatingGiftBox'));
 const LivestreamComments = lazy(() => import('@/components/LivestreamComments'));
 const RcImagesPreview = lazy(() => import('@/components/media/RcImagesPreview'));
 const ModalQR = lazy(() => import('@/components/modal/ModalQR'));
@@ -151,6 +152,9 @@ function HomePage() {
         />
 
         <ModalQR open={isOpenQR} pName={pName} pType={pType} setOpen={setIsOpenQR} />
+
+        {/* Floating Gift Box */}
+        <FloatingGiftBox onClick={() => setIsOpenQR(true)} />
 
         {/* User Avatar Stack - Top Left */}
         <UserAvatarStack userId={userId} userAvatar={userAvatar} userName={userName} />
