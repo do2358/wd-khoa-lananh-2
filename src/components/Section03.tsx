@@ -42,7 +42,7 @@ const Section03 = ({ pType, pName }: TSection03Props) => {
           pName={pName}
           pType={pType}
           renderName={
-            <div className="absolute top-[12.8%] left-0 flex w-full justify-center px-6 text-center">
+            <div className="absolute top-[15%] left-0 flex w-full justify-center px-6 text-center">
               <div
                 className={cn(
                   'line-clamp-2 max-w-[280px] text-center !font-DancingScript text-2xl leading-[1.1] font-600 text-red-600 sm:max-w-[320px] sm:text-2xl',
