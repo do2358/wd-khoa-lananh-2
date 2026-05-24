@@ -92,7 +92,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
 
           <div className="mb-4 flex items-center gap-1 font-Questrial text-base leading-[1.2] sm:text-lg">
             <GgMapSvg className="h-5 w-auto shrink-0" />
-            <span>{pType === 'h' ? 'Tại tư gia nhà GÁI, thôn Tiền Phong, xã Vũ Tiên, tỉnh Hưng Yên)' : 'Trường Trung Học cơ sở An Bài( Đối diện UBND xã Phụ Dực - Tỉnh Hưng Yên)'}</span>
+            <span>{pType === 'h' ? 'Tại tư gia nhà Gái (thôn Tiền Phong, xã Vũ Tiên, tỉnh Hưng Yên)' : 'Trường Trung Học cơ sở An Bài( Đối diện UBND xã Phụ Dực - Tỉnh Hưng Yên)'}</span>
           </div>
 
           <RainbowButtonLink href={mapParty} rel="noopener noreferrer" target="_blank" className="text-base tracking-[2px] text-red-900 uppercase ring-1 ring-red-500">

@@ -11,7 +11,14 @@ type TModalQRProps = {
   pName?: string;
 };
 
+const QR_GAI = 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXDBGM4CKJlJSweT5EpvOStqEDQOJhcu_bfhg5h.jpg';
+const QR_TRAI = 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXU89Ipxm1Lq8YYd3JPk7MEAskYtTRS4_mg1354.jpg';
+
 const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
+  // Nhà trai (/t, /t-31): dùng QR nhà trai | Nhà gái (default): dùng QR nhà gái
+  const isGroom = pType === 't' || pType === 't-31';
+  const qrSrc = isGroom ? QR_TRAI : QR_GAI;
+
   return (
     <Drawer.Root
       direction="bottom"
@@ -26,8 +33,7 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/40" />
         <Drawer.Content
           className={cn(
-            'fixed inset-0 z-50 m-auto flex h-fit max-h-[90dvh] w-[95vw] max-w-2xl flex-col overflow-hidden rounded-2xl bg-white outline-none',
-            // Hide the drag indicator for center modal
+            'fixed inset-0 z-50 m-auto flex h-fit max-h-[90dvh] w-[95vw] max-w-sm flex-col overflow-hidden rounded-2xl bg-white outline-none',
             'sm:after:hidden',
           )}
         >
@@ -42,54 +48,22 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
             </button>
           </div>
 
-          {/* Body */}
-          <div className="flex min-h-0 flex-col overflow-y-auto sm:flex-1 sm:flex-row">
-            {/* First QR Code */}
-            <div className="flex items-center justify-center bg-white sm:flex-1">
-              <Image
-                height={400}
-                loading="eager"
-                operations={{
-                  cloudinary: {
-                    c: 'fill',
-                    g: 'north',
-                  },
-                }}
-                src={
-                  pType === 'h'
-                    ? 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXDBGM4CKJlJSweT5EpvOStqEDQOJhcu_bfhg5h.jpg'
-                    : 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXU89Ipxm1Lq8YYd3JPk7MEAskYtTRS4_mg1354.jpg'
-                }
-                width={400}
-                className="!h-auto !w-full"
-                style={{ objectFit: 'cover', objectPosition: 'top' }}
-              />
-            </div>
-
-            {/* Divider */}
-            <div className="h-px w-full shrink-0 bg-gray-200 sm:h-auto sm:w-px" />
-
-            {/* Second QR Code */}
-            <div className="flex items-center justify-center bg-white sm:flex-1">
-              <Image
-                height={400}
-                loading="eager"
-                operations={{
-                  cloudinary: {
-                    c: 'fill',
-                    g: 'north',
-                  },
-                }}
-                src={
-                  pType === 'h'
-                    ? 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXU89Ipxm1Lq8YYd3JPk7MEAskYtTRS4_mg1354.jpg'
-                    : 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXDBGM4CKJlJSweT5EpvOStqEDQOJhcu_bfhg5h.jpg'
-                }
-                width={400}
-                className="!h-auto !w-full"
-                style={{ objectFit: 'cover', objectPosition: 'top' }}
-              />
-            </div>
+          {/* Body — hiển thị đúng QR theo nhà gái / nhà trai */}
+          <div className="flex items-center justify-center bg-white">
+            <Image
+              height={400}
+              loading="eager"
+              operations={{
+                cloudinary: {
+                  c: 'fill',
+                  g: 'north',
+                },
+              }}
+              src={qrSrc}
+              width={400}
+              className="!h-auto !w-full"
+              style={{ objectFit: 'cover', objectPosition: 'top' }}
+            />
           </div>
         </Drawer.Content>
       </Drawer.Portal>

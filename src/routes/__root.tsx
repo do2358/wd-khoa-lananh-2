@@ -33,7 +33,7 @@ export const Route = createRootRoute({
       description: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊',
       keywords: 'Vũ Nguyên Khoa, Lưu Thị Vân Anh, Đám cưới Nguyên Khoa Vân Anh, wedding',
       statusbarColor: '#fff',
-      origin: 'https://tunghuyen3101.vercel.app',
+      origin: 'https://khoa-vananh.vercel.app',
     }),
     links: [
       ...buildSeoLinks(),

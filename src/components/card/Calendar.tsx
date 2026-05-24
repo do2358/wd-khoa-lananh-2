@@ -13,15 +13,18 @@ interface DateRange {
   secondTarget?: Date | null;
 }
 
-type TCalendarProps = { initialRange?: DateRange };
+type TCalendarProps = { initialRange?: DateRange; singleMonth?: boolean };
 
-const Calendar = ({ initialRange }: TCalendarProps) => {
+const Calendar = ({ initialRange, singleMonth }: TCalendarProps) => {
   const uid = useId();
   const mediaAbove900 = useMediaQuery({ minWidth: 900 });
 
   const [currCalendar, setCurrCalendar] = useState<Array<number | null>>([]);
   const [nextCalendar, setNextCalendar] = useState<Array<number | null>>([]);
-  const _calendarStart = dateFns.sub(initialRange?.startDate || new Date(), { months: 1 });
+  // singleMonth: bắt đầu từ tháng của startDate (không lùi 1 tháng)
+  const _calendarStart = singleMonth
+    ? (initialRange?.startDate || new Date())
+    : dateFns.sub(initialRange?.startDate || new Date(), { months: 1 });
   const [currMonth, setCurrMonth] = useState<number>(_calendarStart.getMonth());
   const [currYear, setCurrYear] = useState<number>(_calendarStart.getFullYear());
 
@@ -136,7 +139,12 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
 
   return (
     <div className="mt-4">
-      {mediaAbove900 ? (
+      {singleMonth ? (
+        // Single month: hiện đúng 1 tháng, căn giữa
+        <div className="flex justify-center">
+          {renderCalendarMonth(currCalendar, 0, currMonth + 1)}
+        </div>
+      ) : mediaAbove900 ? (
         // Desktop: Two columns side by side
         <div className="grid grid-cols-2">
           {renderCalendarMonth(currCalendar, 0, currMonth + 1)}

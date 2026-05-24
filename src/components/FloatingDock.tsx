@@ -256,7 +256,7 @@ function ItemMusic(props: { mouseX: MotionValue; sizeTransform?: [number, number
 
   return (
     <>
-      <audio controls ref={audioRef} src="https://res.cloudinary.com/dcos6mpjy/video/upload/v1731195961/audio-01_oluwt2.mp3" className="hidden" onLoadedMetadata={onLoadedMetadata} />
+      <audio controls ref={audioRef} src="https://res.cloudinary.com/dnon5lwok/video/upload/q_auto/f_auto/v1779621791/Marry_You_fifyia.mp3" className="hidden" onLoadedMetadata={onLoadedMetadata} />
       <IconContainer
         id={props?.id}
         extra={
@@ -283,8 +283,8 @@ function ItemMusic(props: { mouseX: MotionValue; sizeTransform?: [number, number
         title={
           <div className="flex flex-col pt-2 pb-3">
             <div className="mb-1 flex flex-col text-xs">
-              <span>UNSECRET X TIM HALPERIN</span>
-              <span>ONE DAY AT A TIME</span>
+              <span>BRUNO MARS</span>
+              <span>MARRY YOU</span>
             </div>
             <div className="flex flex-col">
               <div className="mb-1 flex items-center justify-between">

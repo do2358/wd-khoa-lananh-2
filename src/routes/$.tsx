@@ -89,7 +89,7 @@ function HomePage() {
           <Section04 />
         </RcImagesPreview>
 
-        <Section05 />
+        <Section05 pType={pType} />
 
         <RcImagesPreview>
           <Section07 />

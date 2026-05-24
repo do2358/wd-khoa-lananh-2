@@ -14,9 +14,9 @@ const IMAGES = [
   'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610967/2aOboQYKfW2dN93GdNe5diQhwUrmX2zTbdZYwUt6_dwhc9n.jpg',
   'https://res.cloudinary.com/dnon5lwok/image/upload/v1779609831/MO_06612_1_i8qpyr.jpg',
   'https://res.cloudinary.com/dnon5lwok/image/upload/v1779609447/MO_04567_fy3wqi.jpg',
+  'https://res.cloudinary.com/dnon5lwok/image/upload/q_auto/f_auto/v1779622205/MO_04675_1_uep1y3.jpg',
   'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610966/2aOboQYKfVitlrQaRw002AmEGrvvSNIOPyp9UeuG_b36xuq.jpg',
-  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610966/2aOboQYKfVitlrQaRw002AmEGrvvSNIOPyp9UeuG_b36xuq.jpg',
-  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779609447/MO_04567_fy3wqi.jpg',
+  'https://res.cloudinary.com/dnon5lwok/image/upload/q_auto/f_auto/v1779622207/MO_05316_1_cwdfrd.jpg',
 ];
 
 const Section08 = ({ setModalImage }: TSection08Props) => {
