@@ -17,14 +17,14 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
           Cô dâu
         </MotionEffect>
         <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className={cn('mb-6 font-DancingScript text-5xl text-red-800 sm:mb-3')}>
-          Trịnh Thu Huyền
+          Lưu Thị Vân Anh
         </MotionEffect>
         <MotionEffect inView inViewOnce slide={{ direction: 'left' }} className="relative flex size-[300px] items-center justify-center max-sm:mt-4 sm:size-[260px]">
           <RcImage
             height={'auto'}
             loading="eager"
             rootClassName="sm:!size-[180px] max-sm:max-h-[340px] max-sm:!w-[280px]"
-            src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129840/TH/ING07017_xoqy0s.jpg"
+            src="https://res.cloudinary.com/dnon5lwok/image/upload/v1779610967/2aOboQYKfVuTOFCPwBqM3beAmgDDfqTLzUtrGvoG_y1jglr.jpg"
             width={'auto'}
             className="size-full cursor-pointer rounded-xl object-cover sm:rounded-full"
           />
@@ -44,7 +44,7 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
           <RcImage
             alt="2611"
             height={'auto'}
-            src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07084_n2i20s.jpg"
+            src="https://res.cloudinary.com/dnon5lwok/image/upload/v1779610966/2aOboQYKfVitlrQaRw002AmEGrvvSNIOPyp9UeuG_b36xuq.jpg"
             width={'240px'}
             className="w-full cursor-pointer rounded-full object-cover sm:min-h-[456px]!"
           />
@@ -66,9 +66,9 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
             height={'auto'}
             loading="eager"
             rootClassName="sm:!size-[180px] max-sm:max-h-[340px] max-sm:!w-[280px]"
-            src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07329_xodtaa.jpg"
+            src="https://res.cloudinary.com/dnon5lwok/image/upload/v1779610966/2aOboQYKfVR0VC3ivFQt6TKXbp7ORiIbh7nhmmC8_d0qyar.jpg"
             width={'auto'}
-            className="size-full cursor-pointer rounded-xl object-cover sm:rounded-full"
+            className="size-full cursor-pointer rounded-xl object-cover object-top sm:rounded-full"
           />
           <div className="absolute -z-10 max-sm:bottom-[-60px] max-sm:left-[-40px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2">
             <Image alt="2611" height={260} src="/images/cricle1.png" width={260} className="size-[300px] max-w-screen-sm animate-[zoomTwo_5s_linear_infinite] object-cover sm:size-[260px]" />
@@ -78,7 +78,7 @@ const Section04 = (props: { setModalImage?: (src?: string) => void }) => {
           Chú rể
         </MotionEffect>
         <MotionEffect inView inViewOnce slide={{ direction: 'right' }} className={cn('font-DancingScript text-5xl text-red-800 max-sm:mb-4')}>
-          Ngô Việt Tùng
+          Vũ Nguyên Khoa
         </MotionEffect>
       </div>
 

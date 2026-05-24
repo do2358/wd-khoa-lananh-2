@@ -13,7 +13,7 @@ import RcImage from './media/RcImage';
 type TSection01Props = { pType: string; onClickBtn01?: () => void };
 
 const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
-  const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/CH1Yi2JWQdu4c1LVA' : 'https://maps.app.goo.gl/7XFB6K6QAaBbRWYP9';
+  const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/RrYArYGSKFJcjxrV8?g_st=iz' : 'https://maps.app.goo.gl/xL68cDVHaqzzqWrGA';
 
   const mediaAbove640 = useMediaQuery({ minWidth: 640 });
 
@@ -63,7 +63,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
               fallback={IMG_BLUR}
               height={'100%'}
               loading="eager"
-              src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07568_kb8kpb.jpg"
+              src="https://res.cloudinary.com/dnon5lwok/image/upload/v1779609447/MO_04567_fy3wqi.jpg"
               width={240}
               className="!h-auto !w-full cursor-pointer rounded-full object-cover"
             />
@@ -84,15 +84,15 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
               'animate-gradient bg-gradient-to-r from-[#991b1b] via-[#f87171] to-[#991b1b] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent [--bg-size:300%]',
             )}
           >
-            {pType === 'h' ? `Trịnh Thu Huyền \n&\n Ngô Việt Tùng` : `Ngô Việt Tùng \n&\n Trịnh Thu Huyền`}
+            {pType === 'h' ? `Lưu Thị Vân Anh \n&\n Vũ Nguyên Khoa` : `Vũ Nguyên Khoa \n&\n Lưu Thị Vân Anh`}
           </h1>
           <div className={'mb-6 border-y-2 border-red-900 py-3 font-DancingScript text-2xl font-600 tracking-[2px] text-red-700 sm:text-3xl'}>
-            {pType === 'h' ? `30 Tháng 01, 2026` : pType === 't-31' ? `30 Tháng 01, 2026` : `30 Tháng 01, 2026`}
+            {pType === 'h' ? `01 Tháng 06, 2026` : pType === 't-31' ? `01 Tháng 06, 2026` : `01 Tháng 06, 2026`}
           </div>
 
           <div className="mb-4 flex items-center gap-1 font-Questrial text-base leading-[1.2] sm:text-lg">
             <GgMapSvg className="h-5 w-auto shrink-0" />
-            <span>{pType === 'h' ? 'Nhà Gái: Nhà văn hoá thôn Hà Lỗ, Thư Lâm, Hà Nội' : 'Trung tâm tiệc cưới Thanh Bình (gần Đền Sái), Thư Lâm, Hà Nội'}</span>
+            <span>{pType === 'h' ? 'Tại tư gia nhà GÁI, thôn Tiền Phong, xã Vũ Tiên, tỉnh Hưng Yên)' : 'Trường Trung Học cơ sở An Bài( Đối diện UBND xã Phụ Dực - Tỉnh Hưng Yên)'}</span>
           </div>
 
           <RainbowButtonLink href={mapParty} rel="noopener noreferrer" target="_blank" className="text-base tracking-[2px] text-red-900 uppercase ring-1 ring-red-500">
@@ -112,7 +112,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
               fallback={IMG_BLUR}
               height={'100%'}
               loading="eager"
-              src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07062_onvh4q.jpg"
+              src="https://res.cloudinary.com/dnon5lwok/image/upload/v1779609831/MO_06612_1_i8qpyr.jpg"
               width={240}
               className="!h-auto !min-h-full !w-full cursor-pointer rounded-md object-cover object-[25%_center] sm:rounded-full"
             />
@@ -134,7 +134,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
                   fallback={IMG_BLUR}
                   height={'100%'}
                   loading="eager"
-                  src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07568_kb8kpb.jpg"
+                  src="https://res.cloudinary.com/dnon5lwok/image/upload/v1779609447/MO_04567_fy3wqi.jpg"
                   width={240}
                   className="!h-auto !min-h-full !w-full cursor-pointer rounded-md object-cover sm:rounded-full"
                 />
@@ -151,7 +151,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
                   fallback={IMG_BLUR}
                   height={'100%'}
                   loading="eager"
-                  src="https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07062_onvh4q.jpg"
+                  src="https://res.cloudinary.com/dnon5lwok/image/upload/v1779609831/MO_06612_1_i8qpyr.jpg"
                   width={240}
                   className="!h-auto !min-h-full !w-full cursor-pointer rounded-md object-cover object-[25%_center] sm:rounded-full"
                 />
@@ -170,7 +170,7 @@ const Section01 = ({ pType, onClickBtn01 }: TSection01Props) => {
       <Image alt="2611" height={420} src="/images/icon-flowers-1.png" width={240} className="absolute bottom-10 left-0 animate-[bounceY_10s_linear_infinite] opacity-50 max-sm:w-[200px]" />
       <Image alt="2611" height={420} src="/images/icon-flowers-2.png" width={260} className="absolute top-4 right-0 animate-[bounceY_10s_linear_infinite] opacity-50 max-sm:w-[180px]" />
 
-      {/* 
+      {/*
       {items.map((item) => (
         <DndCardBody className={cn('min-h-50 w-50 p-0', item.className)}>
           <img alt={item.title} src={item.image} className="pointer-events-none relative z-10 h-50 w-50 object-cover" />

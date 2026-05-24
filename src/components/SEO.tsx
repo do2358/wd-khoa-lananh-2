@@ -8,15 +8,15 @@ type TSEOProps = {
 };
 
 const SEO = ({
-  title = 'Thu Huyền Việt Tùng',
+  title = 'Vân Anh Nguyên Khoa',
   description = '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊',
-  keywords = 'Ngô Việt Tùng, Trịnh Thu Huyền, Đám cưới Việt Tùng Thu Huyền, tunghuyen3101, wedding, tunghuyen',
+  keywords = 'Vũ Nguyên Khoa, Lưu Thị Vân Anh, Đám cưới Nguyên Khoa Vân Anh, wedding',
   statusbarColor = '#fff',
 }: TSEOProps) => {
   const router = useLocation();
   // Customize Meta Properties
-  const metaTitle = title || import.meta.env.VITE_siteTitle || 'Thu Huyền Việt Tùng';
-  const metaDescription = description || import.meta.env.VITE_siteDescription || 'Thu Huyền Việt Tùng';
+  const metaTitle = title || import.meta.env.VITE_siteTitle || 'Vân Anh Nguyên Khoa';
+  const metaDescription = description || import.meta.env.VITE_siteDescription || 'Vân Anh Nguyên Khoa';
   const metaKeywords = keywords || import.meta.env.VITE_siteKeywords || '';
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
   const siteImagePreviewUrl = `${router?.url?.origin}/preview.jpg`;

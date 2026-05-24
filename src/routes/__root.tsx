@@ -29,9 +29,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 export const Route = createRootRoute({
   head: ({ params }) => ({
     meta: buildSeoMeta({
-      title: 'Thu Huyền Việt Tùng',
+      title: 'Vân Anh Nguyên Khoa',
       description: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊',
-      keywords: 'Ngô Việt Tùng, Trịnh Thu Huyền, Đám cưới Việt Tùng Thu Huyền, tunghuyen3101, wedding, tunghuyen',
+      keywords: 'Vũ Nguyên Khoa, Lưu Thị Vân Anh, Đám cưới Nguyên Khoa Vân Anh, wedding',
       statusbarColor: '#fff',
       origin: 'https://tunghuyen3101.vercel.app',
     }),

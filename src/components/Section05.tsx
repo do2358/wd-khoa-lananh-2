@@ -23,13 +23,13 @@ const Section05 = ({ setModalImage }: TSection05Props) => {
 
       <Calendar
         initialRange={{
-          startDate: new Date('2026-01-01T00:00:01'),
-          secondTarget: new Date('2026-01-30T00:00:01'),
-          endDate: new Date('2026-01-31T00:00:01'),
+          startDate: new Date('2026-06-01T00:00:01'),
+          secondTarget: new Date('2026-05-31T00:00:01'),
+          endDate: new Date('2026-06-01T00:00:01'),
         }}
       />
 
-      <TimerCountDown targetDate={new Date('2026-01-31T00:00:01')} />
+      <TimerCountDown targetDate={new Date('2026-06-01T00:00:01')} />
 
       <div className="absolute top-1/2 left-0 -z-10 w-full -translate-y-1/2 -scale-x-100">
         <Image alt="2611" height={0} src="/images/pattern-4.png" width={366} className="-z-10 size-full animate-[bounceY_10s_linear_infinite] object-cover" />

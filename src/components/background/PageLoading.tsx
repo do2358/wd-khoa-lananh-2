@@ -16,7 +16,7 @@ const PageLoading = ({ children }: TPageLoadingProps) => {
           ></path>
         </svg>
         <div className={cn('absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center font-GreatVibes')}>
-          <span className="text-center text-5xl whitespace-pre-line text-red-700">{`Tùng \n&\n Huyền`}</span>
+          <span className="text-center text-5xl whitespace-pre-line text-red-700">{`Khoa \n&\n Anh`}</span>
         </div>
       </div>
     </div>

@@ -11,20 +11,12 @@ import RcImage from './media/RcImage';
 type TSection08Props = { setModalImage?: (src?: string) => void };
 
 const IMAGES = [
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487171/cuonglinh2611/albums/jqobblxufiurneld84be.jpg",
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487167/cuonglinh2611/albums/f343zkiaynh7mjspuio7.jpg",
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487152/cuonglinh2611/albums/ypw8ls6wyx0jo2ezu141.jpg",
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487159/cuonglinh2611/albums/jurh3dhvnzzsdp36rplq.jpg",
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487174/cuonglinh2611/albums/xr89qr0buoarwut8lhog.jpg",
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487172/cuonglinh2611/albums/fyhxoiixev8hlkmk1trc.jpg",
-  'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07416_kt4cix.jpg',
-  'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129845/TH/ING07963_y7gkng.jpg',
-  'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129845/TH/ING08014_krxrsg.jpg',
-  'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129845/TH/ING07801_nom8vl.jpg',
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1731244972/cuonglinh2611/albums/yxq5em5w2bfwojkjn2va.jpg",
-  'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07499_uz0gns.jpg',
-  'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129841/TH/ING07197_iwmjs0.jpg',
-  // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1731244974/cuonglinh2611/albums/ngd9xdlwk87p2rlz69zq.jpg",
+  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610967/2aOboQYKfW2dN93GdNe5diQhwUrmX2zTbdZYwUt6_dwhc9n.jpg',
+  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779609831/MO_06612_1_i8qpyr.jpg',
+  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779609447/MO_04567_fy3wqi.jpg',
+  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610966/2aOboQYKfVitlrQaRw002AmEGrvvSNIOPyp9UeuG_b36xuq.jpg',
+  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610966/2aOboQYKfVitlrQaRw002AmEGrvvSNIOPyp9UeuG_b36xuq.jpg',
+  'https://res.cloudinary.com/dnon5lwok/image/upload/v1779609447/MO_04567_fy3wqi.jpg',
 ];
 
 const Section08 = ({ setModalImage }: TSection08Props) => {

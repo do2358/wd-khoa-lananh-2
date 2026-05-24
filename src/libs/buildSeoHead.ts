@@ -9,7 +9,7 @@ type SEOOptions = {
 };
 
 export function buildSeoMeta(opts: SEOOptions = {}) {
-  const siteTitle = import.meta.env.VITE_siteTitle || 'Thu Huyền Việt Tùng';
+  const siteTitle = import.meta.env.VITE_siteTitle || 'Vân Anh Nguyên Khoa';
   const siteDescription = import.meta.env.VITE_siteDescription || '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊';
   const siteKeywords = import.meta.env.VITE_siteKeywords || '';
   const twitterHandle = opts.twitterHandle ?? import.meta.env.VITE_twitterHandle;

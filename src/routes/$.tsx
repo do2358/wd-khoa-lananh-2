@@ -36,7 +36,7 @@ export const Route = createFileRoute('/$')({
     const pNameRaw = paramsArr.length > 1 ? last(paramsArr) : !pTypeList.includes(pType0) ? pType0 : '';
     const pName = pNameRaw ? pNameRaw.replace(/-/g, ' ') : '';
     return {
-      meta: [{ title: [pName || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
+      meta: [{ title: [pName || 'Thân mời', 'Lan Anh - Nguyên Khoa', '✨ 🎉 🎊'].filter(Boolean).join(' | ') }, { name: 'description', content: '✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊 • ✨ 🎉 🎊' }],
     };
   },
 });
@@ -67,13 +67,13 @@ function HomePage() {
   const [userAvatar, setUserAvatar] = useState<string>('');
 
   //
-  const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/CH1Yi2JWQdu4c1LVA' : 'https://maps.app.goo.gl/7XFB6K6QAaBbRWYP9';
+  const mapParty = pType === 'h' ? 'https://maps.app.goo.gl/RrYArYGSKFJcjxrV8?g_st=iz' : 'https://maps.app.goo.gl/xL68cDVHaqzzqWrGA';
 
   // Idle detection and toast notifications
 
   return (
     <>
-      <SEO title={[pName1 || 'Thân mời', 'Thu Huyền Việt Tùng', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
+      <SEO title={[pName1 || 'Thân mời', 'Vân Anh Nguyên Khoa', '✨ 🎉 🎊'].filter(Boolean).join(' | ')} />
 
       <Suspense fallback={<PageLoading />}>
         <InitApp setUserId={setUserId} isOpenComments={isOpenComments} pName={pName} setIsOpenComments={setIsOpenComments} setUserAvatar={setUserAvatar} setUserName={setUserName} />

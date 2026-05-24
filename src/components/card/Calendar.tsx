@@ -21,8 +21,9 @@ const Calendar = ({ initialRange }: TCalendarProps) => {
 
   const [currCalendar, setCurrCalendar] = useState<Array<number | null>>([]);
   const [nextCalendar, setNextCalendar] = useState<Array<number | null>>([]);
-  const [currMonth, setCurrMonth] = useState<number>((initialRange?.startDate || new Date()).getMonth());
-  const [currYear, setCurrYear] = useState<number>(new Date().getFullYear());
+  const _calendarStart = dateFns.sub(initialRange?.startDate || new Date(), { months: 1 });
+  const [currMonth, setCurrMonth] = useState<number>(_calendarStart.getMonth());
+  const [currYear, setCurrYear] = useState<number>(_calendarStart.getFullYear());
 
   const [dateRange, setDateRange] = useState<DateRange>({
     // startDate: new Date(),

@@ -49,13 +49,20 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
               <Image
                 height={400}
                 loading="eager"
+                operations={{
+                  cloudinary: {
+                    c: 'fill',
+                    g: 'north',
+                  },
+                }}
                 src={
                   pType === 'h'
-                    ? 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768652764/TH/huyen_qr_k6qkzv.jpg'
-                    : 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768696974/TH/tung_qr_k6dqqe.jpg'
+                    ? 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXDBGM4CKJlJSweT5EpvOStqEDQOJhcu_bfhg5h.jpg'
+                    : 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXU89Ipxm1Lq8YYd3JPk7MEAskYtTRS4_mg1354.jpg'
                 }
                 width={400}
-                className="!h-auto min-h-[300px] !w-full object-contain"
+                className="!h-auto !w-full"
+                style={{ objectFit: 'cover', objectPosition: 'top' }}
               />
             </div>
 
@@ -67,13 +74,20 @@ const ModalQR = ({ open, setOpen, pType }: TModalQRProps) => {
               <Image
                 height={400}
                 loading="eager"
+                operations={{
+                  cloudinary: {
+                    c: 'fill',
+                    g: 'north',
+                  },
+                }}
                 src={
                   pType === 'h'
-                    ? 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768696974/TH/tung_qr_k6dqqe.jpg'
-                    : 'https://res.cloudinary.com/ngoviettung154/image/upload/w_800,h_800,f_auto,c_lfill/v1768652764/TH/huyen_qr_k6qkzv.jpg'
+                    ? 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXU89Ipxm1Lq8YYd3JPk7MEAskYtTRS4_mg1354.jpg'
+                    : 'https://res.cloudinary.com/dnon5lwok/image/upload/v1779613612/2aOboQYKfXDBGM4CKJlJSweT5EpvOStqEDQOJhcu_bfhg5h.jpg'
                 }
                 width={400}
-                className="!h-auto min-h-[300px] !w-full object-contain"
+                className="!h-auto !w-full"
+                style={{ objectFit: 'cover', objectPosition: 'top' }}
               />
             </div>
           </div>

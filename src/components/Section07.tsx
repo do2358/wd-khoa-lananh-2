@@ -32,12 +32,12 @@ const Section07 = ({ onClickBtn01, setModalImage }: TSection07Props) => {
             // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487170/cuonglinh2611/albums/sjb4sqfg9jy3ik0lth9x.jpg",
             // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487151/cuonglinh2611/albums/vgc8bcfwhfqdew2aqm93.jpg",
             // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1730487156/cuonglinh2611/albums/jqhpuelqjqy7kiylyso2.jpg",
-            'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129840/TH/DSC04587_hdauel.jpg',
-            'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129843/TH/ING07568_kb8kpb.jpg',
-            'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129842/TH/ING07247_vvdefw.jpg',
+            'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610968/2aOboQYKfX2OIP7wuDOmKFqq6A9i5jlgZwtnoLjc_lacuna.jpg',
+            'https://res.cloudinary.com/dnon5lwok/image/upload/v1779609447/MO_04567_fy3wqi.jpg',
+            'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610966/2aOboQYKfVitlrQaRw002AmEGrvvSNIOPyp9UeuG_b36xuq.jpg',
             // "https://res.cloudinary.com/dcos6mpjy/image/upload/v1731244972/cuonglinh2611/albums/yxq5em5w2bfwojkjn2va.jpg",
-            'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129844/TH/ING07822_ok6yg9.jpg',
-            'https://res.cloudinary.com/ngoviettung154/image/upload/v1768129842/TH/ING07111_wkwlkc.jpg',
+            'https://res.cloudinary.com/dnon5lwok/image/upload/v1779610967/2aOboQYKfW2dN93GdNe5diQhwUrmX2zTbdZYwUt6_dwhc9n.jpg',
+            'https://res.cloudinary.com/dnon5lwok/image/upload/v1779611931/MO_05517_ccisg4.jpg',
           ].map((image, index) => {
             const zIndex = 10;
             return (

@@ -1,6 +1,6 @@
 import RcImage from '@rc-component/image';
 import { ArrowLeftIcon, ArrowLeftRightIcon, ArrowRightIcon, RotateCcwSquareIcon, RotateCwSquareIcon, XIcon, ZoomInIcon, ZoomOutIcon } from 'lucide-react';
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import { cn } from '@/libs/utils';
 import { type GetProps } from '@/libs/utils-type';
@@ -11,6 +11,14 @@ type OriginPreviewConfig = NonNullable<Exclude<RcPreviewGroupProps['preview'], b
 type TRcImagesPreviewProps = OriginPreviewConfig & { children?: React.ReactNode };
 
 const RcImagesPreview = ({ children, ...props }: TRcImagesPreviewProps) => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // @rc-component/image uses hooks incompatible with SSR — render client-only
+  if (!mounted) return <>{children}</>;
+
   return (
     <RcImage.PreviewGroup
       icons={{
